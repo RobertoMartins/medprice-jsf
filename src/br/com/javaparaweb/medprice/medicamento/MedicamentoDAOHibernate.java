@@ -18,7 +18,7 @@ public class MedicamentoDAOHibernate implements MedicamentoDAO {
 	@Override
 	public List<Medicamento> listar(Usuario usuario) {
 
-		String hql = "select c from Categoria c where c.pai is null and c.usuario = :usuario";
+		String hql = "select c from Medicamento c where c.usuario = :usuario";
 		Query query = this.session.createQuery(hql);
 		query.setInteger("usuario", usuario.getIdUsuario());
 
