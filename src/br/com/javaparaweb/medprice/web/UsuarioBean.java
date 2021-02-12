@@ -6,6 +6,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+
+import br.com.javaparaweb.medprice.usuario.UsuarioRN;
 import br.com.javaparaweb.medprice.usuario.*;
 
 @ManagedBean(name = "usuarioBean")
@@ -17,9 +19,25 @@ public class UsuarioBean {
 	private String destinoSalvar;
 	
 	public String novo() {
-		this.destinoSalvar = "home";
+		this.destinoSalvar = "usuariosucesso";
 		this.usuario = new Usuario();
 		return "/publico/cadastro";
+	}
+	
+	public String salvar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		String senha = this.usuario.getSenha();
+		if (!senha.equals(this.confirmarSenha)) {
+			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
+			context.addMessage(null, facesMessage);
+			return null;
+		}
+
+		UsuarioRN usuarioRN = new UsuarioRN();
+		usuarioRN.salvar(this.usuario);
+
+		return this.destinoSalvar;
 	}
 
 	public Usuario getUsuario() {
