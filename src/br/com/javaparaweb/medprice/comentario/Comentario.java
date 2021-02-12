@@ -13,8 +13,6 @@ import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.usuario.Usuario;
 
 
-
-
 /**
  * The persistent class for the comentario database table.
  * 
@@ -63,6 +61,40 @@ public class Comentario implements Serializable {
 
 	public void setUsuarioBean(Usuario usuarioBean) {
 		this.usuarioBean = usuarioBean;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idCom;
+		result = prime * result + ((medicamentoBean == null) ? 0 : medicamentoBean.hashCode());
+		result = prime * result + ((usuarioBean == null) ? 0 : usuarioBean.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Comentario other = (Comentario) obj;
+		if (idCom != other.idCom)
+			return false;
+		if (medicamentoBean == null) {
+			if (other.medicamentoBean != null)
+				return false;
+		} else if (!medicamentoBean.equals(other.medicamentoBean))
+			return false;
+		if (usuarioBean == null) {
+			if (other.usuarioBean != null)
+				return false;
+		} else if (!usuarioBean.equals(other.usuarioBean))
+			return false;
+		return true;
 	}
 
 }
