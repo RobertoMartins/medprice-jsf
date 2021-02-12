@@ -19,6 +19,9 @@ public class UsuarioRN {
 		Integer idUsuario = usuario.getIdUsuario();
 		System.out.println(usuario.getIdUsuario());
 		if (idUsuario == null || idUsuario == 0) {
+
+		usuario.getPermissao().add("ROLE_USUARIO");
+
 			this.usuarioDAO.salvar(usuario);
 		} else {
 			this.usuarioDAO.atualizar(usuario);
