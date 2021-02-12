@@ -1,6 +1,6 @@
 package br.com.javaparaweb.medprice.usuario;
 
 public class Usuario {
-	Teste teste;
+	teste teste;
 
 }
