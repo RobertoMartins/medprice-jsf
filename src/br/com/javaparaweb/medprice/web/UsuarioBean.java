@@ -19,9 +19,9 @@ public class UsuarioBean {
 	public String novo() {
 		this.destinoSalvar = "home";
 		this.usuario = new Usuario();
-		return "/publico/usuario";
+		return "/publico/cadastro";
 	}
 	
-	
+
 	
 }
