@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- Configuração da conexão com o banco MySQL e dialeto -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<property name="connection.datasource">java:/comp/env/jdbc/medprice</property>
+		
+		<!-- > <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/financeiro</property> 
+		<property name="connection.username">root</property>
+		<property name="connection.password"></property> -->
+		
+		<property name="current_session_context_class">thread</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- Configurações de debug -->
+		<!--
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="generate_statistics">true</property>
+		<property name="use_sql_comments">true</property>
+		-->
+		<!-- Mapeando classes --> 
+		<mapping class="br.com.javaparaweb.medprice.usuario.Usuario"/>
+		<mapping class="br.com.javaparaweb.medprice.comentario.Comentario"/>
+		<mapping class="br.com.javaparaweb.medprice.medicamento.Medicamento"/>
+		
+	</session-factory>
+</hibernate-configuration>
