@@ -23,11 +23,8 @@ public class Usuario implements Serializable {
 	@Id
 	@Column(name="id_usuario")
 	private int idUsuario;
-
 	private String email;
-
 	private String nome;
-
 	private String senha;
 
 	//bi-directional many-to-one association to Comentario
@@ -116,5 +113,63 @@ public class Usuario implements Serializable {
 
 	public void setPermissao(Set<String> permissao) {
 		this.permissao = permissao;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((comentarios == null) ? 0 : comentarios.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + idUsuario;
+		result = prime * result + ((medicamentos == null) ? 0 : medicamentos.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((permissao == null) ? 0 : permissao.hashCode());
+		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (comentarios == null) {
+			if (other.comentarios != null)
+				return false;
+		} else if (!comentarios.equals(other.comentarios))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (idUsuario != other.idUsuario)
+			return false;
+		if (medicamentos == null) {
+			if (other.medicamentos != null)
+				return false;
+		} else if (!medicamentos.equals(other.medicamentos))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (permissao == null) {
+			if (other.permissao != null)
+				return false;
+		} else if (!permissao.equals(other.permissao))
+			return false;
+		if (senha == null) {
+			if (other.senha != null)
+				return false;
+		} else if (!senha.equals(other.senha))
+			return false;
+		return true;
 	}
 }

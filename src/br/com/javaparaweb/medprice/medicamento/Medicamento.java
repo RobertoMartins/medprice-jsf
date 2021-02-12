@@ -212,5 +212,106 @@ public class Medicamento implements Serializable {
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((apresentacao == null) ? 0 : apresentacao.hashCode());
+		result = prime * result + ((comentarios == null) ? 0 : comentarios.hashCode());
+		result = prime * result + idMed;
+		result = prime * result + ((laboratorio == null) ? 0 : laboratorio.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(pmc0);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(pmc12);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(pmc17);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(pmc175);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(pmc18);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(pmc20);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((produto == null) ? 0 : produto.hashCode());
+		result = prime * result + ((registro == null) ? 0 : registro.hashCode());
+		result = prime * result + ((substancia == null) ? 0 : substancia.hashCode());
+		result = prime * result + ((tarja == null) ? 0 : tarja.hashCode());
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + ((usuarios == null) ? 0 : usuarios.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Medicamento other = (Medicamento) obj;
+		if (apresentacao == null) {
+			if (other.apresentacao != null)
+				return false;
+		} else if (!apresentacao.equals(other.apresentacao))
+			return false;
+		if (comentarios == null) {
+			if (other.comentarios != null)
+				return false;
+		} else if (!comentarios.equals(other.comentarios))
+			return false;
+		if (idMed != other.idMed)
+			return false;
+		if (laboratorio == null) {
+			if (other.laboratorio != null)
+				return false;
+		} else if (!laboratorio.equals(other.laboratorio))
+			return false;
+		if (Double.doubleToLongBits(pmc0) != Double.doubleToLongBits(other.pmc0))
+			return false;
+		if (Double.doubleToLongBits(pmc12) != Double.doubleToLongBits(other.pmc12))
+			return false;
+		if (Double.doubleToLongBits(pmc17) != Double.doubleToLongBits(other.pmc17))
+			return false;
+		if (Double.doubleToLongBits(pmc175) != Double.doubleToLongBits(other.pmc175))
+			return false;
+		if (Double.doubleToLongBits(pmc18) != Double.doubleToLongBits(other.pmc18))
+			return false;
+		if (Double.doubleToLongBits(pmc20) != Double.doubleToLongBits(other.pmc20))
+			return false;
+		if (produto == null) {
+			if (other.produto != null)
+				return false;
+		} else if (!produto.equals(other.produto))
+			return false;
+		if (registro == null) {
+			if (other.registro != null)
+				return false;
+		} else if (!registro.equals(other.registro))
+			return false;
+		if (substancia == null) {
+			if (other.substancia != null)
+				return false;
+		} else if (!substancia.equals(other.substancia))
+			return false;
+		if (tarja == null) {
+			if (other.tarja != null)
+				return false;
+		} else if (!tarja.equals(other.tarja))
+			return false;
+		if (tipo == null) {
+			if (other.tipo != null)
+				return false;
+		} else if (!tipo.equals(other.tipo))
+			return false;
+		if (usuarios == null) {
+			if (other.usuarios != null)
+				return false;
+		} else if (!usuarios.equals(other.usuarios))
+			return false;
+		return true;
+	}
 }
 
