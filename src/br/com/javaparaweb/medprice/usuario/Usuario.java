@@ -22,11 +22,20 @@ public class Usuario implements Serializable {
 
 	@Id
 	@Column(name="id_usuario")
+	@GeneratedValue
 	private int idUsuario;
 	private String email;
 	private String nome;
 	private String senha;
 
+	@ElementCollection(targetClass = String.class) 
+	@JoinTable(
+			name="usuario_permissao", 
+			uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario","permissao"})}, 
+			joinColumns = @JoinColumn(name = "usuario")) 
+	@Column(name = "permissao", length=50) 
+	private Set<String>	permissao	= new HashSet<String>();
+	
 	//bi-directional many-to-one association to Comentario
 	@OneToMany(mappedBy="usuarioBean")
 	private List<Comentario> comentarios;
@@ -35,14 +44,7 @@ public class Usuario implements Serializable {
 	@ManyToMany(mappedBy="usuarios")
 	private List<Medicamento> medicamentos;
 	
-	@ElementCollection(targetClass = String.class) 
-	@JoinTable(
-			name="usuario_permissao", 
-			uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario","permissao"})}, 
-			joinColumns = @JoinColumn(name = "usuario")) 
-	@Column(name = "permissao", length=50) 
-	private Set<String>	permissao	= new HashSet<String>();
-
+	
 	public Usuario() {
 	}
 
