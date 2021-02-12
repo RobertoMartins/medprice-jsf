@@ -21,7 +21,37 @@ public class UsuarioBean {
 		this.usuario = new Usuario();
 		return "/publico/cadastro";
 	}
-	
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getConfirmarSenha() {
+		return confirmarSenha;
+	}
+
+	public void setConfirmarSenha(String confirmarSenha) {
+		this.confirmarSenha = confirmarSenha;
+	}
+
+	public List<Usuario> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<Usuario> lista) {
+		this.lista = lista;
+	}
+
+	public String getDestinoSalvar() {
+		return destinoSalvar;
+	}
+
+	public void setDestinoSalvar(String destinoSalvar) {
+		this.destinoSalvar = destinoSalvar;
+	}
 	
 }
