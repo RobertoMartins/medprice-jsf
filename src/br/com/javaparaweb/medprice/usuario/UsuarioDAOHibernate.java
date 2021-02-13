@@ -17,11 +17,13 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 	}
 
 	public void atualizar(Usuario usuario) {
-		Usuario usuarioPermissao = this.carregar(usuario.getIdUsuario());
-		usuario.setPermissao(usuarioPermissao.getPermissao());
-		this.session.evict(usuarioPermissao);
-
+		if (usuario.getPermissao() == null || usuario.getPermissao().size() == 0) {
+			Usuario usuarioPermissao = this.carregar(usuario.getIdUsuario());
+			usuario.setPermissao(usuarioPermissao.getPermissao());
+			this.session.evict(usuarioPermissao);
+		}
 		this.session.update(usuario);
+	
 	}
 
 	public void excluir(Usuario usuario) {

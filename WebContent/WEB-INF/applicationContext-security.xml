@@ -24,9 +24,9 @@
 			<jdbc-user-service
 				data-source-ref="medpriceDataSource"
 				authorities-by-username-query="SELECT u.email, p.permissao 
-																	FROM Usuario u, usuario_permissao p 
+																	FROM usuario u, usuario_permissao p 
 																	WHERE u.id_usuario = p.usuario AND u.email = ?"
-				users-by-username-query="SELECT email, senha FROM Usuario WHERE email = ?" />
+				users-by-username-query="SELECT email, senha, ativo FROM usuario WHERE email = ?" />
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>

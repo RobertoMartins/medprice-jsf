@@ -7,8 +7,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.usuario.UsuarioRN;
-import br.com.javaparaweb.medprice.usuario.*;
 
 @ManagedBean(name = "usuarioBean")
 @RequestScoped
@@ -21,6 +21,7 @@ public class UsuarioBean {
 	public String novo() {
 		this.destinoSalvar = "usuariosucesso";
 		this.usuario = new Usuario();
+		this.usuario.setAtivo(true);
 		return "/publico/cadastro";
 	}
 	
@@ -38,6 +39,40 @@ public class UsuarioBean {
 		usuarioRN.salvar(this.usuario);
 
 		return this.destinoSalvar;
+	}
+	
+	public String atribuiPermissao(Usuario usuario, String permissao) {
+		this.usuario = usuario;
+		java.util.Set<String> permissoes = this.usuario.getPermissao();
+		if (permissoes.contains(permissao)) {
+			permissoes.remove(permissao);
+		} else {
+			permissoes.add(permissao);
+		}
+		return null;
+	}
+	
+	public String editar() {
+		this.confirmarSenha = this.usuario.getSenha();
+		return "/publico/cadastro";
+	}
+	
+	public String excluir() {
+		UsuarioRN usuarioRN = new UsuarioRN();
+		usuarioRN.excluir(this.usuario);
+		this.lista = null;
+		return null;
+	}
+	
+	public String ativar() {
+		if (this.usuario.isAtivo())
+			this.usuario.setAtivo(false);
+		else
+			this.usuario.setAtivo(true);
+
+		UsuarioRN usuarioRN = new UsuarioRN();
+		usuarioRN.salvar(this.usuario);
+		return null;
 	}
 
 	public Usuario getUsuario() {
@@ -57,7 +92,11 @@ public class UsuarioBean {
 	}
 
 	public List<Usuario> getLista() {
-		return lista;
+		if (this.lista == null) {
+			UsuarioRN usuarioRN = new UsuarioRN();
+			this.lista = usuarioRN.listar();
+		}
+		return this.lista;
 	}
 
 	public void setLista(List<Usuario> lista) {
