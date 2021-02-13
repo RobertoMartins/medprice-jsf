@@ -2,9 +2,9 @@ package br.com.javaparaweb.medprice.medicamento;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import br.com.javaparaweb.medprice.usuario.Usuario;
 
 public class MedicamentoDAOHibernate implements MedicamentoDAO {
 	
@@ -16,15 +16,10 @@ public class MedicamentoDAOHibernate implements MedicamentoDAO {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Medicamento> listar(Usuario usuario) {
-
-		String hql = "select c from Medicamento c where c.usuario = :usuario";
-		Query query = this.session.createQuery(hql);
-		query.setInteger("usuario", usuario.getIdUsuario());
-
-		List<Medicamento> lista = query.list();
-
-		return lista;
+	public List<Medicamento> listar() {
+		Criteria crit = session.createCriteria(Medicamento.class);
+		List<Medicamento> results = crit.list();
+		return results;
 	}
 
 }

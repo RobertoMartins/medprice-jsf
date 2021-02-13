@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/templates/interno.xhtml">
+		<ui:define name="titulo">
+				Medicamentos
+			</ui:define>
+		<ui:define name="corpo">
+		<p:dataTable emptyMessage="Não existem valores para exibição"
+			value="#{medicamentoBean.lista}" var="meds" paginator="true"
+			rows="10" rowsPerPageTemplate="20">
+			<p:column>
+				<f:facet name="header">Produto</f:facet>
+						#{meds.substancia}
+                    </p:column>
+			<p:column>
+				<f:facet name="header">Tipo</f:facet>
+						#{meds.tipo}
+                    </p:column>
+			<p:column>
+				<f:facet name="header">Preço (PMC_0)</f:facet>
+						#{meds.pmc0}
+                    </p:column>
+			<p:column>
+				<f:facet name="header">Tarja</f:facet>
+ 				<h:graphicImage library="imagens"
+						name="#{meds.tarja}.png" 	
+						style="border:0" />
+                    </p:column>
+		</p:dataTable>
+		</ui:define>
+	</ui:composition>
+</html>

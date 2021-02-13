@@ -3,16 +3,18 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-<body>
-
-	<h1>Principal Restrito</h1>
-
+	
+	<ui:composition template="/templates/interno.xhtml">
+		<ui:define name="titulo">
+				Principal restrito
+			</ui:define>
+		<ui:define name="corpo">
 	Usuário logado #{request.remoteUser}
 	<br />
 	<h:form>
 		<h:panelGroup rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')}">
-			<h:commandButton value="Administração Usuarios" action="/admin/principal" />
+			<h:commandButton value="Administração Usuarios"
+				action="/admin/principal" />
 		</h:panelGroup>
 
 		<a
@@ -22,5 +24,7 @@
 		</a>
 
 	</h:form>
-</body>
+		</ui:define>
+</ui:composition>
+
 </html>
