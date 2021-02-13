@@ -12,8 +12,8 @@ public class MedicamentoRN {
 		this.medicamentoDAO = DAOFactory.criarMedicamentoDAO();
 	}
 	
-	public List<Medicamento> listar(Usuario usuario){
-		return this.medicamentoDAO.listar(usuario);
+	public List<Medicamento> listar(){
+		return this.medicamentoDAO.listar();
 	}
 	
 }
