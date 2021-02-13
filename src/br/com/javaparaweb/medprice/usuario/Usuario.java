@@ -27,6 +27,7 @@ public class Usuario implements Serializable {
 	private String email;
 	private String nome;
 	private String senha;
+	private boolean ativo;
 
 	@ElementCollection(targetClass = String.class) 
 	@JoinTable(
@@ -79,6 +80,15 @@ public class Usuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
 
 	public List<Comentario> getComentarios() {
 		return this.comentarios;
@@ -121,6 +131,7 @@ public class Usuario implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (ativo ? 1231 : 1237);
 		result = prime * result + ((comentarios == null) ? 0 : comentarios.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + idUsuario;
@@ -140,6 +151,8 @@ public class Usuario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
+		if (ativo != other.ativo)
+			return false;
 		if (comentarios == null) {
 			if (other.comentarios != null)
 				return false;
@@ -174,4 +187,6 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
+	
+
 }

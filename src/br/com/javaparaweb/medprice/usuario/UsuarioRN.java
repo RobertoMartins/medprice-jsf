@@ -10,16 +10,16 @@ public class UsuarioRN {
 	public UsuarioRN() {
 		this.usuarioDAO = DAOFactory.criarUsuarioDAO();
 	}
-	
+
 	public Usuario carregar(Integer codigo) {
 		return this.usuarioDAO.carregar(codigo);
 	}
-	
+
 	public void salvar(Usuario usuario) {
 		Integer idUsuario = usuario.getIdUsuario();
 		if (idUsuario == null || idUsuario == 0) {
 
-		usuario.getPermissao().add("ROLE_USUARIO");
+			usuario.getPermissao().add("ROLE_USUARIO");
 
 			this.usuarioDAO.salvar(usuario);
 		} else {
@@ -31,8 +31,8 @@ public class UsuarioRN {
 		return this.usuarioDAO.listar();
 	}
 
-	// public void excluir(Usuario usuario) {
-	// this.usuarioDAO.excluir(usuario);
-	// }
+	public void excluir(Usuario usuario) {
+		this.usuarioDAO.excluir(usuario);
+	}
 
 }
