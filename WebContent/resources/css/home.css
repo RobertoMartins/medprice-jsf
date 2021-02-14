@@ -1,0 +1,26 @@
+@charset "ISO-8859-1";
+
+.texto-home{
+	padding:20px;
+	width:50%;
+}
+
+.texto-home h2{
+	color:#009933;
+}
+.texto-home h1{
+	color:#336699;
+}
+
+.texto-home p{
+	font-size:14px;
+	color:#666B71;
+}
+
+.image-home{
+	width:50%;
+	padding:20px;
+}
+.image-home img{
+	width:100%;
+}
