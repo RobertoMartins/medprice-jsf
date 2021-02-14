@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titulo">MedPrice</ui:insert></title>
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<h:outputStylesheet library="css" name="global.css" />
+	<h:outputStylesheet library="css" name="cardmed.css" />
+
+</h:head>
+<h:body>
+	<header class="card">
+		<h:graphicImage library="imagens" name="logo.png" styleClass="logo" />
+		<nav id="menu">
+			<h:form>
+				<ul>
+					<li><a href="/medprice/index.jsf">Home</a></li>
+					<li><a href="/medprice/publico/medicamento.jsf">Medicamentos</a></li>
+					<li><h:commandLink action="#{usuarioBean.novo()}">Novo usuário</h:commandLink></li>
+					<li><a href="/medprice/restrito/principal.jsf">Entrar</a></li>
+				</ul>
+			</h:form>
+		</nav>
+	</header>
+	<main>
+		<ui:insert name="corpo" />
+	</main>
+	<footer>
+		<p>MedPrice 2021 - Todos os direitos reservados.</p>
+	</footer>
+</h:body>
+</html>

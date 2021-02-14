@@ -3,19 +3,10 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<ui:composition template="/templates/externo.xhtml">
+<ui:composition template="/templates/global.xhtml">
 
-	<ui:define name="titulo">
-				MedPrice
-			</ui:define>
 	<ui:define name="corpo">
-		<h:form>
-			<h:commandLink action="#{usuarioBean.novo()}">Novo usuário</h:commandLink>
-			<br />
-			<h:outputLink value="restrito/principal.jsf">Entrar</h:outputLink>
-			<br />
-			<h:outputLink value="publico/medicamento.jsf">Medicamentos</h:outputLink>
-		</h:form>
-		</ui:define>
+		<h1>Corpo do main</h1>
+	</ui:define>
 </ui:composition>
 </html>
