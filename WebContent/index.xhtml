@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/templates/global.xhtml">
 
 	<ui:define name="corpo">
@@ -26,6 +27,33 @@
 			<div class="image-home">
 				<h:graphicImage library="imagens" name="rafiki.png" />
 			</div>
+		</div>
+		<div class="box card">
+		 <div class="meds-home">
+		 <h2>Medicamentos mais pesquisados:</h2>
+		 	<h:form id="form-meds">
+				<p:dataGrid var="meds" value="#{medicamentoBean.listaHome}" columns="3"
+					layout="grid" rows="1" paginator="false">
+					<div class="box-med card">
+						<div class="header-med">
+							<h3>#{meds.produto}</h3>
+							<h5>#{meds.tipo}</h5>
+						</div>
+						<div class="body-med">
+							<p>#{meds.apresentacao}</p>
+						</div>
+						<div class="footer-med">
+							<strong>R$ #{meds.pmc0}</strong>
+							<h:graphicImage styleClass="tarja" library="imagens"
+								name="#{meds.tarja}.png" />
+						</div>
+						<p>*Os preços podem variar de acordo com o estado. Verifique o
+							estado escolhido.</p>
+					</div>
+				</p:dataGrid>
+			</h:form>
+			<a href="/medprice/publico/medicamento.jsf"><h3>Ver todos >></h3></a>
+		 </div>
 		</div>
 	</ui:define>
 </ui:composition>

@@ -24,3 +24,15 @@
 .image-home img{
 	width:100%;
 }
+.meds-home{
+	padding:0 15px;
+	width:100%
+}
+.meds-home > h2{
+	color:#009933;
+}
+
+.meds-home a {
+	float:right;
+	color:#009933;
+}

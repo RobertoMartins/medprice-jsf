@@ -12,6 +12,7 @@ import br.com.javaparaweb.medprice.medicamento.MedicamentoRN;
 public class MedicamentoBean {
 	private Medicamento med = new Medicamento();
 	private List<Medicamento> lista;
+	private List<Medicamento> listaHome;
 	public Medicamento getMed() {
 		return med;
 	}
@@ -24,6 +25,19 @@ public class MedicamentoBean {
 			this.lista = medRN.listar();
 		}
 		return this.lista;
+	}
+	
+	
+	public List<Medicamento> getListaHome() {
+		if(this.listaHome == null) {
+			MedicamentoRN medRN = new MedicamentoRN();
+			this.listaHome = medRN.listar().subList(0, 3);
+		}
+		return this.listaHome;
+		
+	}
+	public void setListaHome(List<Medicamento> listaHome) {
+		this.listaHome = listaHome;
 	}
 	public void setLista(List<Medicamento> lista) {
 		this.lista = lista;

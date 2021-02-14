@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
-@import url(#{resource['css:cardmed.css']});
-@import url(#{resource['css:home.css']});
+@import url(/medprice/javax.faces.resource/cardmed.css.jsf?ln=css);
+@import url(/medprice/javax.faces.resource/home.css.jsf?ln=css);
 
 body{
 	font-family: Roboto, Arial, Helvetica, sans-serif;
@@ -15,7 +15,6 @@ header{
 	padding:10px 5px;
 	display:flex;
 	justify-content:space-around;
-	margin-bottom:10px;
 	align-items:center;
 	
 }
@@ -46,7 +45,6 @@ footer{
 	display:flex;
 	align-items:center;
 	margin: 0 auto;
-	margin-top:10px;
 }
 footer p{
 	font-weight:bold;
@@ -76,10 +74,11 @@ footer p{
 
 .box {
 	width: 90%;
-	margin: 0 auto;
+	margin: 10px auto;
 	display:flex;
 	justify-content:center;
 	align-items:center;
+
 }
 
 
