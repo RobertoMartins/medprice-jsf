@@ -3,44 +3,50 @@
 .box-med {
 	width: 300px;
 	height: 210px;
-	padding:8px;
-	background-color:#ffff;
+	padding: 20px;
+	background-color: #ffff;
 }
-.box-med >p {
-	font-size:10px;
-	color:grey;
+
+.box-med>p {
+	font-size: 10px;
+	color: grey;
 }
 
 /*header medicamento*/
-.header-med{
-	display:block;
-	margin:0;
-	padding:0;
-}
-.header-med h3{
-	padding:0;
-	margin:0;
+.header-med {
+	display: block;
+	margin: 0;
+	padding: 0;
 }
 
-.header-med h5{
-	padding:0;
-	margin:0;
+.header-med h3 {
+	padding: 0;
+	margin: 0;
+	color: #336699;
+}
+
+.header-med h5 {
+	padding: 0;
+	margin: 0;
 }
 
 /*corpo medicamento*/
-.body-med{
-	color:grey;
+.body-med {
+	color: grey;
 }
 
 /*footer medicamento*/
-.footer-med{
-	padding:0;
-	margin:0;
-	display:flex;
-	justify-content:space-between;
-	align-items:center;
+.footer-med {
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
+.footer-med strong {
+	color: #009933;
+}
 
 .tarja {
 	width: 25%;
