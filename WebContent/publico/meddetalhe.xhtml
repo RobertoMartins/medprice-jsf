@@ -8,30 +8,14 @@
 
 	<ui:define name="corpo">
 		<div class="card box">
-			<div class="header-med">
-				<h3>#{medicamentoBean.med.produto}</h3>
-				<h5>#{medicamentoBean.med.tipo}</h5>
-			</div>
-			<div class="body-med">
-				<p>#{medicamentoBean.med.apresentacao}</p>
-			</div>
-			<div class="footer-med">
-				<strong>R$ #{medicamentoBean.med.pmc0}</strong>
-			</div>
-			<p>*Os preços podem variar de acordo com o estado. Verifique o
-				estado escolhido.</p>
-
-
-			<!-- <p class="title-com">Comentarios
-				(#{medicamentoBean.med.comentarios.size()})</p>
-			<p:dataGrid var="comentario"
-				value="#{medicamentoBean.listarComentario}" columns="1" layout="grid">
-
-				<div class="header-med">
-					<h3>#{comentario.id_com}</h3>
-					<h5>#{comentario.conteudo}</h5>
-				</div>
-			</p:dataGrid> -->
+			<h3>#{medicamentoBean.med.produto}</h3>
+			<br />
+			<h5>Comentarios (#{medicamentoBean.med.comentarios.size()})</h5><br/>
+			<p:dataTable var="comentario"
+				value="#{medicamentoBean.med.comentarios}" rules="rows">
+				<p:column>#{comentario.usuarioBean.nome}</p:column>
+				<p:column>#{comentario.conteudo}</p:column>
+			</p:dataTable>
 
 		</div>
 	</ui:define>

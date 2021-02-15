@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+
+import br.com.javaparaweb.medprice.comentario.Comentario;
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.medicamento.MedicamentoRN;
 
@@ -47,5 +49,6 @@ public class MedicamentoBean {
 	public String detalhe() {
 		return "meddetalhe";
 	}
+	
 
 }
