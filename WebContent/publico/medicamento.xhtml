@@ -5,10 +5,6 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/templates/global.xhtml">
-	<h:head>
-		<h:outputStylesheet library="css" name="cardmed.css" />
-		<h:outputStylesheet library="css" name="estilo.css" />
-	</h:head>
 
 	<ui:define name="corpo">
 		<div class="card box">
@@ -17,22 +13,29 @@
 					layout="grid" rows="12" paginator="true"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="6,12,18">
-					<div class="box-med card">
-						<div class="header-med">
-							<h3>#{meds.produto}</h3>
-							<h5>#{meds.tipo}</h5>
+						<div class="box-med card">
+							<div class="header-med">
+								<h3>#{meds.produto}</h3>
+								<h5>#{meds.tipo}</h5>
+							</div>
+							<div class="body-med">
+								<p>#{meds.apresentacao}</p>
+							</div>
+							<div class="footer-med">
+								<strong>R$ #{meds.pmc0}</strong>
+								<h:graphicImage styleClass="tarja" library="imagens"
+									name="#{meds.tarja}.png" />
+							</div>
+							<p>*Os preços podem variar de acordo com o estado. Verifique
+								o estado escolhido.</p>
+							<p class="text-com">Comentarios (#{meds.comentarios.size()})
+							</p>
+							<h:commandButton action="#{medicamentoBean.detalhe}" value="Ver mais">
+								<f:setPropertyActionListener target="#{medicamentoBean.med}"
+									value="#{meds}" />
+							</h:commandButton>
 						</div>
-						<div class="body-med">
-							<p>#{meds.apresentacao}</p>
-						</div>
-						<div class="footer-med">
-							<strong>R$ #{meds.pmc0}</strong>
-							<h:graphicImage styleClass="tarja" library="imagens"
-								name="#{meds.tarja}.png" />
-						</div>
-						<p>*Os preços podem variar de acordo com o estado. Verifique o
-							estado escolhido.</p>
-					</div>
+					
 				</p:dataGrid>
 			</h:form>
 		</div>

@@ -2,6 +2,7 @@ package br.com.javaparaweb.medprice.medicamento;
 
 import java.util.List;
 
+import br.com.javaparaweb.medprice.comentario.Comentario;
 import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.util.DAOFactory;
 
@@ -14,6 +15,10 @@ public class MedicamentoRN {
 	
 	public List<Medicamento> listar(){
 		return this.medicamentoDAO.listar();
+	}
+	
+	public List<Comentario> listarComentario(Medicamento medicamento){
+		return this.medicamentoDAO.listarComentario(medicamento);
 	}
 	
 }

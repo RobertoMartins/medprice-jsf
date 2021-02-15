@@ -6,6 +6,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import br.com.javaparaweb.medprice.comentario.Comentario;
+
 public class MedicamentoDAOHibernate implements MedicamentoDAO {
 	
 	private Session session;
@@ -19,6 +21,13 @@ public class MedicamentoDAOHibernate implements MedicamentoDAO {
 	public List<Medicamento> listar() {
 		Criteria crit = session.createCriteria(Medicamento.class);
 		List<Medicamento> results = crit.list();
+		return results;
+	}
+	
+	@Override
+	public List<Comentario> listarComentario(Medicamento medicamento) {
+		Criteria crit = session.createCriteria(Comentario.class);
+		List<Comentario> results = crit.list();
 		return results;
 	}
 

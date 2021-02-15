@@ -4,6 +4,7 @@
 
 @import url(/medprice/javax.faces.resource/home.css.jsf?ln=css);
 
+@import url(/medprice/javax.faces.resource/medicamento.css.jsf?ln=css);
 body {
 	font-family: Roboto, Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -83,26 +84,3 @@ footer p {
 	background-color: #ffff;
 }
 
-/*CUSTOMIZAÇÃO DO DATAGRID DE MEDICAMENTOS*/
-#form-meds {
-	display: flex;
-	justify-content: center;
-}
-
-#form-meds .ui-widget-header {
-	background: none repeat scroll 0 0 #FFFFFF !important;
-	border: 0;
-}
-
-.ui-paginator-page {
-	background: none repeat scroll 0 0 #FFFFFF !important;
-}
-
-.ui-state-default {
-	background: none repeat scroll 0 0 #FFFFFF !important;
-}
-
-.ui-datagrid-content {
-	border: 0;
-	justify-content: space-around;
-}

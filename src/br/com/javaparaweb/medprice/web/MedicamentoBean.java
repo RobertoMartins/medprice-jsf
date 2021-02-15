@@ -44,17 +44,8 @@ public class MedicamentoBean {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public String detalhe() {
+		return "meddetalhe";
+	}
 
 }

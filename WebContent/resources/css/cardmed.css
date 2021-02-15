@@ -52,3 +52,13 @@
 	width: 25%;
 	float: right;
 }
+
+/*"comentarios (x)" no card*/
+.text-com {
+	font-size: 14px;
+	color: grey;
+}
+
+.link-card {
+	text-decoration: none;
+}
