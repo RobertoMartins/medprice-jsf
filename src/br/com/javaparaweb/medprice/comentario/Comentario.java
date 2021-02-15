@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,6 +25,7 @@ public class Comentario implements Serializable {
 
 	@Id
 	@Column(name="id_com")
+	@GeneratedValue
 	private int idCom;
 
 	//bi-directional many-to-one association to Medicamento
@@ -35,12 +37,14 @@ public class Comentario implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="usuario")
 	private Usuario usuarioBean;
+	
+	private String conteudo;
 
 	public Comentario() {
 	}
 
 	public int getIdCom() {
-		return this.idCom;
+		return idCom;
 	}
 
 	public void setIdCom(int idCom) {
@@ -48,7 +52,7 @@ public class Comentario implements Serializable {
 	}
 
 	public Medicamento getMedicamentoBean() {
-		return this.medicamentoBean;
+		return medicamentoBean;
 	}
 
 	public void setMedicamentoBean(Medicamento medicamentoBean) {
@@ -56,17 +60,30 @@ public class Comentario implements Serializable {
 	}
 
 	public Usuario getUsuarioBean() {
-		return this.usuarioBean;
+		return usuarioBean;
 	}
 
 	public void setUsuarioBean(Usuario usuarioBean) {
 		this.usuarioBean = usuarioBean;
 	}
 
+	public String getConteudo() {
+		return conteudo;
+	}
+
+	public void setConteudo(String conteudo) {
+		this.conteudo = conteudo;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((conteudo == null) ? 0 : conteudo.hashCode());
 		result = prime * result + idCom;
 		result = prime * result + ((medicamentoBean == null) ? 0 : medicamentoBean.hashCode());
 		result = prime * result + ((usuarioBean == null) ? 0 : usuarioBean.hashCode());
@@ -82,6 +99,11 @@ public class Comentario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Comentario other = (Comentario) obj;
+		if (conteudo == null) {
+			if (other.conteudo != null)
+				return false;
+		} else if (!conteudo.equals(other.conteudo))
+			return false;
 		if (idCom != other.idCom)
 			return false;
 		if (medicamentoBean == null) {
