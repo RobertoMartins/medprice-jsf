@@ -1,0 +1,41 @@
+/*Título de comentários em meddetalhe*/
+.title-com {
+	font-size: 28px;
+	color: grey;
+}
+
+/*header medicamento*/
+.header-med {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.header-med h3 {
+	padding: 0;
+	margin: 0;
+	color: #336699;
+}
+
+.header-med h5 {
+	padding: 0;
+	margin: 0;
+}
+
+/*corpo medicamento*/
+.body-med {
+	color: grey;
+}
+
+/*footer medicamento*/
+.footer-med {
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.footer-med strong {
+	color: #009933;
+}

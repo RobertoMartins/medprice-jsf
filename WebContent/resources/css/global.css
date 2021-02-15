@@ -1,10 +1,11 @@
 @charset "ISO-8859-1";
 
 @import url(/medprice/javax.faces.resource/cardmed.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/home.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/medicamento.css.jsf?ln=css);
+@import url(/medprice/javax.faces.resource/detalhe.css.jsf?ln=css);
+
+
 body {
 	font-family: Roboto, Arial, Helvetica, sans-serif;
 	font-size: 12px;
