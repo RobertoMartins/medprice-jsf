@@ -35,6 +35,13 @@
 	color: grey;
 }
 
+.apresentacao {
+	max-width: 40ch;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 /*footer medicamento*/
 .footer-med {
 	padding: 0;
@@ -46,6 +53,12 @@
 
 .footer-med strong {
 	color: #009933;
+}
+
+.footer-med strong spam {
+	color: grey;
+	font-size: 10px;
+	font-weight: regular;
 }
 
 .tarja {
@@ -61,4 +74,23 @@
 
 .link-card {
 	text-decoration: none;
+}
+
+.btn-med {
+	width: 90px;
+	background: none;
+	color: #009933;
+	border: 0;
+	font-size: 12px;
+	float: right;
+	cursor: pointer;
+}
+
+.btn-med:focus {
+	box-shadow: 0 0 0 0;
+	outline: 0;
+}
+
+.btn-med:hover {
+	color: #08401A;
 }

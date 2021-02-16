@@ -35,21 +35,22 @@
 				<p:dataGrid var="meds" value="#{medicamentoBean.listaHome}" columns="3"
 					layout="grid" rows="1" paginator="false">
 					<div class="box-med card">
-						<div class="header-med">
-							<h3>#{meds.produto}</h3>
-							<h5>#{meds.tipo}</h5>
+							<div class="header-med">
+								<h3>#{meds.produto}</h3>
+								<h5>#{meds.tipo}</h5>
+							</div>
+							<div class="body-med">
+								<p class="apresentacao">#{meds.apresentacao}</p>
+							</div>
+							<div class="footer-med">
+								<strong>R$ #{meds.pmc0} <spam>c/ alíquota 0% *</spam></strong>
+								<h:graphicImage styleClass="tarja" library="imagens"
+									name="#{meds.tarja}.png" />
+							</div>
+							<p>*Os preços podem variar de acordo com a alíquota de cada estado. Clique em <b>ver mais</b> para saber todos.</p>
+							<p class="text-com">Comentarios (#{meds.comentarios.size()})
+							</p>
 						</div>
-						<div class="body-med">
-							<p>#{meds.apresentacao}</p>
-						</div>
-						<div class="footer-med">
-							<strong>R$ #{meds.pmc0}</strong>
-							<h:graphicImage styleClass="tarja" library="imagens"
-								name="#{meds.tarja}.png" />
-						</div>
-						<p>*Os preços podem variar de acordo com o estado. Verifique o
-							estado escolhido.</p>
-					</div>
 				</p:dataGrid>
 			</h:form>
 			<a href="/medprice/publico/medicamento.jsf"><h3>Ver todos >></h3></a>

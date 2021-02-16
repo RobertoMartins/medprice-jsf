@@ -19,18 +19,17 @@
 								<h5>#{meds.tipo}</h5>
 							</div>
 							<div class="body-med">
-								<p>#{meds.apresentacao}</p>
+								<p class="apresentacao">#{meds.apresentacao}</p>
 							</div>
 							<div class="footer-med">
-								<strong>R$ #{meds.pmc0}</strong>
+								<strong>R$ #{meds.pmc0} <spam>c/ alíquota 0% *</spam></strong>
 								<h:graphicImage styleClass="tarja" library="imagens"
 									name="#{meds.tarja}.png" />
 							</div>
-							<p>*Os preços podem variar de acordo com o estado. Verifique
-								o estado escolhido.</p>
+							<p>*Os preços podem variar de acordo com a alíquota de cada estado. Clique em <b>ver mais</b> para saber todos.</p>
 							<p class="text-com">Comentarios (#{meds.comentarios.size()})
 							</p>
-							<h:commandButton action="#{medicamentoBean.detalhe}" value="Ver mais">
+							<h:commandButton action="#{medicamentoBean.detalhe}" value="ver mais>>" styleClass="btn-med">
 								<f:setPropertyActionListener target="#{medicamentoBean.med}"
 									value="#{meds}" />
 							</h:commandButton>
