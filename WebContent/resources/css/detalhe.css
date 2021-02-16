@@ -1,41 +1,74 @@
-/*Título de comentários em meddetalhe*/
-.title-com {
-	font-size: 28px;
-	color: grey;
-}
-
-/*header medicamento*/
-.header-med {
-	display: block;
-	margin: 0;
-	padding: 0;
-}
-
-.header-med h3 {
-	padding: 0;
-	margin: 0;
-	color: #336699;
-}
-
-.header-med h5 {
-	padding: 0;
-	margin: 0;
-}
-
-/*corpo medicamento*/
-.body-med {
-	color: grey;
-}
-
-/*footer medicamento*/
-.footer-med {
-	padding: 0;
-	margin: 0;
+.content-det {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	width: 100%; 
+	justify-content: space-between;	
 }
 
-.footer-med strong {
+.med-det {
+	width: 50%;
+	margin: 0;
+	padding: 0;
+	padding-top: 15px;
+	padding-left: 25px;
+}
+
+.med-img{
+	width: 50%;
+	padding-top: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.med-det h2, #subs {
+	color: #336699;
+	margin-block-end: 0.1em;
+}
+
+.med-det h4 {
+	color: #000000;
+	margin-block-start: 0.1em;
+}
+
+#lab {
 	color: #009933;
+}
+
+#apres {
+	color: #696969;
+}
+
+.med-det p {
+	color: #a9a9a9;
+	margin-left: 5px;
+}
+
+.med-det strong {
+	color: #009933;
+	font-size: 16px;
+	vertical-align: middle;
+}
+
+.med-det .tarja-det {
+	margin-left: 5px;
+	width: 15%;
+}
+
+.tabela {
+	font-size: 12px;
+	text-align: center;
+	border-width: 5px;
+	border-collapse: collapse;
+	color: #696969;
+}
+
+.tabela th{
+	background-color: #336699;
+	color: #FFFFFF;
+}
+tr.border_top td {
+  border-top: 2px solid  #336699;
+}
+
+.content-com {
+	width: 60%;
 }

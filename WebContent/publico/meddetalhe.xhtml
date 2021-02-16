@@ -6,17 +6,80 @@
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/templates/global.xhtml">
 
+	<!-- <p:column>#{comentario.usuarioBean.nome}</p:column>
+				<p:column>#{comentario.conteudo}</p:column> 
+				<h3>#{medicamentoBean.med.produto}</h3>
+			<h5>Comentarios (#{medicamentoBean.med.comentarios.size()})</h5><br/>
+				-->
+
 	<ui:define name="corpo">
 		<div class="card box">
-			<h3>#{medicamentoBean.med.produto}</h3>
-			<br />
-			<h5>Comentarios (#{medicamentoBean.med.comentarios.size()})</h5><br/>
-			<p:dataTable var="comentario"
-				value="#{medicamentoBean.med.comentarios}" rules="rows">
-				<p:column>#{comentario.usuarioBean.nome}</p:column>
-				<p:column>#{comentario.conteudo}</p:column>
-			</p:dataTable>
+			<div class="content-det">
+				<div class="med-det">
+					<h2>#{medicamentoBean.med.produto}</h2>
+					<h4>#{medicamentoBean.med.tipo}</h4>
 
+					<p id="lab">#{medicamentoBean.med.laboratorio}</p>
+					<p id="apres">#{medicamentoBean.med.apresentacao}</p>
+					<p id="subs">Composição: #{medicamentoBean.med.substancia}</p>
+					<h:graphicImage styleClass="tarja-det" library="imagens"
+						name="#{medicamentoBean.med.tarja}.png" />
+
+					<table class="tabela" cellspacing="0" cellpadding="8">
+						<tr>
+							<th>ICMS</th>
+							<th>ESTADO</th>
+							<th>PREÇO</th>
+						</tr>
+						<tr class="border_top">
+							<td>20%</td>
+							<td>RJ</td>
+							<td>R$ #{medicamentoBean.med.pmc20}</td>
+						</tr>
+						<tr class="border_top">
+							<td>18%</td>
+							<td>AM, AP, BA, CE, MA, MG, PB, PE, PI, <br /> PR, RN, RS,
+								SE, SP, TO e RJ<br /> (medicamento da Portaria MS <br />
+								1318/2002)
+							</td>
+							<td>R$ #{medicamentoBean.med.pmc18}</td>
+						</tr>
+						<tr class="border_top">
+							<td>17,5%</td>
+							<td>RO</td>
+							<td>R$ #{medicamentoBean.med.pmc175}</td>
+						</tr>
+						<tr class="border_top">
+							<td>17%</td>
+							<td>DEMAIS ESTADOS</td>
+							<td>R$ #{medicamentoBean.med.pmc17}</td>
+						</tr>
+						<tr class="border_top">
+							<td>12%</td>
+							<td>Medicamentos Genéricos de SP e MG</td>
+							<td>R$ #{medicamentoBean.med.pmc12}</td>
+						</tr>
+					</table>
+				</div>
+				<div class="med-img">
+					<h:graphicImage library="imagens" name="detalhe.png" />
+				</div>
+			</div>
+
+		</div>
+		<div class="card box">
+			<div class="content-com">
+			<p class="title-com">Comentarios (#{medicamentoBean.med.comentarios.size()})</p>
+				<p:dataGrid var="comentario"
+					value="#{medicamentoBean.med.comentarios}" rules="rows" columns="1"
+					layout="grid">
+					<div class="box-com card">
+						<p class="autor">#{comentario.usuarioBean.nome}</p>
+						<p class="conteudo">#{comentario.conteudo}</p>
+						<p class="data">20/02/2011 08:00 Am</p>
+					</div>
+				</p:dataGrid>
+			</div>
 		</div>
 	</ui:define>
 </ui:composition>
