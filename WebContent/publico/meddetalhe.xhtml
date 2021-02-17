@@ -18,9 +18,9 @@
 				<div class="med-det">
 					<h2>#{medicamentoBean.med.produto}</h2>
 					<h4>#{medicamentoBean.med.tipo}</h4>
-
-					<p id="lab">#{medicamentoBean.med.laboratorio}</p>
-					<p id="apres">#{medicamentoBean.med.apresentacao}</p>
+					<p id="lab">Laboratório: #{medicamentoBean.med.laboratorio}</p>
+					
+					<p id="apres">Apresentação: #{medicamentoBean.med.apresentacao}</p>
 					<p id="subs">Composição: #{medicamentoBean.med.substancia}</p>
 					<h:graphicImage styleClass="tarja-det" library="imagens"
 						name="#{medicamentoBean.med.tarja}.png" />
@@ -58,6 +58,11 @@
 							<td>12%</td>
 							<td>Medicamentos Genéricos de SP e MG</td>
 							<td>R$ #{medicamentoBean.med.pmc12}</td>
+						</tr>
+						<tr class="border_top">
+							<td>0%</td>
+							<td>-</td>
+							<td>R$ #{medicamentoBean.med.pmc0}</td>
 						</tr>
 					</table>
 				</div>

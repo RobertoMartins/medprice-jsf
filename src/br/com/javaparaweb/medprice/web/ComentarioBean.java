@@ -30,8 +30,8 @@ public class ComentarioBean {
 		comRN.adicionar(comentario);
 		comentario=new Comentario();
 		return null;
-	
 	}
+	
 	public ContextoBean getContextoBean() {
 		return contextoBean;
 	}

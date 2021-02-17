@@ -20,9 +20,7 @@
 					<p>
 					Além da lista publicada no site da Anvisa, os consumidores podem consultar revistas especializadas na 
 					publicação de preços de medicamentos, que devem ser disponibilizadas obrigatoriamente pelas farmácias e drogarias.
-					</p>
-					
-				
+					</p>		
 			</div>
 			<div class="image-home">
 				<h:graphicImage library="imagens" name="rafiki.png" />
@@ -48,8 +46,11 @@
 									name="#{meds.tarja}.png" />
 							</div>
 							<p>*Os preços podem variar de acordo com a alíquota de cada estado. Clique em <b>ver mais</b> para saber todos.</p>
-							<p class="text-com">Comentarios (#{meds.comentarios.size()})
-							</p>
+							<p class="text-com">Comentarios (#{meds.comentarios.size()})</p>
+							<h:commandButton action="publico/meddetalhe.xhtml" value="Ver mais>>" styleClass="btn-med">
+								<f:setPropertyActionListener target="#{medicamentoBean.med}"
+									value="#{meds}" />
+							</h:commandButton>
 						</div>
 				</p:dataGrid>
 			</h:form>

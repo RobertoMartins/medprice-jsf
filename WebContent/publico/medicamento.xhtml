@@ -27,9 +27,8 @@
 									name="#{meds.tarja}.png" />
 							</div>
 							<p>*Os preços podem variar de acordo com a alíquota de cada estado. Clique em <b>ver mais</b> para saber todos.</p>
-							<p class="text-com">Comentarios (#{meds.comentarios.size()})
-							</p>
-							<h:commandButton action="#{medicamentoBean.detalhe}" value="ver mais>>" styleClass="btn-med">
+							<p class="text-com">Comentarios (#{meds.comentarios.size()})</p>
+							<h:commandButton action="#{medicamentoBean.detalhe}" value="Ver mais>>" styleClass="btn-med">
 								<f:setPropertyActionListener target="#{medicamentoBean.med}"
 									value="#{meds}" />
 							</h:commandButton>
