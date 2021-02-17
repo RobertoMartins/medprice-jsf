@@ -20,5 +20,8 @@ public class MedicamentoRN {
 	public List<Comentario> listarComentario(Medicamento medicamento){
 		return this.medicamentoDAO.listarComentario(medicamento);
 	}
+	public Medicamento buscarPorRegistro(String registro) {
+		return this.medicamentoDAO.buscarPorRegistro(registro);
+	}
 	
 }

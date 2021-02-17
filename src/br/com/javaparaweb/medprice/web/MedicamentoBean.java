@@ -2,8 +2,10 @@ package br.com.javaparaweb.medprice.web;
 
 import java.util.List;
 
+import javax.faces.application.Application;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.medicamento.MedicamentoRN;
@@ -14,6 +16,8 @@ public class MedicamentoBean {
 	private Medicamento med = new Medicamento();
 	private List<Medicamento> lista;
 	private List<Medicamento> listaHome;
+	
+	
 	public Medicamento getMed() {
 		return med;
 	}
@@ -47,6 +51,12 @@ public class MedicamentoBean {
 	
 	public String detalhe() {
 		return "meddetalhe";
+	}
+	
+	public static Object getContextInfo(String info) {
+		  FacesContext context = FacesContext.getCurrentInstance();
+		  Application application = context.getApplication();
+		  return application.createValueBinding(info).getValue(context); 
 	}
 	
 

@@ -1,8 +1,8 @@
 package br.com.javaparaweb.medprice.usuario;
 
-import br.com.javaparaweb.medprice.util.DAOFactory;
-
 import java.util.List;
+
+import br.com.javaparaweb.medprice.util.DAOFactory;
 
 public class UsuarioRN {
 	private UsuarioDAO usuarioDAO;
@@ -33,6 +33,10 @@ public class UsuarioRN {
 
 	public void excluir(Usuario usuario) {
 		this.usuarioDAO.excluir(usuario);
+	}
+
+	public Usuario buscarPorLogin(String login) {
+		return this.usuarioDAO.buscarPorLogin(login);
 	}
 
 }

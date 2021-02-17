@@ -41,7 +41,7 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 	public Usuario buscarPorLogin(String email) {
 		String hql = "select u from Usuario u where u.email = :email";
 		Query consulta = this.session.createQuery(hql);
-		consulta.setString("login", email);
+		consulta.setString("email", email);
 		return (Usuario) consulta.uniqueResult();
 	}
 }

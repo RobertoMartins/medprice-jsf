@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.com.javaparaweb.medprice.comentario.Comentario;
+import br.com.javaparaweb.medprice.usuario.Usuario;
 
 public class MedicamentoDAOHibernate implements MedicamentoDAO {
 	
@@ -29,6 +30,16 @@ public class MedicamentoDAOHibernate implements MedicamentoDAO {
 		Criteria crit = session.createCriteria(Comentario.class);
 		List<Comentario> results = crit.list();
 		return results;
+	}
+
+	@Override
+	public Medicamento buscarPorRegistro(String registro) {
+		
+			String hql = "select m from Medicamento m where m.registro = :registro";
+			Query consulta = this.session.createQuery(hql);
+			consulta.setString("registro", registro);
+			return (Medicamento) consulta.uniqueResult();
+		
 	}
 
 }

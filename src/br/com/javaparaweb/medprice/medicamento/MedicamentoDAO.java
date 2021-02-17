@@ -10,4 +10,5 @@ public interface MedicamentoDAO {
 	public List<Medicamento> listar();
 	
 	public List<Comentario> listarComentario(Medicamento medicamento);
+	public Medicamento buscarPorRegistro(String registro) ;
 }

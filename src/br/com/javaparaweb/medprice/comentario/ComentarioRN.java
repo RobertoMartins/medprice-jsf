@@ -15,6 +15,10 @@ public class ComentarioRN {
 	public List<Comentario> listar(Usuario usuario) {
 		return this.comentarioDAO.listar(usuario);
 	}
+	
+	public void adicionar(Comentario comentario){
+		comentarioDAO.salvar(comentario);
+	}
 
 	public void excluir(Comentario comentario) {
 		this.comentarioDAO.excluir(comentario);
