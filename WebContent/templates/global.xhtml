@@ -14,16 +14,7 @@
 <h:body>
 	<header class="card">
 		<h:graphicImage library="imagens" name="logo.png" styleClass="logo" />
-		<nav id="menu">
-			<h:form>
-				<ul>
-					<li><a href="/medprice/index.jsf">Home</a></li>
-					<li><a href="/medprice/publico/medicamento.jsf">Medicamentos</a></li>
-					<li><a href="/medprice/publico/ajuda.jsf">Ajuda</a></li>
-					<p:commandButton type="button"  onclick="PF('modal').show();" styleClass="btn-conta card" value="Minha conta" />
-				</ul>
-			</h:form>
-		</nav>
+		<ui:insert name="menu"/>
 	</header>
 	<main>
 		<ui:insert name="corpo" />
@@ -31,19 +22,6 @@
 	<footer>
 		<p>MedPrice 2021 - Todos os direitos reservados.</p>
 	</footer>
-	<p:dialog widgetVar="modal" modal="true" resizable="false"
-					draggable="false" closable="true" position="950,70">
-					<div class="box-diag">
-					<h4>Já possui uma conta?</h4>
-						<div class="sim">
-						<a href="/medprice/restrito/principal.jsf">Entrar</a>
-							
-						</div>
-						<div class="nao">
-							<a href="/medprice/publico/cadastro.jsf">Criar uma conta</a>
-						</div>
-					</div>
-
-				</p:dialog>
+	
 </h:body>
 </html>

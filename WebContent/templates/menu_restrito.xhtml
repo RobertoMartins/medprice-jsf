@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<nav id="menu">
+	<h:form>
+		<ul>
+			<li><a href="/medprice/index.jsf">Home</a></li>
+			<li><a href="/medprice/restrito/medicamento.jsf">Medicamentos</a></li>
+			<li><a href="/medprice/publico/ajuda.jsf">Ajuda</a></li>
+			<p:commandButton type="button" onclick="PF('modal').show();"
+				styleClass="btn-conta card" value="Minha conta" />
+		</ul>
+	</h:form>
+</nav>
+<p:dialog widgetVar="modal" modal="true" resizable="false"
+	draggable="false" closable="true" position="950,70">
+	<div class="box-diag">
+		conteudo logado
+	</div>
+
+</p:dialog>
+</html>

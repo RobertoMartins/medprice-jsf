@@ -5,7 +5,9 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/templates/global.xhtml">
-
+<ui:define name="menu">
+		<ui:include src="/templates/menu_restrito.xhtml"></ui:include>
+	</ui:define>
 	<!-- <p:column>#{comentario.usuarioBean.nome}</p:column>
 				<p:column>#{comentario.conteudo}</p:column> 
 				<h3>#{medicamentoBean.med.produto}</h3>
@@ -75,12 +77,11 @@
 
 					<h:inputText name="comentarios" id="comentarios"
 						value="#{comentarioBean.comentario.conteudo}" />
-					<h:commandButton action="#{comentarioBean.add}" value="Comentar">
-						<h:inputHidden value="#{medicamentoBean.med.registro}" />
+					<p:commandButton action="#{comentarioBean.add}" value="Comentar">
+						<h:inputHidden value="#{medicamentoBean.med.registro}" update=":comentario"/>
 						<f:setPropertyActionListener target="#{comentarioBean.registro}"
 							value="#{medicamentoBean.med.registro}" />
-						<f:ajax execute="@form" render="@form :grid" />
-					</h:commandButton>
+					</p:commandButton>
 
 
 					<p class="title-com">Comentarios

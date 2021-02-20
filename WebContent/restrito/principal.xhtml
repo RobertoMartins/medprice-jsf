@@ -5,6 +5,9 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition template="/templates/global.xhtml">
+	<ui:define name="menu">
+		<ui:include src="/templates/menu_restrito.xhtml"></ui:include>
+	</ui:define>
 	<ui:define name="corpo">
 	Usuário logado #{request.remoteUser}
 	<br />
