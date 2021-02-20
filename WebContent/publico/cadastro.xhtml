@@ -5,47 +5,69 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/templates/global.xhtml">
-<ui:define name="menu">
-<ui:include src="/templates/menu_publico.xhtml"></ui:include>
-</ui:define>
+
+	<ui:define name="menu">
+		<ui:include src="/templates/menu_publico.xhtml"></ui:include>
+	</ui:define>
 	<ui:define name="corpo">
-		<h:form id="cadastro">
-			<h:messages />
-			<h:inputHidden value="#{usuarioBean.usuario.idUsuario}" />
-			<h:inputHidden value="#{usuarioBean.destinoSalvar}" />
-			<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
+		<div class="div-cad">
+			<div class="card box">
+				<div class="img-cad">
+					<h:graphicImage library="imagens" name="login.png" /><br/>
+					<p>* Esse site é protegido por XXXXXXXXXXXXXXXXXXXX<br/>XXXXXXXXXXXXXXXXXXXXX.</p>
+				</div>
+				<div class="form-cad">
+					<h:form id="cadastro">
+						<p class="title-cad">Criar uma conta</p>
+						<br />
 
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Nome:" for="nome" />
-				<h:inputText id="nome" label="Nome"
-					value="#{usuarioBean.usuario.nome}" size="30" maxlength="30"
-					required="true" requiredMessage="Você não tem nome?">
-					<f:validateLength minimum="10" maximum="30" />
-				</h:inputText>
 
-				<h:outputLabel value="e-Mail:" for="email" />
-				<h:panelGroup>
-					<h:inputText id="email" label="e-Mail"
-						value="#{usuarioBean.usuario.email}" size="50" maxlength="50"
-						required="true" validatorMessage="e-mail inválido">
-						<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
-					</h:inputText>
-					<h:message for="email" />
-				</h:panelGroup>
+						<h:inputHidden value="#{usuarioBean.usuario.idUsuario}" />
+						<h:inputHidden value="#{usuarioBean.destinoSalvar}" />
+						<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
 
-				<h:outputLabel value="Senha:" for="senha" />
-				<h:inputSecret id="senha" label="Senha"
-					value="#{usuarioBean.usuario.senha}" size="10" maxlength="10"
-					required="true" redisplay="true" />
+						<label for="nome">Nome</label>
+						<br />
+						<h:inputText id="nome" label="Nome"
+							value="#{usuarioBean.usuario.nome}" size="30" maxlength="30"
+							required="true" requiredMessage="Você não tem nome?">
+							<f:validateLength minimum="10" maximum="30" />
+						</h:inputText>
+						<br />
 
-				<h:outputLabel value="Confirmar Senha:" for="confirmarsenha" />
-				<h:inputSecret id="confirmarsenha" label="Confirmar Senha"
-					value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10"
-					required="true" redisplay="true" />
-			</h:panelGrid>
+						<label for="nome">Email</label>
+						<br />
+						<h:panelGroup>
+							<h:inputText id="email" label="e-Mail"
+								value="#{usuarioBean.usuario.email}" size="50" maxlength="50"
+								required="true" validatorMessage="e-mail inválido">
+								<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
+							</h:inputText>
+							<h:message for="email" />
+						</h:panelGroup>
+						<br />
 
-			<h:commandButton action="#{usuarioBean.salvar}" value="Salvar" />
-		</h:form>
+						<label for="nome">Senha</label>
+						<br />
+						<h:inputSecret id="senha" label="Senha"
+							value="#{usuarioBean.usuario.senha}" size="10" maxlength="10"
+							required="true" redisplay="true" />
+						<br />
+
+						<label for="nome">Confirmar senha</label>
+						<br />
+						<h:inputSecret id="confirmarsenha" label="Confirmar Senha"
+							value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10"
+							required="true" redisplay="true" />
+						<br /> <br />
+						<div class="botoes-cad">
+							<h:commandButton className="button" action="#{usuarioBean.salvar}" value="Salvar" />
+							<a href="/medprice/index.jsf">Cancelar</a>
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
 	</ui:define>
 </ui:composition>
 

@@ -40,6 +40,15 @@
 		/WEB-INF/applicationContext-security.xml
 	</param-value>
 	</context-param>
+	<context-param>
+        <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+        <param-value>c0fd90e9f2bc6456bcc906b3eb7d573381d997b8</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
+        <param-value>6LcYrmAaAAAAACeOk4cPFk1jmOhBdez_ENRh8zP9</param-value>
+    </context-param>
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>

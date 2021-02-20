@@ -1,0 +1,70 @@
+.div-cad {
+	display: flex;
+	width: 90%;
+	justify-content: space-between;
+}
+
+.img-cad {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	display: block;
+}
+
+.img-cad img {
+	width: 500px;
+}
+
+.img-cad p {
+	color: #9e9e9e;
+	padding: 15px;
+	text-align: center;
+}
+
+.form-cad {
+	width: 50%;
+	justify-content: space-between;
+}
+
+.title-cad {
+	color: #336699;
+	font-size: 18px;
+	font-weight: bold;
+	margin-block-end: 0.1em;
+}
+
+label{
+	font-size: 12px;
+	margin-left: 15px;
+}
+
+input {
+	margin: 5px 0px 5px 15px; /*top right bottom left*/
+	width: 350px;
+}
+
+.botoes-cad input{
+	background-color: #009933;
+	color: #FFFFFF;
+	font-weight: bold;
+	border-radius: 4px;
+	line-height: 30px;
+	width: 100px;
+	text-decoration: none;
+	text-align: center;
+	border:1px solid #18ab29;
+}
+
+.botoes-cad input:hover{
+	background-color: #44c767;
+}
+
+.botoes-cad a {
+	color: #336699;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 12px;
+	margin-left: 10px;
+}
+
+

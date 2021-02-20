@@ -5,6 +5,9 @@
 @import url(/medprice/javax.faces.resource/medicamento.css.jsf?ln=css);
 @import url(/medprice/javax.faces.resource/detalhe.css.jsf?ln=css);
 @import url(/medprice/javax.faces.resource/cardcom.css.jsf?ln=css);
+@import url(/medprice/javax.faces.resource/cadastro.css.jsf?ln=css);
+@import url(/medprice/javax.faces.resource/login.css.jsf?ln=css);
+
 
 body {
 	font-family: Roboto, Arial, Helvetica, sans-serif;
