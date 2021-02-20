@@ -22,6 +22,7 @@ public class ContextoBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private Usuario logado = getUsuarioLogado();
 	public Usuario getUsuarioLogado() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext external = context.getExternalContext();
@@ -38,5 +39,14 @@ public class ContextoBean implements Serializable {
 		return medicamentoRN.buscarPorRegistro(registro);
 
 	}
+
+	public Usuario getLogado() {
+		return logado;
+	}
+
+	public void setLogado(Usuario logado) {
+		this.logado = logado;
+	}
+	
 
 }
