@@ -36,11 +36,15 @@
 label{
 	font-size: 12px;
 	margin-left: 15px;
+	color: #616161;
 }
 
 input {
 	margin: 5px 0px 5px 15px; /*top right bottom left*/
 	width: 350px;
+	line-height: 25px;
+	border: 1px solid #616161;
+	border-radius: 4px;
 }
 
 .botoes-cad input{

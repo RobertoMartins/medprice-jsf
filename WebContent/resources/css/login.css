@@ -24,9 +24,9 @@
 
 .form-login p{
 	text-align: left;
-	margin-left: 35px; /*alinhar com os input (centralizados)*/
+	margin-left: 40px; /*alinhar com os input (centralizados)*/
 	margin-block-end: 0.2em;
-	font-weight: bold;	
+	color: #616161;
 }
 
 .check-login {
