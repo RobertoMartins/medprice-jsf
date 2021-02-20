@@ -11,6 +11,12 @@
 .texto-home h1{
 	color:#336699;
 }
+.texto-home .user{
+	color:#009933;
+	font-size:18px;
+}
+
+
 
 .texto-home p{
 	font-size:14px;
