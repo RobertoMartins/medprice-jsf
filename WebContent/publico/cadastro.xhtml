@@ -10,11 +10,15 @@
 		<ui:include src="/templates/menu_publico.xhtml"></ui:include>
 	</ui:define>
 	<ui:define name="corpo">
-		<div class="div-cad">
-			<div class="card box">
+
+		<div class="card box">
+			<div class="div-cad">
 				<div class="img-cad">
-					<h:graphicImage library="imagens" name="login.png" /><br/>
-					<p>* Esse site é protegido por XXXXXXXXXXXXXXXXXXXX<br/>XXXXXXXXXXXXXXXXXXXXX.</p>
+					<h:graphicImage library="imagens" name="cadastro.png" />
+					<br />
+					<p>
+						* Esse site é protegido por XXXXXXXXXXXXXXXXXXXX<br />XXXXXXXXXXXXXXXXXXXXX.
+					</p>
 				</div>
 				<div class="form-cad">
 					<h:form id="cadastro">
@@ -59,9 +63,11 @@
 						<h:inputSecret id="confirmarsenha" label="Confirmar Senha"
 							value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10"
 							required="true" redisplay="true" />
-						<br /> <br />
+						<br />
+						<br />
 						<div class="botoes-cad">
-							<h:commandButton className="button" action="#{usuarioBean.salvar}" value="Salvar" />
+							<h:commandButton className="button"
+								action="#{usuarioBean.salvar}" value="Salvar" />
 							<a href="/medprice/index.jsf">Cancelar</a>
 						</div>
 					</h:form>

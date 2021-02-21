@@ -21,33 +21,38 @@
 					Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}
 				</h:panelGroup>
 
-					<p class="title-login">Entrar</p>
+
 					<form class="form-login" id="login" method="post"
 						action="#{request.contextPath}/j_spring_security_check">
-
-
-						<p>Email</p>
-						<input class="input-login" type='text' name='j_username' />
-
-						<p>Senha</p>
-						<input class="input-login" type='password' name='j_password' /><br />
-
-						<input class="check-login" type="checkbox"
-							name="_spring_security_remember_me" /> <label
-							for="_spring_security_remember_me">Entrar automaticamente</label><br />
+						<h1 class="title-login">Login</h1>
+						<div class="campos">
+							<label for="email">Email</label> 
+							<input class="campo" type='text' name='j_username' id="email" />
+						
+							<label for="senha">Senha</label> 
+							<input class="campo" type='password' name='j_password' id="senha" />
+						</div>
+						<div class="check">
+							<label for="_spring_security_remember_me">Entrar automaticamente</label>
+							<input class="check-login" type="checkbox" name="_spring_security_remember_me" /> 
+						</div>
+							
 						<div class="botoes-login">
 							<input type="submit" value="Entrar" /> 
-								<a href="/medprice/index.jsf">Cancelar</a><br />
+							<a href="/medprice/index.jsf">Cancelar</a>
 						</div>
 						<div class="botoes-extras-login">
-								<a href="/medprice/publico/cadastro.jsf">Criar conta</a>
-								<a href="/medprice/publico/recupera.jsf">Esqueci a senha</a>
+							<a href="/medprice/publico/cadastro.jsf">Criar conta</a> <a
+								href="/medprice/publico/recupera.jsf">Esqueci a senha</a>
 						</div>
-						
+
 						<script>
 							document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}";
 						</script>
 					</form>
+				</div>
+				<div class="img-login">
+					<h:graphicImage library="imagens" name="login.png" />
 				</div>
 			</div>
 		</div>
