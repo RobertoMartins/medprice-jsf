@@ -14,32 +14,26 @@
 		<div class="card box">
 			<div class="content-login">
 				<div class="div-login">
-					<h:panelGroup rendered="#{!empty param.login_error}">
-						<span style="font-color: red"> Erro ao efetuar o login.</span>
-						<br />
-						<br />
-					Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}
-				</h:panelGroup>
-
-
 					<form class="form-login" id="login" method="post"
 						action="#{request.contextPath}/j_spring_security_check">
 						<h1 class="title-login">Login</h1>
 						<div class="campos">
-							<label for="email">Email</label> 
-							<input class="campo" type='text' name='j_username' id="email" />
-						
-							<label for="senha">Senha</label> 
+							<label for="email">Email</label> <input class="campo" type='text'
+								name='j_username' id="email" /> <label for="senha">Senha</label>
 							<input class="campo" type='password' name='j_password' id="senha" />
 						</div>
 						<div class="check">
-							<label for="_spring_security_remember_me">Entrar automaticamente</label>
-							<input class="check-login" type="checkbox" name="_spring_security_remember_me" /> 
+							<label for="_spring_security_remember_me">Entrar
+								automaticamente</label> <input class="check-login" type="checkbox"
+								name="_spring_security_remember_me" />
 						</div>
-							
+						<h:panelGroup rendered="#{!empty param.login_error}">
+							<span style="color: red"> Erro ao efetuar o login. Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}</span> 
+				</h:panelGroup>
+
 						<div class="botoes-login">
-							<input type="submit" value="Entrar" /> 
-							<a href="/medprice/index.jsf">Cancelar</a>
+							<input type="submit" value="Entrar" /> <a
+								href="/medprice/index.jsf">Cancelar</a>
 						</div>
 						<div class="botoes-extras-login">
 							<a href="/medprice/publico/cadastro.jsf">Criar conta</a> <a
