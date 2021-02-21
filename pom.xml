@@ -96,5 +96,15 @@
 			<artifactId>primefaces</artifactId>
 			<version>5.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava-base</artifactId>
+			<version>r03</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava-collections</artifactId>
+			<version>r03</version>
+		</dependency>
 	</dependencies>
 </project>

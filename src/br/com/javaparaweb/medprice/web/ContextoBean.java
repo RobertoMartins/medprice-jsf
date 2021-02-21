@@ -21,7 +21,7 @@ public class ContextoBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	private Usuario logado = getUsuarioLogado();
 	public Usuario getUsuarioLogado() {
 		FacesContext context = FacesContext.getCurrentInstance();

@@ -10,38 +10,47 @@
 	</ui:define>
 	<ui:define name="corpo">
 		<div class="card box">
-			<h:form id="form-meds">
-				<p:dataGrid var="meds" value="#{medicamentoBean.lista}" columns="3"
-					layout="grid" rows="12" paginator="true"
-					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="6,12,18">
-					<div class="box-med card">
-						<div class="header-med">
-							<h3>#{meds.produto}</h3>
-							<h5>#{meds.tipo}</h5>
-						</div>
-						<div class="body-med">
-							<p class="apresentacao">#{meds.apresentacao}</p>
-						</div>
-						<div class="footer-med">
-							<strong>R$ #{meds.pmc0} <spam>c/ alíquota 0% *</spam></strong>
-							<h:graphicImage styleClass="tarja" library="imagens"
-								name="#{meds.tarja}.png" />
-						</div>
-						<p>
-							*Os preços podem variar de acordo com a alíquota de cada estado.
-							Clique em <b>ver mais</b> para saber todos.
-						</p>
-						<p class="text-com">Comentarios (#{meds.comentarios.size()})</p>
-						<h:commandButton action="#{medicamentoBean.detalhe}"
-							value="Ver mais>>" styleClass="btn-med">
-							<f:setPropertyActionListener target="#{medicamentoBean.med}"
-								value="#{meds}" />
-						</h:commandButton>
+			<div>
+				<h:form>
+					<div class="pesquisa">
+						<p:inputText value="#{medicamentoBean.textoPesquisa}">
+						<p:ajax event="keyup" update=":form-meds" listener="#{medicamentoBean.pesquisar}"/>
+						</p:inputText>
 					</div>
+				</h:form>
+				<h:form id="form-meds">
+					<p:dataGrid var="meds" value="#{medicamentoBean.lista}" columns="3"
+						layout="grid" rows="12" paginator="true"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="6,12,18" id="grid">
+						<div class="box-med card">
+							<div class="header-med">
+								<h3>#{meds.produto}</h3>
+								<h5>#{meds.tipo}</h5>
+							</div>
+							<div class="body-med">
+								<p class="apresentacao">#{meds.apresentacao}</p>
+							</div>
+							<div class="footer-med">
+								<strong>R$ #{meds.pmc0} <spam>c/ alíquota 0% *</spam></strong>
+								<h:graphicImage styleClass="tarja" library="imagens"
+									name="#{meds.tarja}.png" />
+							</div>
+							<p>
+								*Os preços podem variar de acordo com a alíquota de cada estado.
+								Clique em <b>ver mais</b> para saber todos.
+							</p>
+							<p class="text-com">Comentarios (#{meds.comentarios.size()})</p>
+							<h:commandButton action="#{medicamentoBean.detalhe}"
+								value="Ver mais>>" styleClass="btn-med">
+								<f:setPropertyActionListener target="#{medicamentoBean.registro}"
+									value="#{meds.registro}" />
+							</h:commandButton>
+						</div>
 
-				</p:dataGrid>
-			</h:form>
+					</p:dataGrid>
+				</h:form>
+			</div>
 		</div>
 	</ui:define>
 </ui:composition>
