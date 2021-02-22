@@ -9,8 +9,8 @@
 	<ui:define name="menu">
 		<ui:include src="/templates/menu_publico.xhtml"></ui:include>
 	</ui:define>
+	
 	<ui:define name="corpo">
-
 		<div class="card box">
 			<div class="div-cad">
 				<div class="img-cad">
@@ -24,7 +24,6 @@
 					<h:form id="cadastro">
 						<p class="title-cad">Criar uma conta</p>
 						<br />
-
 
 						<h:inputHidden value="#{usuarioBean.usuario.idUsuario}" />
 						<h:inputHidden value="#{usuarioBean.destinoSalvar}" />
@@ -55,7 +54,9 @@
 						<br />
 						<h:inputSecret id="senha" label="Senha"
 							value="#{usuarioBean.usuario.senha}" size="10" maxlength="10"
-							required="true" redisplay="true" />
+							required="true" redisplay="true">
+							<f:validateRegex pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&amp;])[A-Za-z\d@$!%*?&amp;]{8,10}$" />
+						</h:inputSecret>
 						<br />
 
 						<label for="nome">Confirmar senha</label>
@@ -64,6 +65,15 @@
 							value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10"
 							required="true" redisplay="true" />
 						<br />
+						
+							<p>Requisitos de senha:</p> 
+							<ul>
+								<li>No mínimo 8 caracteres e no máximo 10</li>
+								<li>No mínimo uma letra maiúscula e uma minúscula</li>
+								<li>No mínimo um número</li>
+								<li>No mínimo 1 caractere especial</li>
+							</ul>
+						
 						<br />
 						<div class="botoes-cad">
 							<h:commandButton className="button"

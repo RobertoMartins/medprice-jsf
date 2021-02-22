@@ -1,18 +1,13 @@
 @charset "ISO-8859-1";
 
 @import url(/medprice/javax.faces.resource/cardmed.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/home.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/medicamento.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/detalhe.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/cardcom.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/cadastro.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/login.css.jsf?ln=css);
+@import url(/medprice/javax.faces.resource/perfil.css.jsf?ln=css);
 
 body {
 	font-family: Roboto, Arial, Helvetica, sans-serif;
@@ -109,12 +104,12 @@ footer p {
 	align-items: center;
 }
 
-.ui-dialog .botoes .entrar {
+.ui-dialog .botoes .entrar, .nav-conta{
 	width: 40%;
-	background-color: #009933;
+	background-color: #009933 !important;
 	border-radius: 4px;
 	height: 30px;
-	color: #fff;
+	color: #fff !important;
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 12px;
@@ -123,11 +118,12 @@ footer p {
 	justify-content: center
 }
 
-.ui-dialog .botoes .cadastrar {
+.ui-dialog .botoes .cadastrar, .nav-sair{
 	width: 55%;
-	background-color: #336699; border-radius : 4px;
+	background-color: #336699; 
+	border-radius : 4px;
 	height: 30px;
-	color: #fff;
+	color: #fff !important;
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 12px;
@@ -137,9 +133,19 @@ footer p {
 	border-radius: 4px;
 }
 
-.ui-dialog .botoes .cadastrar:hover {
+.ui-dialog .botoes .cadastrar:hover{
 	background-color: #1F4C79;
 }
-.ui-dialog .botoes .entrar:hover {
-	background-color: #007B29;
+.ui-dialog .botoes .entrar:hover, .nav-conta:hover {
+	background-color: #007B29 !important;
+}
+
+.ui-dialog .botoes .nav-sair, .nav-conta{
+	width: 45% !important;
+	background-color: #cc0000;
+	cursor: pointer;
+}
+
+.ui-dialog .botoes .nav-sair:hover{
+	background-color: #8B0000;
 }

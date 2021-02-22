@@ -1,0 +1,116 @@
+.div-perfil {
+	display: flex;
+	width: 80%;
+	justify-content: space-between;
+}
+
+.img-perfil {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	display: block;
+	padding-top: 20px;
+}
+
+.img-perfil img {
+	width: 450px;
+	padding: 10px;
+}
+
+.content-perfil p{
+	font-size: 14px;
+	margin-left: 15px;
+	color: #616161;
+	margin-block-end: 0.1em;
+	font-weight: bold;
+}
+
+.content-perfil .title {
+	color: #336699;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 0px;
+}
+
+.content-perfil input {
+	margin-block-start: 0.2em;
+	background-color: #d8d8d8;
+}
+
+.botoes-perfil {
+	display: flex;
+	justify-content: space-around;
+	margin-left: 11px;
+	margin-top: 15px;
+}
+
+.botoes-perfil a{
+	width:31%;
+	border-radius:4px;
+	height:30px;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 12px;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+}
+
+.botoes-perfil .senha{
+	color:#336699;
+	border:1px solid #336699;
+	
+}
+
+.botoes-perfil .senha:hover{
+	background-color:#C0D2FC;
+	
+}
+
+.botoes-perfil .fav{
+	color:#009933;
+	border:1px solid #009933;
+	
+}
+
+.botoes-perfil .fav:hover{
+	background-color:#98FB98;
+	
+}
+
+.botoes-perfil .sair{
+	color:#cc0000;
+	border:1px solid #cc0000;
+	
+}
+
+.botoes-perfil .sair:hover{
+	background-color: #ff887d;
+	
+}
+
+.botao-adm {
+	display: flex;
+	margin-top: 15px;
+}
+
+.botao-adm .adm{
+	color:#336699;
+	border:1px solid #336699;
+	background-color: #ffffff;
+	width:100%;
+	border-radius:4px;
+	height:30px;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 12px;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+	
+}
+
+.botao-adm .adm:hover{
+	background-color:#C0D2FC;
+	
+}

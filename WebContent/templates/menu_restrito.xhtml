@@ -16,14 +16,11 @@
 	</h:form>
 </nav>
 <p:dialog widgetVar="modal" modal="true" resizable="false"
-	draggable="false" closable="true" position="950,70">
-	<div class="box-diag">
-		<a
-				onclick="document.location='#{request.contextPath}/j_spring_security_logout'"
-				title="Sair"> <h:graphicImage library="imagens"
-					name="logout16.png" />
-			Sair</a>
-			<a href="/medprice/restrito/perfil.jsf">Perfil</a>
+	draggable="false" closable="true" position="950,70" width="250px">
+	<h4>Opções de conta</h4>
+	<div class="botoes">
+		<a href="/medprice/restrito/perfil.jsf" class="nav-conta">Conta</a> 
+		<a onclick="document.location='#{request.contextPath}/j_spring_security_logout'" class="nav-sair">Sair</a>
 	</div>
 
 </p:dialog>

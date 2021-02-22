@@ -8,23 +8,40 @@
 	<ui:define name="menu">
 		<ui:include src="/templates/menu_restrito.xhtml"></ui:include>
 	</ui:define>
+
 	<ui:define name="corpo">
-	Usuário logado #{request.remoteUser}
-	<br />
-		<h:form>
-			<h:panelGroup
-				rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')}">
-				<h:commandButton value="Administração Usuarios"
-					action="/admin/principal" />
-			</h:panelGroup>
+		<div class="card box">
+			<div class="div-perfil">
+				<div class="content-perfil">
+					<p class="title">
+						Minha Conta<br />
+					</p>
 
-			<a
-				onclick="document.location='#{request.contextPath}/j_spring_security_logout'"
-				title="Sair"> <h:graphicImage library="imagens"
-					name="logout16.png" />
-			</a>
+					<p>Nome</p>
+					<input type="text" readonly="readonly"
+						placeholder="#{contextoBean.logado.nome}" />
 
-		</h:form>
+					<p>Email</p>
+					<input type="text" readonly="readonly"
+						placeholder="#{contextoBean.logado.email}" /> <br />
+
+					<div class="botoes-perfil">
+
+						<a class="senha" href="/medprice/restrito/recupera.jsf">Mudar senha</a> 
+						<a class="fav" href="/medprice/restrito/favorito.jsf">Favoritos</a>
+						<a class="sair" onclick="document.location='#{request.contextPath}/j_spring_security_logout'">Sair</a>
+					</div>
+					<div class="botao-adm">
+						<h:commandButton class="adm"
+							rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')}"
+							value="Administração Usuarios" action="/admin/principal" />
+					</div>
+				</div>
+				<div class="img-perfil">
+					<h:graphicImage library="imagens" name="account.png" />
+				</div>
+			</div>
+		</div>
 	</ui:define>
 </ui:composition>
 
