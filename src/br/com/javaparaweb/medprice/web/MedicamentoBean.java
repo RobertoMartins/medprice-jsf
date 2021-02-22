@@ -15,6 +15,7 @@ public class MedicamentoBean {
 	private List<Medicamento> lista;
 	private List<Medicamento> listaHome;
 
+
 	
 	private String registro;
 
@@ -84,5 +85,5 @@ public class MedicamentoBean {
 		System.out.println(registro);
 		this.med= c.medicamentoContext(registro);
 	}
-
+	
 }

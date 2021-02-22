@@ -27,15 +27,20 @@
 
 					<div class="botoes-perfil">
 
-						<a class="senha" href="/medprice/restrito/recupera.jsf">Mudar senha</a> 
-						<a class="fav" href="/medprice/restrito/favorito.jsf">Favoritos</a>
-						<a class="sair" onclick="document.location='#{request.contextPath}/j_spring_security_logout'">Sair</a>
+						<a class="senha" href="/medprice/restrito/recupera.jsf">Mudar
+							senha</a> <a class="fav" href="/medprice/restrito/favorito.jsf">Favoritos</a>
+						<a class="sair"
+							onclick="document.location='#{request.contextPath}/j_spring_security_logout'">Sair</a>
 					</div>
-					<div class="botao-adm">
-						<h:commandButton class="adm"
-							rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')}"
-							value="Administração Usuarios" action="/admin/principal" />
-					</div>
+					<h:form>
+						<div class="botao-adm">
+
+							<h:commandButton class="adm"
+								rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')}"
+								value="Administração Usuarios" action="/admin/principal" />
+
+						</div>
+					</h:form>
 				</div>
 				<div class="img-perfil">
 					<h:graphicImage library="imagens" name="account.png" />

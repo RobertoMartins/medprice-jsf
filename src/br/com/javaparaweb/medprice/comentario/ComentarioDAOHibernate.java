@@ -37,7 +37,7 @@ public class ComentarioDAOHibernate implements ComentarioDAO{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Comentario> listar(Usuario usuario) {
-		String hql = "select c from Comentario c where c.pai is null and c.usuario = :usuario";
+		String hql = "select c from Comentario c where c.pai is null and c.usuario = :usuario order by c.data desc";
 		Query query = this.session.createQuery(hql);
 		query.setInteger("usuario", usuario.getIdUsuario());
 

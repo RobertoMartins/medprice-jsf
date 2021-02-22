@@ -1,5 +1,6 @@
 package br.com.javaparaweb.medprice.comentario;
 
+import java.util.Date;
 import java.util.List;
 
 import br.com.javaparaweb.medprice.usuario.Usuario;
@@ -17,6 +18,7 @@ public class ComentarioRN {
 	}
 	
 	public void adicionar(Comentario comentario){
+		comentario.setData(new Date());
 		comentarioDAO.salvar(comentario);
 	}
 

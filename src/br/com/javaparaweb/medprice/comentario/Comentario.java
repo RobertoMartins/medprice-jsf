@@ -1,6 +1,7 @@
 package br.com.javaparaweb.medprice.comentario;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import br.com.javaparaweb.medprice.usuario.Usuario;
  */
 @Entity
 @NamedQuery(name="Comentario.findAll", query="SELECT c FROM Comentario c")
-public class Comentario implements Serializable {
+public class Comentario implements Serializable, Comparable<Comentario> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -39,6 +40,8 @@ public class Comentario implements Serializable {
 	private Usuario usuarioBean;
 	
 	private String conteudo;
+	
+	private Date data;
 
 	public Comentario() {
 	}
@@ -79,11 +82,20 @@ public class Comentario implements Serializable {
 		return serialVersionUID;
 	}
 
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((conteudo == null) ? 0 : conteudo.hashCode());
+		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + idCom;
 		result = prime * result + ((medicamentoBean == null) ? 0 : medicamentoBean.hashCode());
 		result = prime * result + ((usuarioBean == null) ? 0 : usuarioBean.hashCode());
@@ -104,6 +116,11 @@ public class Comentario implements Serializable {
 				return false;
 		} else if (!conteudo.equals(other.conteudo))
 			return false;
+		if (data == null) {
+			if (other.data != null)
+				return false;
+		} else if (!data.equals(other.data))
+			return false;
 		if (idCom != other.idCom)
 			return false;
 		if (medicamentoBean == null) {
@@ -118,5 +135,17 @@ public class Comentario implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public int compareTo(Comentario o) {
+		if(this.data.after( o.getData())) {
+			return -1;
+		}if(this.data.before(o.getData())) {
+			return 1;
+		}
+		return 0;
+	}
+
+
 
 }

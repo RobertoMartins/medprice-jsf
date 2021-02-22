@@ -4,25 +4,19 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<ui:composition template="/templates/global.xhtml">
-<ui:define name="menu">
-		<ui:include src="/templates/menu_restrito.xhtml"></ui:include>
-	</ui:define>
-	<!-- <p:column>#{comentario.usuarioBean.nome}</p:column>
-				<p:column>#{comentario.conteudo}</p:column> 
-				<h3>#{medicamentoBean.med.produto}</h3>
-			<h5>Comentarios (#{medicamentoBean.med.comentarios.size()})</h5><br/>
-				-->
-
-	<ui:define name="corpo">
+<p:dialog widgetVar="detalhe" modal="true" resizable="false"
+	draggable="true" closable="true"
+	style=" min-width:900px; max-height:500px; max-width:900px ; overflow-y: auto"
+	id="modal" position="250,100">
+	<h:form id="detalhe">
 		<div class="card box">
 			<div class="content-det">
 				<div class="med-det">
 					<h2>#{medicamentoBean.med.produto}</h2>
 					<h4>#{medicamentoBean.med.tipo}</h4>
+					<p id="lab">Laboratório: #{medicamentoBean.med.laboratorio}</p>
 
-					<p id="lab">#{medicamentoBean.med.laboratorio}</p>
-					<p id="apres">#{medicamentoBean.med.apresentacao}</p>
+					<p id="apres">Apresentação: #{medicamentoBean.med.apresentacao}</p>
 					<p id="subs">Composição: #{medicamentoBean.med.substancia}</p>
 					<h:graphicImage styleClass="tarja-det" library="imagens"
 						name="#{medicamentoBean.med.tarja}.png" />
@@ -61,6 +55,11 @@
 							<td>Medicamentos Genéricos de SP e MG</td>
 							<td>R$ #{medicamentoBean.med.pmc12}</td>
 						</tr>
+						<tr class="border_top">
+							<td>0%</td>
+							<td>-</td>
+							<td>R$ #{medicamentoBean.med.pmc0}</td>
+						</tr>
 					</table>
 				</div>
 				<div class="med-img">
@@ -70,35 +69,21 @@
 
 		</div>
 		<div class="card box">
-
-			<div class="content-com" id="com">
-				<h:form class="form-com" action="comentar" id="comentario">
-					Comentário<br />
-
-					<h:inputText name="comentarios" id="comentarios"
-						value="#{comentarioBean.comentario.conteudo}" />
-					<p:commandButton action="#{comentarioBean.add}" value="Comentar">
-						<h:inputHidden value="#{medicamentoBean.med.registro}" update=":comentario"/>
-						<f:setPropertyActionListener target="#{comentarioBean.registro}"
-							value="#{medicamentoBean.med.registro}" />
-					</p:commandButton>
-
-
-					<p class="title-com">Comentarios
-						(#{medicamentoBean.med.comentarios.size()})</p>
-
-					<p:dataGrid var="comentario"
-						value="#{medicamentoBean.med.comentarios}" rules="rows"
-						columns="1" layout="grid" id="grid">
-						<div class="box-com card">
-							<p class="autor">#{comentario.usuarioBean.nome}</p>
-							<p class="conteudo">#{comentario.conteudo}</p>
-							<p class="data">20/02/2011 08:00 Am</p>
-						</div>
-					</p:dataGrid>
-				</h:form>
+			<div class="content-com">
+				<p class="title-com">Comentarios
+					(#{medicamentoBean.med.comentarios.size()})</p>
+				<p:dataGrid var="comentario"
+					value="#{medicamentoBean.med.comentarios}" rules="rows" columns="1"
+					layout="grid">
+					<div class="box-com card">
+						<p class="autor">#{comentario.usuarioBean.nome}</p>
+						<p class="conteudo">#{comentario.conteudo}</p>
+						<p class="data"><h:outputText value="#{comentario.data}"> 
+						<f:convertDateTime pattern="EEEE, dd/MM/yyyy HH:mm:ss"/> </h:outputText></p>
+					</div>
+				</p:dataGrid>
 			</div>
 		</div>
-	</ui:define>
-</ui:composition>
+	</h:form>
+</p:dialog>
 </html>

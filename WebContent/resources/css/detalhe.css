@@ -1,11 +1,11 @@
 .content-det {
 	display: flex;
-	width: 100%; 
+	min-width: 100%; 
 	justify-content: space-between;	
 }
 
 .med-det {
-	width: 50%;
+	min-width: 50%;
 	margin: 0;
 	padding: 0;
 	padding-top: 15px;
@@ -13,10 +13,14 @@
 }
 
 .med-img{
-	width: 50%;
+	min-width: 50%;
 	padding-top: 10px;
 	display: flex;
 	justify-content: center;
+	align-items:center;
+}
+.med-img  img{
+	max-width:320px;
 }
 
 .med-det h2, #subs {
@@ -54,7 +58,7 @@
 .med-det .tarja-det {
 	margin-left: 5px;
 	margin-top: 15px;
-	width: 15%;
+	width: 20%;
 }
 
 .tabela {
@@ -78,5 +82,12 @@ tr.border_top td {
 
 .content-com {
 	width: 60%;
+}
+
+.campo-com{
+	width:100%;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
 }
 

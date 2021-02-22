@@ -5,16 +5,25 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/templates/global.xhtml">
-<ui:define name="menu">
+	<ui:define name="menu">
 		<ui:include src="/templates/menu_restrito.xhtml"></ui:include>
 	</ui:define>
 	<ui:define name="corpo">
 		<div class="card box">
-			<h:form id="form-meds">
-				<p:dataGrid var="meds" value="#{medicamentoBean.lista}" columns="3"
-					layout="grid" rows="12" paginator="true"
-					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="6,12,18">
+			<div>
+				<h:form>
+					<div class="pesquisa">
+						<p:inputText value="#{medicamentoBean.textoPesquisa}">
+							<p:ajax event="keyup" update=":form-meds"
+								listener="#{medicamentoBean.pesquisar}" />
+						</p:inputText>
+					</div>
+				</h:form>
+				<h:form id="form-meds">
+					<p:dataGrid var="meds" value="#{medicamentoBean.lista}" columns="3"
+						layout="grid" rows="12" paginator="true"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="6,12,18">
 						<div class="box-med card">
 							<div class="header-med">
 								<h3>#{meds.produto}</h3>
@@ -28,18 +37,24 @@
 								<h:graphicImage styleClass="tarja" library="imagens"
 									name="#{meds.tarja}.png" />
 							</div>
-							<p>*Os preços podem variar de acordo com a alíquota de cada estado. Clique em <b>ver mais</b> para saber todos.</p>
-							<p class="text-com">Comentarios (#{meds.comentarios.size()})
+							<p>
+								*Os preços podem variar de acordo com a alíquota de cada estado.
+								Clique em <b>ver mais</b> para saber todos.
 							</p>
-							<h:commandButton action="#{medicamentoBean.detalhe}" value="ver mais>>" styleClass="btn-med">
+							<p class="text-com">Comentarios (#{meds.comentarios.size()})</p>
+							<p:commandButton value="Ver mais>>" styleClass="btn-med"
+								onclick="PF('detalhe').show();" process="@this" id="btn-detalhe"
+								update=":detalhe">
 								<f:setPropertyActionListener target="#{medicamentoBean.med}"
 									value="#{meds}" />
-							</h:commandButton>
+							</p:commandButton>
 						</div>
-					
-				</p:dataGrid>
-			</h:form>
+
+					</p:dataGrid>
+				</h:form>
+			</div>
 		</div>
+		<ui:include src="/templates/modal_detalhe_restrito.xhtml"></ui:include>
 	</ui:define>
 </ui:composition>
 </html>

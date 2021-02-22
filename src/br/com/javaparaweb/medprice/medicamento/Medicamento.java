@@ -1,6 +1,7 @@
 package br.com.javaparaweb.medprice.medicamento;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -184,6 +185,7 @@ public class Medicamento implements Serializable {
 	}
 
 	public List<Comentario> getComentarios() {
+		Collections.sort(this.comentarios);
 		return this.comentarios;
 	}
 
