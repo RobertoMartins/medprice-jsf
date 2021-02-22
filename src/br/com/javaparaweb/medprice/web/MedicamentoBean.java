@@ -3,15 +3,15 @@ package br.com.javaparaweb.medprice.web;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.medicamento.MedicamentoRN;
 
 @ManagedBean(name = "medicamentoBean")
-@RequestScoped
+@ViewScoped
 public class MedicamentoBean {
-	private Medicamento med = new Medicamento();
+	private Medicamento med ;
 	private List<Medicamento> lista;
 	private List<Medicamento> listaHome;
 
@@ -79,11 +79,10 @@ public class MedicamentoBean {
 		this.registro = registro;
 	}
 
-	public String detalhe() {
+	public void detalhe() {
 		ContextoBean c = new ContextoBean();
 		System.out.println(registro);
 		this.med= c.medicamentoContext(registro);
-		return "meddetalhe";
 	}
 
 }

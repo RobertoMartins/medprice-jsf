@@ -76,15 +76,6 @@
 	text-decoration: none;
 }
 
-.btn-med {
-	width: 90px;
-	background: none;
-	color: #009933;
-	border: 0;
-	font-size: 12px;
-	float: right;
-	cursor: pointer;
-}
 
 .btn-med:focus {
 	box-shadow: 0 0 0 0;
@@ -94,3 +85,16 @@
 .btn-med:hover {
 	color: #08401A;
 }
+.btn-med{
+	border:0 !important;
+	width: 90px !important;
+	background: none important;
+	color: #009933 !important;
+	border: 0;
+	font-size: 12px !important;
+	float: right;
+	cursor: pointer;
+}
+.btn-med:hover{
+	color: #08401A !important;
+	}

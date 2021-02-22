@@ -14,7 +14,8 @@
 				<h:form>
 					<div class="pesquisa">
 						<p:inputText value="#{medicamentoBean.textoPesquisa}">
-						<p:ajax event="keyup" update=":form-meds" listener="#{medicamentoBean.pesquisar}"/>
+							<p:ajax event="keyup" update=":form-meds"
+								listener="#{medicamentoBean.pesquisar}" />
 						</p:inputText>
 					</div>
 				</h:form>
@@ -41,17 +42,99 @@
 								Clique em <b>ver mais</b> para saber todos.
 							</p>
 							<p class="text-com">Comentarios (#{meds.comentarios.size()})</p>
-							<h:commandButton action="#{medicamentoBean.detalhe}"
-								value="Ver mais>>" styleClass="btn-med">
-								<f:setPropertyActionListener target="#{medicamentoBean.registro}"
-									value="#{meds.registro}" />
-							</h:commandButton>
+							<p:commandButton value="Ver mais>>" styleClass="btn-med"
+								onclick="PF('detalhe').show();" process="@this" id="btn-detalhe"
+								update=":detalhe">
+								<f:setPropertyActionListener target="#{medicamentoBean.med}"
+									value="#{meds}" />
+							</p:commandButton>
 						</div>
 
 					</p:dataGrid>
 				</h:form>
 			</div>
 		</div>
+		<p:dialog widgetVar="detalhe" modal="true" resizable="false"
+			draggable="true" closable="true"
+			style=" width:900px; max-height:400px; max-width:900px ; overflow-y: auto" id="modal" position="300,150">
+				<h:form id="detalhe">
+					<div class="card box">
+						<div class="content-det">
+							<div class="med-det">
+								<h2>#{medicamentoBean.med.produto}</h2>
+								<h4>#{medicamentoBean.med.tipo}</h4>
+								<p id="lab">Laboratório: #{medicamentoBean.med.laboratorio}</p>
+
+								<p id="apres">Apresentação:
+									#{medicamentoBean.med.apresentacao}</p>
+								<p id="subs">Composição: #{medicamentoBean.med.substancia}</p>
+								<h:graphicImage styleClass="tarja-det" library="imagens"
+									name="#{medicamentoBean.med.tarja}.png" />
+
+								<table class="tabela" cellspacing="0" cellpadding="8">
+									<tr>
+										<th>ICMS</th>
+										<th>ESTADO</th>
+										<th>PREÇO</th>
+									</tr>
+									<tr class="border_top">
+										<td>20%</td>
+										<td>RJ</td>
+										<td>R$ #{medicamentoBean.med.pmc20}</td>
+									</tr>
+									<tr class="border_top">
+										<td>18%</td>
+										<td>AM, AP, BA, CE, MA, MG, PB, PE, PI, <br /> PR, RN,
+											RS, SE, SP, TO e RJ<br /> (medicamento da Portaria MS <br />
+											1318/2002)
+										</td>
+										<td>R$ #{medicamentoBean.med.pmc18}</td>
+									</tr>
+									<tr class="border_top">
+										<td>17,5%</td>
+										<td>RO</td>
+										<td>R$ #{medicamentoBean.med.pmc175}</td>
+									</tr>
+									<tr class="border_top">
+										<td>17%</td>
+										<td>DEMAIS ESTADOS</td>
+										<td>R$ #{medicamentoBean.med.pmc17}</td>
+									</tr>
+									<tr class="border_top">
+										<td>12%</td>
+										<td>Medicamentos Genéricos de SP e MG</td>
+										<td>R$ #{medicamentoBean.med.pmc12}</td>
+									</tr>
+									<tr class="border_top">
+										<td>0%</td>
+										<td>-</td>
+										<td>R$ #{medicamentoBean.med.pmc0}</td>
+									</tr>
+								</table>
+							</div>
+							<div class="med-img">
+								<h:graphicImage library="imagens" name="detalhe.png" />
+							</div>
+						</div>
+
+					</div>
+					<div class="card box">
+						<div class="content-com">
+							<p class="title-com">Comentarios
+								(#{medicamentoBean.med.comentarios.size()})</p>
+							<p:dataGrid var="comentario"
+								value="#{medicamentoBean.med.comentarios}" rules="rows"
+								columns="1" layout="grid">
+								<div class="box-com card">
+									<p class="autor">#{comentario.usuarioBean.nome}</p>
+									<p class="conteudo">#{comentario.conteudo}</p>
+									<p class="data">20/02/2011 08:00 Am</p>
+								</div>
+							</p:dataGrid>
+						</div>
+					</div>
+				</h:form>
+		</p:dialog>
 	</ui:define>
 </ui:composition>
 </html>

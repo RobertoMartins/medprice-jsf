@@ -21,6 +21,7 @@ public class ContextoBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String registro;
 	
 	private Usuario logado = getUsuarioLogado();
 	public Usuario getUsuarioLogado() {
@@ -39,6 +40,11 @@ public class ContextoBean implements Serializable {
 		return medicamentoRN.buscarPorRegistro(registro);
 
 	}
+	public Medicamento medicamentoContext2() {
+		MedicamentoRN medicamentoRN = new MedicamentoRN();
+		return medicamentoRN.buscarPorRegistro(registro);
+
+	}
 
 	public Usuario getLogado() {
 		return logado;
@@ -46,6 +52,14 @@ public class ContextoBean implements Serializable {
 
 	public void setLogado(Usuario logado) {
 		this.logado = logado;
+	}
+
+	public String getRegistro() {
+		return registro;
+	}
+
+	public void setRegistro(String registro) {
+		this.registro = registro;
 	}
 	
 
