@@ -36,9 +36,10 @@ public class UsuarioBean {
 		}
 
 		UsuarioRN usuarioRN = new UsuarioRN();
+		this.usuario.setAtivo(true);
 		usuarioRN.salvar(this.usuario);
 
-		return this.destinoSalvar;
+		return "usuariosucesso";
 	}
 	
 	public String atribuiPermissao(Usuario usuario, String permissao) {
