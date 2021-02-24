@@ -7,6 +7,7 @@
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	
 	<http auto-config="true">
 		<intercept-url pattern="/admin/**"
 			access="ROLE_ADMINISTRADOR" />
@@ -19,6 +20,7 @@
 		<logout />
 		<remember-me />
 	</http>
+	<beans:bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 	<authentication-manager>
 		<authentication-provider>
 			<jdbc-user-service
@@ -27,6 +29,9 @@
 																	FROM usuario u, usuario_permissao p 
 																	WHERE u.id_usuario = p.usuario AND u.email = ?"
 				users-by-username-query="SELECT email, senha, ativo FROM usuario WHERE email = ?" />
+
+			<password-encoder ref="bCryptPasswordEncoder" />
 		</authentication-provider>
+
 	</authentication-manager>
 </beans:beans>

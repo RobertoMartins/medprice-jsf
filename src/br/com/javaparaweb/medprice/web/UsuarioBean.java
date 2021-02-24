@@ -7,6 +7,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.usuario.UsuarioRN;
 
@@ -37,6 +39,13 @@ public class UsuarioBean {
 
 		UsuarioRN usuarioRN = new UsuarioRN();
 		this.usuario.setAtivo(true);
+		
+		
+		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
+		this.usuario.setSenha(bcpe.encode(this.usuario.getSenha()));
+		
+		
+		
 		usuarioRN.salvar(this.usuario);
 
 		return "usuariosucesso";
