@@ -36,8 +36,10 @@
 								href="/medprice/index.jsf">Cancelar</a>
 						</div>
 						<div class="botoes-extras-login">
-							<a href="/medprice/publico/cadastro.jsf">Criar conta</a> 
-							<a href="/medprice/publico/recupera.jsf">Esqueci a senha</a>
+							<a href="/medprice/publico/cadastro.jsf">Criar conta</a>  
+							<p:commandButton value="Esqueci a senha" styleClass="btn-login-rec"
+								onclick="PF('recupera').show();" process="@this" id="btn-recupera" update=":recupera">
+							</p:commandButton>
 						</div>
 
 						<script>
@@ -50,6 +52,7 @@
 				</div>
 			</div>
 		</div>
+		<ui:include src="/templates/modal_recupera_senha.xhtml"></ui:include>
 	</ui:define>
 </ui:composition>
 </html>

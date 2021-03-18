@@ -1,0 +1,28 @@
+.rec-det {
+	text-align: center;
+}
+
+.rec-det h2{
+	color: #336699;
+	margin-block-end: 0.1em;
+}
+
+.rec-det p{
+	color: #696969;
+	margin-block-end: 0.1em;
+}
+
+.rec-det #btn-enviar-email{
+	background-color: #336699;
+	color: #FFFFFF;
+	font-weight: bold;
+	border-radius: 4px;
+	line-height: 30px;
+	width: 100px;
+	text-decoration: none;
+	text-align: center;
+}
+
+.rec-det #btn-enviar-email:hover{
+	background-color: #00226B;
+}

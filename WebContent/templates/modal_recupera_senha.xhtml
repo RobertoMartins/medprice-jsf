@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<p:dialog widgetVar="recupera" modal="true" resizable="false"
+	draggable="true" closable="true"
+	style=" min-width:600px; max-height:600px; max-width:650px ; overflow-y: auto"
+	id="modal" position="380,100">
+	<h:form id="recupera">
+		<div class="card box">
+			<div class="rec-det">
+				<h2>Recuperar senha</h2>
+				<p>Digite seu email para receber o link de recuperação de senha.</p>
+				<input id="email-rec" type="email" placeholder="seuemail@email.com" /><br />
+				<input id="btn-enviar-email" type="submit" value="Enviar email" />
+			</div>
+		</div>
+	</h:form>
+</p:dialog>
+</html>

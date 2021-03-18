@@ -77,7 +77,6 @@
 	background-color: #017327;
 }
 
-
 .botoes-login a{
 	width:45%;
 	border:1px solid #336699;
@@ -92,13 +91,10 @@
 	justify-content:center;
 }
 .botoes-login a:hover{
-	
 	background-color:#C0D2FC;
-	
 }
 
-
-.botoes-extras-login a{
+.botoes-extras-login a, .btn-rec-login{
 	color: #336699;
 	text-decoration: none;
 	font-weight: bold;
@@ -108,8 +104,6 @@
 }
 .botoes-extras-login a:hover{
 	color: #00226B;
-	
-	
 }
 
 .botoes-login {

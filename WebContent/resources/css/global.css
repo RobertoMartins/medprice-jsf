@@ -8,6 +8,7 @@
 @import url(/medprice/javax.faces.resource/cadastro.css.jsf?ln=css);
 @import url(/medprice/javax.faces.resource/login.css.jsf?ln=css);
 @import url(/medprice/javax.faces.resource/perfil.css.jsf?ln=css);
+@import url(/medprice/javax.faces.resource/recupera.css.jsf?ln=css);
 
 body {
 	font-family: Roboto, Arial, Helvetica, sans-serif;
