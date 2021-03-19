@@ -47,5 +47,13 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 		return (Usuario) consulta.uniqueResult();
 	}
 
+	@Override
+	public Usuario buscaPorPasswordToken(String token) {
+		String hql = "select u from Usuario u where u.token = :token";
+		Query consulta = this.session.createQuery(hql);
+		consulta.setString("token", token);
+		return (Usuario) consulta.uniqueResult();
+	}
+
 
 }

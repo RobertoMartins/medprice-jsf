@@ -51,6 +51,9 @@ public class Usuario implements Serializable {
 	@Column(name = "permissao", length=50) 
 	private Set<String>	permissao	= new HashSet<String>();
 	
+	@Column(name = "token", length=50) 
+	private String	token	= new HashSet<String>();
+	
 	//bi-directional many-to-one association to Comentario
 	@OneToMany(mappedBy="usuarioBean")
 	private List<Comentario> comentarios;
@@ -106,6 +109,14 @@ public class Usuario implements Serializable {
 		this.ativo = ativo;
 	}
 
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
 	public List<Comentario> getComentarios() {
 		return this.comentarios;
 	}
@@ -142,6 +153,8 @@ public class Usuario implements Serializable {
 	public void setPermissao(Set<String> permissao) {
 		this.permissao = permissao;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {
@@ -155,6 +168,7 @@ public class Usuario implements Serializable {
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((permissao == null) ? 0 : permissao.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+		result = prime * result + ((token == null) ? 0 : token.hashCode());
 		return result;
 	}
 
@@ -201,8 +215,12 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!senha.equals(other.senha))
 			return false;
+		if (token == null) {
+			if (other.token != null)
+				return false;
+		} else if (!token.equals(other.token))
+			return false;
 		return true;
 	}
-	
 
 }

@@ -50,7 +50,7 @@ public class EmailBean implements Serializable {
 		String resetPasswordLink = "http://localhost:8080/bedriver/public/resetar_senha.jsf?token=" + token;
 
 		try {
-			usuarioRN.updateResetPasswordToken(token, this.email);
+			usuarioRN.updatePasswordToken(token, this.email);
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +65,7 @@ public class EmailBean implements Serializable {
 	}
 
 	public String salvarNovaSenha() {
-
+		String regex = "\"[a-zA-Z0-9\\-\\_\\.]+@[a-zA-Z0-9\\-\\_\\.]+\"";
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		if (!this.getNovaSenha().equals(this.getConfirmarNovaSenha())) {
@@ -77,7 +77,7 @@ public class EmailBean implements Serializable {
 			return null;
 		}
 
-		if (!Utils.isStrongPassword(this.getNovaSenha()) || !Utils.isStrongPassword(this.getConfirmarNovaSenha())) {
+		if (this.getNovaSenha().matches(regex) || this.getConfirmarNovaSenha().matches(regex)) {
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			facesMessage.setSummary("Aviso:");
@@ -91,7 +91,7 @@ public class EmailBean implements Serializable {
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 		this.usuario.setSenha(bcpe.encode(this.novaSenha));
 
-		this.usuario.setResetPasswordToken(null);
+		this.usuario.setToken(null);
 
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);

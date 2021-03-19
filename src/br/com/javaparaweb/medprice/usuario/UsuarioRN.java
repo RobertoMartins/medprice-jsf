@@ -3,6 +3,7 @@ package br.com.javaparaweb.medprice.usuario;
 import java.util.List;
 
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
+import br.com.javaparaweb.medprice.util.DAOException;
 import br.com.javaparaweb.medprice.util.DAOFactory;
 import br.com.javaparaweb.medprice.web.ContextoBean;
 
@@ -45,6 +46,24 @@ public class UsuarioRN {
 		u.getMedicamentos().add(med);
 		this.usuarioDAO.salvar(u);
 		
+	}
+	
+
+	public void updatePasswordToken(String token, String email) throws DAOException {
+		
+		Usuario usuario = this.usuarioDAO.buscarPorLogin(email);
+		
+		if(usuario != null) {
+			usuario.setToken(token);
+			this.usuarioDAO.salvar(usuario);
+		}else {
+			throw new DAOException("Não foi encontrado nenhum usuário com este email " + email);
+		}
+		
+	}
+	
+	public Usuario get(String token) {
+		return this.usuarioDAO.buscaPorPasswordToken(token);
 	}
 
 }
