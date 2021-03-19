@@ -7,6 +7,7 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.medicamento.MedicamentoRN;
+import br.com.javaparaweb.medprice.usuario.UsuarioRN;
 
 @ManagedBean(name = "medicamentoBean")
 @ViewScoped
@@ -14,12 +15,13 @@ public class MedicamentoBean {
 	private Medicamento med ;
 	private List<Medicamento> lista;
 	private List<Medicamento> listaHome;
+	ContextoBean c = new ContextoBean();
 
 
 	
 	private String registro;
 
-	private String textoPesquisa;
+	private String textoPesquisa="";
 	
 
 	public void pesquisar() {
@@ -79,11 +81,15 @@ public class MedicamentoBean {
 	public void setRegistro(String registro) {
 		this.registro = registro;
 	}
-
-	public void detalhe() {
-		ContextoBean c = new ContextoBean();
-		System.out.println(registro);
-		this.med= c.medicamentoContext(registro);
+	
+	
+	public String favoritar() {
+		UsuarioRN usuarioRN = new UsuarioRN();
+		c.getUsuarioLogado().getMedicamentos().add(this.med);
+		usuarioRN.salvar(c.getUsuarioLogado());
+		System.out.println(c.getUsuarioLogado().getMedicamentos().size());
+		
+		return "medicamento";
 	}
 	
 }

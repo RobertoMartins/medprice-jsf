@@ -28,6 +28,12 @@
 							<div class="header-med">
 								<h3>#{meds.produto}</h3>
 								<h5>#{meds.tipo}</h5>
+								<h:commandLink  action="#{medicamentoBean.favoritar}">
+									<h:graphicImage library="imagens"
+										name="favorito_#{usuarioBean.isFavorito(meds)}.png" style="border:0" />
+										<f:setPropertyActionListener target="#{medicamentoBean.med}"
+							value="#{meds}" />
+								</h:commandLink>
 							</div>
 							<div class="body-med">
 								<p class="apresentacao">#{meds.apresentacao}</p>

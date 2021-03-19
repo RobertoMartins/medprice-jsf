@@ -3,6 +3,7 @@ package br.com.javaparaweb.medprice.medicamento;
 import java.util.List;
 
 import br.com.javaparaweb.medprice.comentario.Comentario;
+import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.util.DAOFactory;
 
 public class MedicamentoRN {
@@ -26,5 +27,6 @@ public class MedicamentoRN {
 	public List<Medicamento> buscarPorString(String pesquisa){
 		return this.medicamentoDAO.buscarPorString(pesquisa);
 	}
+	
 	
 }

@@ -6,8 +6,10 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -65,8 +67,9 @@ public class Medicamento implements Serializable {
 	private List<Comentario> comentarios;
 
 	//bi-directional many-to-many association to Usuario
-	@ManyToMany
-	@JoinColumn(name="id_med")
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="medicamento_usuario",joinColumns={@JoinColumn(name="id_med") }
+	,inverseJoinColumns={@JoinColumn(name = "id_usuario")})
 	private List<Usuario> usuarios;
 
 	public Medicamento() {

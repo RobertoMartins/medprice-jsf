@@ -5,7 +5,21 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.Cascade;
 
 import br.com.javaparaweb.medprice.comentario.Comentario;
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
@@ -42,7 +56,9 @@ public class Usuario implements Serializable {
 	private List<Comentario> comentarios;
 
 	//bi-directional many-to-many association to Medicamento
-	@ManyToMany(mappedBy="usuarios")
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="medicamento_usuario",joinColumns={@JoinColumn(name="id_usuario") }
+	,inverseJoinColumns={@JoinColumn(name = "id_med")})
 	private List<Medicamento> medicamentos;
 	
 	

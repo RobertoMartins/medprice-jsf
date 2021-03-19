@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import br.com.javaparaweb.medprice.medicamento.Medicamento;
+
 public class UsuarioDAOHibernate implements UsuarioDAO {
 	private Session session;
 
@@ -44,4 +46,6 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 		consulta.setString("email", email);
 		return (Usuario) consulta.uniqueResult();
 	}
+
+
 }

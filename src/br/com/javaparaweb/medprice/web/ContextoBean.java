@@ -1,7 +1,6 @@
 package br.com.javaparaweb.medprice.web;
 
 import java.io.Serializable;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -24,7 +23,7 @@ public class ContextoBean implements Serializable {
 	private String registro;
 	
 	private Usuario logado = getUsuarioLogado();
-	public Usuario getUsuarioLogado() {
+	public  Usuario getUsuarioLogado() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext external = context.getExternalContext();
 		String login = external.getRemoteUser();

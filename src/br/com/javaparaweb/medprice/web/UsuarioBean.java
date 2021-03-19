@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.usuario.UsuarioRN;
 
@@ -19,6 +20,7 @@ public class UsuarioBean {
 	private String confirmarSenha;
 	private List<Usuario> lista;
 	private String destinoSalvar;
+	ContextoBean c = new ContextoBean();
 	
 	public String novo() {
 		this.destinoSalvar = "usuariosucesso";
@@ -121,4 +123,12 @@ public class UsuarioBean {
 		this.destinoSalvar = destinoSalvar;
 	}
 	
+	public boolean isFavorito(Medicamento medicamento){
+		ContextoBean cb = new ContextoBean();
+		if(cb.getUsuarioLogado().getMedicamentos()==null || cb.getUsuarioLogado().getMedicamentos().size()==0) {
+			return false;
+		}
+		return cb.getUsuarioLogado().getMedicamentos().contains(medicamento);
+				
+	}
 }

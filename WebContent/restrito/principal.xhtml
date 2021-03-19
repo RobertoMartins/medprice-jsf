@@ -12,7 +12,7 @@
 	<ui:define name="corpo">
 		<div class="box card">
 			<div class="texto-home">
-				<p class="user">Bem vindo,<strong> #{contextoBean.logado.nome}</strong></p>
+				<p class="user">Bem vindo,<strong> #{contextoBean.getUsuarioLogado().nome}</strong></p>
 				<h1>Aqui você pode consultar os preços dos medicamentos de
 					acordo com a lista de preços maximos permitido pela CMED.</h1>
 				<h2>Você sabia?</h2>

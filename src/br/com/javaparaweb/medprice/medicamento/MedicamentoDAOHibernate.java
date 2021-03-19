@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.javaparaweb.medprice.comentario.Comentario;
+import br.com.javaparaweb.medprice.usuario.Usuario;
 
 public class MedicamentoDAOHibernate implements MedicamentoDAO {
 
@@ -50,5 +51,10 @@ public class MedicamentoDAOHibernate implements MedicamentoDAO {
 		return results;
 		
 	}
+	@Override
+	public void favoritar(Medicamento med) {
+		this.session.save(med);
+	}
 
+	
 }

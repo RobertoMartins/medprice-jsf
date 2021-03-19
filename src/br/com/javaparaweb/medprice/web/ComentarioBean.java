@@ -21,7 +21,7 @@ public class ComentarioBean {
 	
 	
 	public void add() {
-		Usuario u = contextoBean.getLogado();
+		Usuario u = contextoBean.getUsuarioLogado();
 		ComentarioRN comRN = new ComentarioRN();
 		comentario.setUsuarioBean(u);
 		comRN.adicionar(comentario);

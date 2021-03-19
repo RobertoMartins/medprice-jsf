@@ -19,6 +19,13 @@
 	padding: 0;
 }
 
+.header-med a{
+	float:rigth;
+}
+.header-med a img{
+	width:30px;
+}
+
 .header-med h3 {
 	padding: 0;
 	margin: 0;

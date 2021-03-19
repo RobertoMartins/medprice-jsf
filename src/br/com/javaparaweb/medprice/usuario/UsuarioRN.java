@@ -2,7 +2,9 @@ package br.com.javaparaweb.medprice.usuario;
 
 import java.util.List;
 
+import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.util.DAOFactory;
+import br.com.javaparaweb.medprice.web.ContextoBean;
 
 public class UsuarioRN {
 	private UsuarioDAO usuarioDAO;
@@ -37,6 +39,12 @@ public class UsuarioRN {
 
 	public Usuario buscarPorLogin(String login) {
 		return this.usuarioDAO.buscarPorLogin(login);
+	}
+	
+	public void favoritar(Medicamento med, Usuario u) {
+		u.getMedicamentos().add(med);
+		this.usuarioDAO.salvar(u);
+		
 	}
 
 }
