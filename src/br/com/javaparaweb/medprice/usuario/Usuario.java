@@ -42,6 +42,7 @@ public class Usuario implements Serializable {
 	private String nome;
 	private String senha;
 	private boolean ativo;
+	private String token;
 
 	@ElementCollection(targetClass = String.class) 
 	@JoinTable(
@@ -50,9 +51,6 @@ public class Usuario implements Serializable {
 			joinColumns = @JoinColumn(name = "usuario")) 
 	@Column(name = "permissao", length=50) 
 	private Set<String>	permissao	= new HashSet<String>();
-	
-	@Column(name = "token", length=50) 
-	private String	token	= new HashSet<String>();
 	
 	//bi-directional many-to-one association to Comentario
 	@OneToMany(mappedBy="usuarioBean")

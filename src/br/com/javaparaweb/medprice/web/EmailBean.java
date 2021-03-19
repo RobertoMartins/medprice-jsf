@@ -18,6 +18,7 @@ import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.usuario.UsuarioRN;
 import br.com.javaparaweb.medprice.util.DAOException;
 import br.com.javaparaweb.medprice.util.GmailUtil;
+import br.com.javaparaweb.medprice.util.UtilException;
 
 @ManagedBean(name="emailBean")
 @ViewScoped
@@ -45,7 +46,7 @@ public class EmailBean implements Serializable {
 		}
 
 		this.setEmailSend(true);
-		String token = Random(45);
+		String token = RandomString.make(25);
 
 		String resetPasswordLink = "http://localhost:8080/bedriver/public/resetar_senha.jsf?token=" + token;
 
@@ -59,7 +60,12 @@ public class EmailBean implements Serializable {
 		emailExecutor.execute(new Runnable() {
 			@Override
 			public void run() {
-				GmailUtil.enviarEmail(email, "Recuperação de Senha", resetPasswordLink);
+				try {
+					GmailUtil.enviarEmail(email, "Recuperação de Senha", resetPasswordLink);
+				} catch (UtilException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}
@@ -149,11 +155,6 @@ public class EmailBean implements Serializable {
 
 	public void setConfirmarNovaSenha(String confirmarNovaSenha) {
 		this.confirmarNovaSenha = confirmarNovaSenha;
-	}
-
-	private String Random(int i) {
-		Random random = new Random();
-
 	}
 
 }
