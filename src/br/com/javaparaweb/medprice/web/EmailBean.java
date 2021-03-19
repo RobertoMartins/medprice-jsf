@@ -36,6 +36,7 @@ public class EmailBean implements Serializable {
 		UsuarioRN usuarioRN = new UsuarioRN();
 
 		if (usuarioRN.buscarPorLogin(this.email) == null) {
+			System.out.println("Nao achou");
 			FacesContext context = FacesContext.getCurrentInstance();
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);

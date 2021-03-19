@@ -2,15 +2,12 @@ package br.com.javaparaweb.medprice.web;
 
 import java.util.List;
 
-import javax.faces.application.Application;
-import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.FacesContext;
 
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.medicamento.MedicamentoRN;
+import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.usuario.UsuarioRN;
 
 @ManagedBean(name = "medicamentoBean")
@@ -19,6 +16,7 @@ public class MedicamentoBean {
 	private Medicamento med ;
 	private List<Medicamento> lista;
 	private List<Medicamento> listaHome;
+	Usuario u = new Usuario();
 	ContextoBean c = new ContextoBean();
 
 
@@ -34,6 +32,14 @@ public class MedicamentoBean {
 		  this.lista = medRN.buscarPorString(this.textoPesquisa) ;
 		
 
+	}
+
+	public Usuario getU() {
+		return u;
+	}
+
+	public void setU(Usuario u) {
+		this.u = u;
 	}
 
 	public String getTextoPesquisa() {
@@ -84,24 +90,6 @@ public class MedicamentoBean {
 
 	public void setRegistro(String registro) {
 		this.registro = registro;
-	}
-	public void refresh() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        Application application = context.getApplication();
-        ViewHandler viewHandler = application.getViewHandler();
-        UIViewRoot viewRoot = viewHandler.createView(context, context.getViewRoot().getViewId());
-        context.setViewRoot(viewRoot);
-        context.renderResponse();
-        
-    }
-	
-	
-	public String favoritar() {
-		UsuarioRN usuarioRN = new UsuarioRN();
-		c.getUsuarioLogado().getMedicamentos().add(this.med);
-		usuarioRN.salvar(c.getUsuarioLogado());
-		System.out.println(c.getUsuarioLogado().getMedicamentos().size());
-		return null;
 	}
 	
 }

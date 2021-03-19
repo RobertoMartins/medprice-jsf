@@ -1,6 +1,7 @@
 package br.com.javaparaweb.medprice.web;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -21,6 +22,7 @@ public class UsuarioBean {
 	private List<Usuario> lista;
 	private String destinoSalvar;
 	ContextoBean c = new ContextoBean();
+	MedicamentoBean m = new MedicamentoBean();
 	
 	public String novo() {
 		this.destinoSalvar = "usuariosucesso";
@@ -55,7 +57,7 @@ public class UsuarioBean {
 	
 	public String atribuiPermissao(Usuario usuario, String permissao) {
 		this.usuario = usuario;
-		java.util.Set<String> permissoes = this.usuario.getPermissao();
+		Set<String> permissoes = this.usuario.getPermissao();
 		if (permissoes.contains(permissao)) {
 			permissoes.remove(permissao);
 		} else {
@@ -124,14 +126,30 @@ public class UsuarioBean {
 	}
 	
 	public boolean isFavorito(Medicamento medicamento){
-	
-
-		if(this.usuario.getMedicamentos().contains(medicamento)) {
+		UsuarioRN usuarioRN = new UsuarioRN();
+		Usuario u = usuarioRN.buscarPorLogin(c.getUsuarioLogado().getEmail());
+		//System.out.println(medicamento.getProduto()+" Chamou");
+		System.out.println(u.getMedicamentos().size());
+	if(u.getMedicamentos()==null || u.getMedicamentos().size()==0) {
+		System.out.println("Entrou vazio");
+		return false;
+	}
+		if(u.getMedicamentos().contains(medicamento)) {
 			System.out.println("Entrou");
 			return true;
 		}
-			
+		System.out.println("Passou errado");
 		return false;
 				
+	}
+	
+	public String favoritar(Medicamento med) {
+		System.out.println(usuario.getNome());
+		System.out.println(med.getProduto());
+		
+		UsuarioRN usuarioRN = new UsuarioRN();
+		c.getUsuarioLogado().getMedicamentos().add(med);
+		usuarioRN.salvar(c.getUsuarioLogado());
+		return null;
 	}
 }
