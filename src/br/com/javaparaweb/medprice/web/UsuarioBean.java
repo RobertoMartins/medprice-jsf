@@ -124,11 +124,14 @@ public class UsuarioBean {
 	}
 	
 	public boolean isFavorito(Medicamento medicamento){
-		ContextoBean cb = new ContextoBean();
-		if(cb.getUsuarioLogado().getMedicamentos()==null || cb.getUsuarioLogado().getMedicamentos().size()==0) {
-			return false;
+	
+
+		if(this.usuario.getMedicamentos().contains(medicamento)) {
+			System.out.println("Entrou");
+			return true;
 		}
-		return cb.getUsuarioLogado().getMedicamentos().contains(medicamento);
+			
+		return false;
 				
 	}
 }

@@ -2,8 +2,12 @@ package br.com.javaparaweb.medprice.web;
 
 import java.util.List;
 
+import javax.faces.application.Application;
+import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
 
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.medicamento.MedicamentoRN;
@@ -81,6 +85,15 @@ public class MedicamentoBean {
 	public void setRegistro(String registro) {
 		this.registro = registro;
 	}
+	public void refresh() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Application application = context.getApplication();
+        ViewHandler viewHandler = application.getViewHandler();
+        UIViewRoot viewRoot = viewHandler.createView(context, context.getViewRoot().getViewId());
+        context.setViewRoot(viewRoot);
+        context.renderResponse();
+        
+    }
 	
 	
 	public String favoritar() {
@@ -88,8 +101,7 @@ public class MedicamentoBean {
 		c.getUsuarioLogado().getMedicamentos().add(this.med);
 		usuarioRN.salvar(c.getUsuarioLogado());
 		System.out.println(c.getUsuarioLogado().getMedicamentos().size());
-		
-		return "medicamento";
+		return null;
 	}
 	
 }
