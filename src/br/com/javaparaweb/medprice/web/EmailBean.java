@@ -1,7 +1,6 @@
 package br.com.javaparaweb.medprice.web;
 
 import java.io.Serializable;
-import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -9,7 +8,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import net.bytebuddy.utility.RandomString;
@@ -32,7 +30,7 @@ public class EmailBean implements Serializable {
 	private boolean emailSend = false;
 
 	public void recuperarSenha() {
-
+		
 		UsuarioRN usuarioRN = new UsuarioRN();
 
 		if (usuarioRN.buscarPorLogin(this.email) == null) {
@@ -49,9 +47,10 @@ public class EmailBean implements Serializable {
 		this.setEmailSend(true);
 		String token = RandomString.make(25);
 
-		String resetPasswordLink = "http://localhost:8080/bedriver/public/resetar_senha.jsf?token=" + token;
+		String resetPasswordLink = "http://localhost:8080/medprice/public/resetar_senha.jsf?token=" + token;
 
 		try {
+			
 			usuarioRN.updatePasswordToken(token, this.email);
 		} catch (DAOException e) {
 			e.printStackTrace();
@@ -61,12 +60,14 @@ public class EmailBean implements Serializable {
 		emailExecutor.execute(new Runnable() {
 			@Override
 			public void run() {
-				try {
-					GmailUtil.enviarEmail(email, "Recuperação de Senha", resetPasswordLink);
-				} catch (UtilException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
+					GmailUtil gmailUtil = new GmailUtil();
+					try {
+						gmailUtil.enviarEmail(email, "Recuperação de Senha", resetPasswordLink);
+					} catch (UtilException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			}
 		});
 	}
