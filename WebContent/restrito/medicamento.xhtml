@@ -33,6 +33,8 @@
 										name="favorito_#{usuarioBean.isFavorito(meds)}.png" style="border:0" />
 										<f:setPropertyActionListener target="#{medicamentoBean.med}"
 							value="#{meds}" />
+							<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+									value="#{contextoBean.logado" />
 								</h:commandLink>
 							</div>
 							<div class="body-med">
