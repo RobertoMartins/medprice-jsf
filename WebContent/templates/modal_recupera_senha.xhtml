@@ -12,9 +12,16 @@
 		<div class="card box">
 			<div class="rec-det">
 				<h2>Recuperar senha</h2>
-				<p>Digite seu email para receber o link de recuperação de senha.</p>
-				<input id="email-rec" type="email" placeholder="seuemail@email.com" /><br />
-				<input id="btn-enviar-email" type="submit" value="Enviar email" />
+				<h:form id="formrec" rendered="#{not emailBean.emailSend}">
+					<p>Digite seu email para receber o link de recuperação de senha.</p>
+					<h:inputText id="email-rec" type="email"
+							value="#{emailBean.email}" >
+							<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
+					</h:inputText>
+					<br />
+					<h:commandButton id="btn-enviar-email" type="submit" value="Enviar email" 
+					 	action="#{emailBean.recuperarSenha}"/>
+				</h:form>
 			</div>
 		</div>
 	</h:form>
