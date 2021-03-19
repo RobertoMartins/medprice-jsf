@@ -39,7 +39,6 @@ public class GmailUtil {
 		});
 
 		try {
-
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(email));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(para));
