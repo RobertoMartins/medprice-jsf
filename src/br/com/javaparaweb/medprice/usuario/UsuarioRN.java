@@ -1,14 +1,19 @@
 package br.com.javaparaweb.medprice.usuario;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.util.DAOException;
 import br.com.javaparaweb.medprice.util.DAOFactory;
+import br.com.javaparaweb.medprice.util.log.LoggerUtil;
 import br.com.javaparaweb.medprice.web.ContextoBean;
 
 public class UsuarioRN {
 	private UsuarioDAO usuarioDAO;
+	LocalDate data = LocalDate.now();
 
 	public UsuarioRN() {
 		this.usuarioDAO = DAOFactory.criarUsuarioDAO();
@@ -18,13 +23,15 @@ public class UsuarioRN {
 		return this.usuarioDAO.carregar(codigo);
 	}
 
-	public void salvar(Usuario usuario) {
+	public void salvar(Usuario usuario) throws IOException {
 		Integer idUsuario = usuario.getIdUsuario();
 		if (idUsuario == null || idUsuario == 0) {
 
 			usuario.getPermissao().add("ROLE_USUARIO");
 
 			this.usuarioDAO.salvar(usuario);
+			LocalDate data = LocalDate.now();
+			LoggerUtil.escreveLog(data + ". Novo usuário: " + usuario.getEmail());
 		} else {
 			this.usuarioDAO.atualizar(usuario);
 		}

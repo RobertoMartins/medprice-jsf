@@ -1,5 +1,6 @@
 package br.com.javaparaweb.medprice.web;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -31,7 +32,7 @@ public class UsuarioBean {
 		return "/publico/cadastro";
 	}
 	
-	public String salvar() {
+	public String salvar() throws IOException {
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		String senha = this.usuario.getSenha();
@@ -78,7 +79,7 @@ public class UsuarioBean {
 		return null;
 	}
 	
-	public String ativar() {
+	public String ativar() throws IOException {
 		if (this.usuario.isAtivo())
 			this.usuario.setAtivo(false);
 		else
@@ -143,7 +144,7 @@ public class UsuarioBean {
 				
 	}
 	
-	public String favoritar(Medicamento med) {
+	public String favoritar(Medicamento med) throws IOException {
 		System.out.println(usuario.getNome());
 		System.out.println(med.getProduto());
 		

@@ -1,5 +1,6 @@
 package br.com.javaparaweb.medprice.web;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -72,7 +73,7 @@ public class EmailBean implements Serializable {
 		});
 	}
 
-	public String salvarNovaSenha() {
+	public String salvarNovaSenha() throws IOException {
 		String regex = "\"[a-zA-Z0-9\\-\\_\\.]+@[a-zA-Z0-9\\-\\_\\.]+\"";
 		FacesContext context = FacesContext.getCurrentInstance();
 
