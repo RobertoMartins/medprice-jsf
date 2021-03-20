@@ -13,14 +13,21 @@
 			<div class="rec-det">
 				<h2>Recuperar senha</h2>
 				<h:form id="formrec" rendered="#{not emailBean.emailSend}">
-					<p>Digite seu email para receber o link de recuperação de senha.</p>
-					<h:inputText id="email-rec" type="email"
-							value="#{emailBean.email}" >
-							<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
+					<p:messages for="EmailNaoEncontrado" showDetail="true"
+						autoUpdate="true" closable="true" />
+					<p:messages for="EmailEnviado" showDetail="true" autoUpdate="true"
+						closable="true" />
+					<p>Digite seu email para receber o link de recuperação de
+						senha.</p>
+					<h:inputText id="email-rec" type="email" value="#{emailBean.email}">
+						<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
 					</h:inputText>
 					<br />
-					<h:commandButton id="btn-enviar-email" type="submit" value="Enviar email" 
-					 	action="#{emailBean.recuperarSenha}"/>
+					<p:commandButton id="btn-enviar-email" value="Enviar email"
+						action="#{emailBean.recuperarSenha}">
+						<f:setPropertyActionListener target="#{emailBean.email}"
+							value="#{emailBean.email}" />
+					</p:commandButton>
 				</h:form>
 			</div>
 		</div>

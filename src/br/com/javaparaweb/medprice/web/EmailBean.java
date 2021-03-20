@@ -4,22 +4,23 @@ import java.io.Serializable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import net.bytebuddy.utility.RandomString;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.usuario.UsuarioRN;
 import br.com.javaparaweb.medprice.util.DAOException;
 import br.com.javaparaweb.medprice.util.GmailUtil;
 import br.com.javaparaweb.medprice.util.UtilException;
+import br.com.javaparaweb.medprice.util.UtilValidator;
+import net.bytebuddy.utility.RandomString;
 
 @ManagedBean(name="emailBean")
-@ViewScoped
+@SessionScoped
 public class EmailBean implements Serializable {
 	private static final long serialVersionUID = -8218240456882550331L;
 
@@ -27,9 +28,11 @@ public class EmailBean implements Serializable {
 	private String novaSenha;
 	private String confirmarNovaSenha;
 	private String email;
+
 	private boolean emailSend = false;
 
-	public void recuperarSenha() {
+	public String recuperarSenha() {
+		
 		
 		UsuarioRN usuarioRN = new UsuarioRN();
 
@@ -37,17 +40,17 @@ public class EmailBean implements Serializable {
 			System.out.println("Nao achou");
 			FacesContext context = FacesContext.getCurrentInstance();
 			FacesMessage facesMessage = new FacesMessage();
-			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
+			facesMessage.setSeverity(FacesMessage.SEVERITY_ERROR);
 			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("Nenhuma conta cadastrada com esse email.");
-			context.addMessage("MessageEmailNotFound", facesMessage);
-			return;
+			facesMessage.setDetail("Nenhuma email foi encontrado. Verifique o email e tente novamente.");
+			context.addMessage("EmailNaoEncontrado", facesMessage);
+			return null;
 		}
 
 		this.setEmailSend(true);
 		String token = RandomString.make(25);
 
-		String resetPasswordLink = "http://localhost:8080/medprice/public/resetar_senha.jsf?token=" + token;
+		String resetPasswordLink = "http://localhost:8080/medprice/publico/nova_senha.jsf?token=" + token;
 
 		try {
 			
@@ -70,32 +73,24 @@ public class EmailBean implements Serializable {
 					}
 			}
 		});
+		
+	return "email_enviado";
 	}
 
 	public String salvarNovaSenha() {
-		String regex = "\"[a-zA-Z0-9\\-\\_\\.]+@[a-zA-Z0-9\\-\\_\\.]+\"";
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		if (!this.getNovaSenha().equals(this.getConfirmarNovaSenha())) {
+		String mensagens = UtilValidator.validaCamposRec(novaSenha, confirmarNovaSenha);
+
+		if (!mensagens.equals("")) {
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("A senha não foi confirmada corretamente.");
-			context.addMessage("NewPassNotEquals", facesMessage);
+			facesMessage.setDetail(mensagens);
+			context.addMessage("Erros", facesMessage);
 			return null;
 		}
 
-		if (this.getNovaSenha().matches(regex) || this.getConfirmarNovaSenha().matches(regex)) {
-			FacesMessage facesMessage = new FacesMessage();
-			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
-			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("Informe uma senha mais forte, contendo: " + "8 ou mais caracteres, "
-					+ "letras maiúsculas e minúsculas, " + "números, " + "caracteres especiais.");
-			context.addMessage("NewPasswordNotStrong", facesMessage);
-			return null;
-		}
-
-		// Utilizando BCrypt na senha
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 		this.usuario.setSenha(bcpe.encode(this.novaSenha));
 
@@ -104,7 +99,7 @@ public class EmailBean implements Serializable {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
 
-		return "/index";
+		return "/publico/senha_alterada";
 	}
 
 	public boolean isEmailSend() {
@@ -124,15 +119,18 @@ public class EmailBean implements Serializable {
 	}
 
 	public void validaToken(String token) {
-
+		
+		System.out.println(token);
 		UsuarioRN usuarioRN = new UsuarioRN();
 		Usuario usuario = usuarioRN.get(token);
+		
 
 		if (usuario == null) {
 			return;
 		}
-
+		System.out.println(usuario.getEmail());
 		this.usuario = usuario;
+		
 	}
 
 	public Usuario getUsuario() {
@@ -158,5 +156,6 @@ public class EmailBean implements Serializable {
 	public void setConfirmarNovaSenha(String confirmarNovaSenha) {
 		this.confirmarNovaSenha = confirmarNovaSenha;
 	}
+
 
 }

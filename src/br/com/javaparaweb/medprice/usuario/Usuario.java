@@ -45,7 +45,7 @@ public class Usuario implements Serializable {
 	private String senha;
 	private boolean ativo;
 	private String token;
-
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ElementCollection(targetClass = String.class) 
 	@JoinTable(
 			name="usuario_permissao", 
