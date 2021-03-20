@@ -2,8 +2,11 @@ package br.com.javaparaweb.medprice.comentario;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+
 import br.com.javaparaweb.medprice.usuario.Usuario;
 
 public class ComentarioDAOHibernate implements ComentarioDAO{
@@ -40,9 +43,9 @@ public class ComentarioDAOHibernate implements ComentarioDAO{
 		String hql = "select c from Comentario c where c.pai is null and c.usuario = :usuario order by c.data desc";
 		Query query = this.session.createQuery(hql);
 		query.setInteger("usuario", usuario.getIdUsuario());
-
 		List<Comentario> lista = query.list();
-
+		lista.size();
+		
 		return lista;
 	}
 }

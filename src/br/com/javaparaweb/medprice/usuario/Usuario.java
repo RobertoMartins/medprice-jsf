@@ -20,6 +20,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import br.com.javaparaweb.medprice.comentario.Comentario;
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
@@ -57,7 +59,9 @@ public class Usuario implements Serializable {
 	private List<Comentario> comentarios;
 
 	//bi-directional many-to-many association to Medicamento
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany(cascade= CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)    
+	@org.hibernate.annotations.Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@JoinTable(name="medicamento_usuario",joinColumns={@JoinColumn(name="id_usuario") }
 	,inverseJoinColumns={@JoinColumn(name = "id_med")})
 	private List<Medicamento> medicamentos;

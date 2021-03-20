@@ -3,6 +3,7 @@ package br.com.javaparaweb.medprice.web;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
@@ -11,7 +12,8 @@ import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.usuario.UsuarioRN;
 
 @ManagedBean(name = "medicamentoBean")
-@ViewScoped
+@SessionScoped
+
 public class MedicamentoBean {
 	private Medicamento med ;
 	private List<Medicamento> lista;

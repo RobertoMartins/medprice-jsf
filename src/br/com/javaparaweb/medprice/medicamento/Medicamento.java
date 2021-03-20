@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import br.com.javaparaweb.medprice.comentario.Comentario;
 import br.com.javaparaweb.medprice.usuario.Usuario;
@@ -63,11 +67,13 @@ public class Medicamento implements Serializable {
 	private String tipo;
 
 	//bi-directional many-to-one association to Comentario
-	@OneToMany(mappedBy="medicamentoBean")
+	@OneToMany(mappedBy="medicamentoBean", fetch=FetchType.EAGER)
 	private List<Comentario> comentarios;
 
 	//bi-directional many-to-many association to Usuario
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)    
+	@org.hibernate.annotations.Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@JoinTable(name="medicamento_usuario",joinColumns={@JoinColumn(name="id_med") }
 	,inverseJoinColumns={@JoinColumn(name = "id_usuario")})
 	private List<Usuario> usuarios;
