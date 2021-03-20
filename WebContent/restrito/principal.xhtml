@@ -54,17 +54,18 @@
 								Clique em <b>ver mais</b> para saber todos.
 							</p>
 							<p class="text-com">Comentarios (#{meds.comentarios.size()})</p>
-							<h:commandButton action="#{medicamentoBean.detalhe}"
-								value="Ver mais>>" styleClass="btn-med">
+							<p:commandButton value="Ver mais >" styleClass="btn-med"
+								onclick="PF('detalhe').show();" id="btn-detalhe" process="@this" update=":detalhe">
 								<f:setPropertyActionListener target="#{medicamentoBean.med}"
 									value="#{meds}" />
-							</h:commandButton>
+							</p:commandButton>
 						</div>
 					</p:dataGrid>
 				</h:form>
 				<a href="/medprice/restrito/medicamento.jsf"><h3>Ver todos>></h3></a>
 			</div>
 		</div>
+		<ui:include src="/templates/modal_detalhe_restrito.xhtml"></ui:include>
 	</ui:define>
 </ui:composition>
 </html>

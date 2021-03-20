@@ -5,6 +5,10 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/templates/global.xhtml">
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{emailBean.validaToken(param.token)}" />
+	</f:metadata>
 
 	<ui:define name="menu">
 		<ui:include src="/templates/menu_publico.xhtml"></ui:include>
@@ -21,49 +25,26 @@
 					</p>
 				</div>
 				<div class="form-cad">
-					<h:form id="cadastro">
-						<p class="title-cad">Criar uma conta</p>
-						<p style="font-size: 10px; color: grey;">Campos obrigatorios:
-							*</p>
+					<h:form id="cadastro" rendered="#{emailBean.usuario != null}">
+						<p class="title-cad">Recuperar Senha</p>
 						<br />
 
-						<h:inputHidden value="#{usuarioBean.usuario.idUsuario}" />
-						<h:inputHidden value="#{usuarioBean.destinoSalvar}" />
-						<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
-
-						<label for="nome">* Nome</label>
-						<br />
-						<h:inputText id="nome" label="Nome"
-							value="#{usuarioBean.usuario.nome}" size="30" maxlength="30">
-						</h:inputText>
-						<br />
-
-						<label for="nome">* Email</label>
-						<br />
-						<h:panelGroup>
-							<h:inputText id="email" label="e-Mail"
-								value="#{usuarioBean.usuario.email}" size="50" maxlength="50">
-							</h:inputText>
-							<h:message for="email" />
-						</h:panelGroup>
-						<br />
-
-						<label for="nome">* Senha</label>
+						<label for="nome">Senha</label>
 						<br />
 						<h:inputSecret id="senha" label="Senha"
-							value="#{usuarioBean.usuario.senha}" size="10" maxlength="10"
-						redisplay="true">
+							value="#{emailBean.novaSenha}" size="10" maxlength="10"
+							 redisplay="true">
 						</h:inputSecret>
 						<br />
 
-						<label for="nome">* Confirmar senha</label>
+						<label for="nome">Confirmar senha</label>
 						<br />
 						<h:inputSecret id="confirmarsenha" label="Confirmar Senha"
-							value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10"
-							 redisplay="true" />
+							value="#{emailBean.confirmarNovaSenha}" size="10" maxlength="10"
+						 redisplay="true" />
 						<br />
-						<p:messages for="Erros" showDetail="true"
-							autoUpdate="true" closable="true" />
+						<p:messages for="Erros" showDetail="true" autoUpdate="true"
+						closable="true" />
 
 						<p>Requisitos de senha:</p>
 						<ul>
@@ -76,13 +57,26 @@
 						<br />
 						<div class="botoes-cad">
 							<h:commandButton className="button"
-								action="#{usuarioBean.salvar}" value="Salvar" />
+								action="#{emailBean.salvarNovaSenha}" value="Salvar" />
+
 							<a href="/medprice/index.jsf">Cancelar</a>
 						</div>
+					</h:form>
+					<h:form rendered="#{emailBean.usuario == null}">
+						<h1 style="color: red; text-align: center">Token Inválido.</h1>
+						<p>Não é possivel realizar a recuperação! Esse link está
+							inválido,</p>
+						<p>
+							Solicite um novo Token.
+							<p:commandLink value="Aqui" styleClass="btn-login-rec"
+								onclick="PF('recupera').show();" id="btn-recupera">
+							</p:commandLink>
+						</p>
 					</h:form>
 				</div>
 			</div>
 		</div>
+		<ui:include src="/templates/modal_recupera_senha.xhtml"></ui:include>
 	</ui:define>
 </ui:composition>
 
