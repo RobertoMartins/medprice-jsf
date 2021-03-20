@@ -4,13 +4,14 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.javaparaweb.medprice.comentario.Comentario;
 import br.com.javaparaweb.medprice.comentario.ComentarioRN;
 import br.com.javaparaweb.medprice.usuario.Usuario;
 
 @ManagedBean(name = "comentarioBean")
-@SessionScoped
+@ViewScoped
 public class ComentarioBean {
 	
 	private Comentario comentario = new Comentario();

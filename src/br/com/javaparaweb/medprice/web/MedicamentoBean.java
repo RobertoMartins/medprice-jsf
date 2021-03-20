@@ -12,7 +12,7 @@ import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.usuario.UsuarioRN;
 
 @ManagedBean(name = "medicamentoBean")
-@SessionScoped
+@ViewScoped
 
 public class MedicamentoBean {
 	private Medicamento med ;
@@ -20,7 +20,6 @@ public class MedicamentoBean {
 	private List<Medicamento> listaHome;
 	Usuario u = new Usuario();
 	ContextoBean c = new ContextoBean();
-
 
 	
 	private String registro;

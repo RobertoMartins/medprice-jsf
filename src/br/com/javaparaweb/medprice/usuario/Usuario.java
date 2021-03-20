@@ -60,12 +60,11 @@ public class Usuario implements Serializable {
 
 	//bi-directional many-to-many association to Medicamento
 	@ManyToMany(cascade= CascadeType.ALL)
-	@LazyCollection(LazyCollectionOption.FALSE)    
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@org.hibernate.annotations.Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@JoinTable(name="medicamento_usuario",joinColumns={@JoinColumn(name="id_usuario") }
 	,inverseJoinColumns={@JoinColumn(name = "id_med")})
 	private List<Medicamento> medicamentos;
-	
 	
 	public Usuario() {
 	}
