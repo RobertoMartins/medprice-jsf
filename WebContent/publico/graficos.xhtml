@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/global.xhtml">
+	<ui:define name="menu">
+		<ui:include src="/templates/menu_publico.xhtml"></ui:include>
+	</ui:define>
+	<ui:define name="corpo">
+		<div class="box card">
+			<div class="content-grafico">
+				<h1>Grafico de medicamentos por intervalo de preços:</h1>
+				<div class="graf">
+					<p:chart type="bar" model="#{graficosBean.precoColunas}"
+						style="width:65%;" />
+				</div>
+				<h1>Grafico de medicamentos por tipo:</h1>
+				<div class="graf">
+					<p:chart type="pie" model="#{graficosBean.tipoPizza}"
+						style="width:50%" />
+				</div>
+			</div>
+		</div>
+
+		<ui:include src="/templates/modal_detalhe_publico.xhtml"></ui:include>
+	</ui:define>
+</ui:composition>
+</html>

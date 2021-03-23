@@ -1,13 +1,21 @@
 @charset "ISO-8859-1";
 
 @import url(/medprice/javax.faces.resource/cardmed.css.jsf?ln=css);
+
 @import url(/medprice/javax.faces.resource/home.css.jsf?ln=css);
+
 @import url(/medprice/javax.faces.resource/medicamento.css.jsf?ln=css);
+
 @import url(/medprice/javax.faces.resource/detalhe.css.jsf?ln=css);
+
 @import url(/medprice/javax.faces.resource/cardcom.css.jsf?ln=css);
+
 @import url(/medprice/javax.faces.resource/cadastro.css.jsf?ln=css);
+
 @import url(/medprice/javax.faces.resource/login.css.jsf?ln=css);
+
 @import url(/medprice/javax.faces.resource/perfil.css.jsf?ln=css);
+
 @import url(/medprice/javax.faces.resource/recupera.css.jsf?ln=css);
 @import url(/medprice/javax.faces.resource/ajuda.css.jsf?ln=css);
 
@@ -63,6 +71,22 @@ footer p {
 	margin: 0 auto;
 }
 
+.content-grafico {
+	margin: 0 auto;
+	width: 80%;
+	display: blok;
+}
+
+.graf {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.content-grafico h1{
+	color:#336699;
+	text-align:center;
+}
+
 .info {
 	font-weight: bold;
 	color: green;
@@ -107,7 +131,7 @@ footer p {
 	align-items: center;
 }
 
-.ui-dialog .botoes .entrar, .nav-conta{
+.ui-dialog .botoes .entrar, .nav-conta {
 	width: 40%;
 	background-color: #009933 !important;
 	border-radius: 4px;
@@ -121,10 +145,10 @@ footer p {
 	justify-content: center
 }
 
-.ui-dialog .botoes .cadastrar, .nav-sair{
+.ui-dialog .botoes .cadastrar, .nav-sair {
 	width: 55%;
-	background-color: #336699; 
-	border-radius : 4px;
+	background-color: #336699;
+	border-radius: 4px;
 	height: 30px;
 	color: #fff !important;
 	text-decoration: none;
@@ -136,19 +160,20 @@ footer p {
 	border-radius: 4px;
 }
 
-.ui-dialog .botoes .cadastrar:hover{
+.ui-dialog .botoes .cadastrar:hover {
 	background-color: #1F4C79;
 }
+
 .ui-dialog .botoes .entrar:hover, .nav-conta:hover {
 	background-color: #007B29 !important;
 }
 
-.ui-dialog .botoes .nav-sair, .nav-conta{
+.ui-dialog .botoes .nav-sair, .nav-conta {
 	width: 45% !important;
 	background-color: #cc0000;
 	cursor: pointer;
 }
 
-.ui-dialog .botoes .nav-sair:hover{
+.ui-dialog .botoes .nav-sair:hover {
 	background-color: #8B0000;
 }
