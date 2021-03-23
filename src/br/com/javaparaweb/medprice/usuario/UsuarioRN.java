@@ -30,8 +30,6 @@ public class UsuarioRN {
 			usuario.getPermissao().add("ROLE_USUARIO");
 
 			this.usuarioDAO.salvar(usuario);
-			LocalDate data = LocalDate.now();
-			LoggerUtil.escreveLog(data + ". Novo usuário: " + usuario.getEmail());
 		} else {
 			this.usuarioDAO.atualizar(usuario);
 		}

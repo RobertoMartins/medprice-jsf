@@ -4,20 +4,25 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 
 import javax.faces.context.FacesContext;
 
 public class LoggerUtil {
 	public static void escreveLog(String mensagem) throws IOException {
-		String caminho = FacesContext.getCurrentInstance().getExternalContext().getRealPath("") + "resources\\";
-		System.out.println(caminho);
-		File file = new File(caminho, "log_medprice.txt");
+		String caminho = System.getProperty("user.dir");
+		File file = new File(caminho + "\\log_medprice.txt");
+		System.out.println(file.exists());
+		System.out.println(file.toURI());
 		file.createNewFile();
 		FileWriter fw = null;
+		Date date;
 		
 		try {	
+			date = new Date();
+			date.getTime();
             fw = new FileWriter(file, true);
-            fw.write(mensagem);
+            fw.write(date + ": " + mensagem + "\n");
         }
         catch (FileNotFoundException e) {
             System.out.println("File not found" + e);
@@ -37,6 +42,6 @@ public class LoggerUtil {
             }
  
         }
-         
+   
     }
 }

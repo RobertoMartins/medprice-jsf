@@ -18,6 +18,7 @@ import br.com.javaparaweb.medprice.usuario.UsuarioRN;
 import br.com.javaparaweb.medprice.util.DAOException;
 import br.com.javaparaweb.medprice.util.GmailUtil;
 import br.com.javaparaweb.medprice.util.UtilException;
+import br.com.javaparaweb.medprice.util.log.LoggerUtil;
 
 @ManagedBean(name="emailBean")
 @ViewScoped
@@ -30,7 +31,7 @@ public class EmailBean implements Serializable {
 	private String email;
 	private boolean emailSend = false;
 
-	public void recuperarSenha() {
+	public void recuperarSenha() throws IOException{
 		
 		UsuarioRN usuarioRN = new UsuarioRN();
 
@@ -66,6 +67,9 @@ public class EmailBean implements Serializable {
 					try {
 						gmailUtil.enviarEmail(email, "Recuperação de Senha", resetPasswordLink);
 					} catch (UtilException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
@@ -104,7 +108,7 @@ public class EmailBean implements Serializable {
 
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
-
+		LoggerUtil.escreveLog("Nova alteração de senha para o usuário: " + usuario.getEmail());
 		return "/index";
 	}
 

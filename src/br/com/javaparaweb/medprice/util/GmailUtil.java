@@ -1,10 +1,13 @@
 package br.com.javaparaweb.medprice.util;
 
+import java.io.IOException;
 import java.util.Properties;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import br.com.javaparaweb.medprice.util.log.LoggerUtil;
 
 import javax.mail.Session;
 
@@ -12,7 +15,7 @@ import javax.mail.Session;
 public class GmailUtil {
 	// https://developers.google.com/gmail/api/guides/sending
 
-	public void enviarEmail(String para, String assunto, String mensagem) throws UtilException {
+	public void enviarEmail(String para, String assunto, String mensagem) throws UtilException, IOException {
 		Properties prop = new Properties();
 		
 		String email = "medpriceweb@gmail.com";
@@ -40,7 +43,7 @@ public class GmailUtil {
 			message.setSubject(assunto);
 			message.setText(mensagem);
 			Transport.send(message);
-
+			LoggerUtil.escreveLog("Nova solicitação de mudança de senha feita por: " + email);
 			System.out.println("Email Enviado");
 
 		} catch (MessagingException e) {

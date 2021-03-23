@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.usuario.UsuarioRN;
+import br.com.javaparaweb.medprice.util.log.LoggerUtil;
 
 @ManagedBean(name = "usuarioBean")
 @RequestScoped
@@ -25,7 +26,7 @@ public class UsuarioBean {
 	ContextoBean c = new ContextoBean();
 	MedicamentoBean m = new MedicamentoBean();
 	
-	public String novo() {
+	public String novo() throws IOException {
 		this.destinoSalvar = "usuariosucesso";
 		this.usuario = new Usuario();
 		this.usuario.setAtivo(true);
@@ -49,9 +50,8 @@ public class UsuarioBean {
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 		this.usuario.setSenha(bcpe.encode(this.usuario.getSenha()));
 		
-		
-		
 		usuarioRN.salvar(this.usuario);
+		LoggerUtil.escreveLog("Novo usuário: " + usuario.getEmail());
 
 		return "usuariosucesso";
 	}
@@ -72,9 +72,10 @@ public class UsuarioBean {
 		return "/publico/cadastro";
 	}
 	
-	public String excluir() {
+	public String excluir() throws IOException {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.excluir(this.usuario);
+		LoggerUtil.escreveLog("Usuário excluído: " + usuario.getEmail());
 		this.lista = null;
 		return null;
 	}
