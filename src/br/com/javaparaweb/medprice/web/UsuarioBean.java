@@ -27,18 +27,18 @@ public class UsuarioBean {
 	private String destinoSalvar;
 	ContextoBean c = new ContextoBean();
 	MedicamentoBean m = new MedicamentoBean();
-	
-	public UsuarioBean(){
-		this.listaFav=c.getLogado().getMedicamentos();
+
+	public UsuarioBean() {
+		this.listaFav = c.getLogado().getMedicamentos();
 	}
-	
+
 	public String novo() throws IOException {
 		this.destinoSalvar = "usuariosucesso";
 		this.usuario = new Usuario();
 		this.usuario.setAtivo(true);
 		return "/publico/cadastro";
 	}
-	
+
 	public String salvar() throws IOException {
 		FacesContext context = FacesContext.getCurrentInstance();
 
@@ -55,17 +55,16 @@ public class UsuarioBean {
 
 		UsuarioRN usuarioRN = new UsuarioRN();
 		this.usuario.setAtivo(true);
-		
-		
+
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 		this.usuario.setSenha(bcpe.encode(this.usuario.getSenha()));
-		
+
 		usuarioRN.salvar(this.usuario);
 		LoggerUtil.escreveLog("Novo usuário: " + usuario.getEmail());
 
 		return "usuariosucesso";
 	}
-	
+
 	public String atribuiPermissao(Usuario usuario, String permissao) {
 		this.usuario = usuario;
 		Set<String> permissoes = this.usuario.getPermissao();
@@ -76,12 +75,12 @@ public class UsuarioBean {
 		}
 		return null;
 	}
-	
+
 	public String editar() {
 		this.confirmarSenha = this.usuario.getSenha();
 		return "/publico/cadastro";
 	}
-	
+
 	public String excluir() throws IOException {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.excluir(this.usuario);
@@ -89,7 +88,7 @@ public class UsuarioBean {
 		this.lista = null;
 		return null;
 	}
-	
+
 	public String ativar() throws IOException {
 		if (this.usuario.isAtivo())
 			this.usuario.setAtivo(false);
@@ -124,7 +123,6 @@ public class UsuarioBean {
 		}
 		return this.lista;
 	}
-	
 
 	public List<Medicamento> getListaFav() {
 		return listaFav;
@@ -145,56 +143,45 @@ public class UsuarioBean {
 	public void setDestinoSalvar(String destinoSalvar) {
 		this.destinoSalvar = destinoSalvar;
 	}
-	
-	public boolean isFavorito(Medicamento medicamento){
+
+	public boolean isFavorito(Medicamento medicamento) {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		Usuario u = usuarioRN.buscarPorLogin(c.getUsuarioLogado().getEmail());
-<<<<<<< Updated upstream
-		//System.out.println(medicamento.getProduto()+" Chamou");
-		System.out.println(u.getMedicamentos().size());
-	if(u.getMedicamentos() == null || u.getMedicamentos().size() == 0) {
-		System.out.println("Entrou vazio");
-=======
-	
-	if(u.getMedicamentos()==null || u.getMedicamentos().size()==0) {
->>>>>>> Stashed changes
-		return false;
-	}
-		if(u.getMedicamentos().contains(medicamento)) {
+
+		if (u.getMedicamentos() == null || u.getMedicamentos().size() == 0) {
+
+			return false;
+		}
+		if (u.getMedicamentos().contains(medicamento)) {
 
 			return true;
 		}
+
 		return false;
-				
 	}
-	
+
 	public String favoritar(Medicamento med) throws IOException {
 		UsuarioRN usuarioRN = new UsuarioRN();
-		if(c.getUsuarioLogado().getMedicamentos().contains(med)) {
+		if (c.getUsuarioLogado().getMedicamentos().contains(med)) {
 			return "/restrito/favorito";
 		}
-		
+
 		c.getUsuarioLogado().getMedicamentos().add(med);
 		usuarioRN.salvar(c.getUsuarioLogado());
 		return "/restrito/medicamento";
-<<<<<<< Updated upstream
-=======
+
 	}
-	
+
 	public String deleteFav(Medicamento med) throws IOException {
 		UsuarioRN usuarioRN = new UsuarioRN();
-			c.getUsuarioLogado().getMedicamentos().remove(med);
-			usuarioRN.salvar(c.getUsuarioLogado());
-			return "/restrito/medicamento";
-	
->>>>>>> Stashed changes
+		c.getUsuarioLogado().getMedicamentos().remove(med);
+		usuarioRN.salvar(c.getUsuarioLogado());
+		return "/restrito/medicamento";
+
 	}
-	
+
 	public String favoritos() {
 		return "/restrito/favorito";
 	}
-	
 
-	
-	
 }
