@@ -30,11 +30,20 @@
 	padding: 0;
 	margin: 0;
 	color: #336699;
+	max-width: 40ch;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .header-med h5 {
 	padding: 0;
 	margin: 0;
+}
+
+.title-button{
+	display:flex;
+	justify-content:space-between;
 }
 
 /*corpo medicamento*/

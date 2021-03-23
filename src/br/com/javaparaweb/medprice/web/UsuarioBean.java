@@ -23,9 +23,14 @@ public class UsuarioBean {
 	private Usuario usuario = new Usuario();
 	private String confirmarSenha;
 	private List<Usuario> lista;
+	private List<Medicamento> listaFav;
 	private String destinoSalvar;
 	ContextoBean c = new ContextoBean();
 	MedicamentoBean m = new MedicamentoBean();
+	
+	public UsuarioBean(){
+		this.listaFav=c.getLogado().getMedicamentos();
+	}
 	
 	public String novo() throws IOException {
 		this.destinoSalvar = "usuariosucesso";
@@ -119,6 +124,15 @@ public class UsuarioBean {
 		}
 		return this.lista;
 	}
+	
+
+	public List<Medicamento> getListaFav() {
+		return listaFav;
+	}
+
+	public void setListaFav(List<Medicamento> listaFav) {
+		this.listaFav = listaFav;
+	}
 
 	public void setLista(List<Usuario> lista) {
 		this.lista = lista;
@@ -135,28 +149,52 @@ public class UsuarioBean {
 	public boolean isFavorito(Medicamento medicamento){
 		UsuarioRN usuarioRN = new UsuarioRN();
 		Usuario u = usuarioRN.buscarPorLogin(c.getUsuarioLogado().getEmail());
+<<<<<<< Updated upstream
 		//System.out.println(medicamento.getProduto()+" Chamou");
 		System.out.println(u.getMedicamentos().size());
 	if(u.getMedicamentos() == null || u.getMedicamentos().size() == 0) {
 		System.out.println("Entrou vazio");
+=======
+	
+	if(u.getMedicamentos()==null || u.getMedicamentos().size()==0) {
+>>>>>>> Stashed changes
 		return false;
 	}
 		if(u.getMedicamentos().contains(medicamento)) {
-			System.out.println("Entrou");
+
 			return true;
 		}
-		System.out.println("Passou errado");
 		return false;
 				
 	}
 	
 	public String favoritar(Medicamento med) throws IOException {
-		System.out.println(usuario.getNome());
-		System.out.println(med.getProduto());
-		
 		UsuarioRN usuarioRN = new UsuarioRN();
+		if(c.getUsuarioLogado().getMedicamentos().contains(med)) {
+			return "/restrito/favorito";
+		}
+		
 		c.getUsuarioLogado().getMedicamentos().add(med);
 		usuarioRN.salvar(c.getUsuarioLogado());
 		return "/restrito/medicamento";
+<<<<<<< Updated upstream
+=======
 	}
+	
+	public String deleteFav(Medicamento med) throws IOException {
+		UsuarioRN usuarioRN = new UsuarioRN();
+			c.getUsuarioLogado().getMedicamentos().remove(med);
+			usuarioRN.salvar(c.getUsuarioLogado());
+			return "/restrito/medicamento";
+	
+>>>>>>> Stashed changes
+	}
+	
+	public String favoritos() {
+		return "/restrito/favorito";
+	}
+	
+
+	
+	
 }

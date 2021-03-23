@@ -1,6 +1,9 @@
 package br.com.javaparaweb.medprice.medicamento;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -8,7 +11,6 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.javaparaweb.medprice.comentario.Comentario;
-import br.com.javaparaweb.medprice.usuario.Usuario;
 
 public class MedicamentoDAOHibernate implements MedicamentoDAO {
 
@@ -23,6 +25,10 @@ public class MedicamentoDAOHibernate implements MedicamentoDAO {
 	public List<Medicamento> listar() {
 		Criteria crit = session.createCriteria(Medicamento.class);
 		List<Medicamento> results = crit.list();
+		Set<Medicamento> set = new HashSet<>(results);
+		results.clear();
+		results.addAll(set);
+		Collections.sort(results);
 		return results;
 	}
 
@@ -48,6 +54,10 @@ public class MedicamentoDAOHibernate implements MedicamentoDAO {
 		Criteria crit = session.createCriteria(Medicamento.class);
 		crit.add(Restrictions.ilike("produto",pesquisa+"%"));
 		List<Medicamento> results = crit.list();
+		Set<Medicamento> set = new HashSet<>(results);
+		results.clear();
+		results.addAll(set);
+		Collections.sort(results);
 		return results;
 		
 	}

@@ -27,7 +27,7 @@ import br.com.javaparaweb.medprice.usuario.Usuario;
  */
 @Entity
 @NamedQuery(name="Medicamento.findAll", query="SELECT m FROM Medicamento m")
-public class Medicamento implements Serializable {
+public class Medicamento implements Serializable, Comparable <Medicamento> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -65,6 +65,7 @@ public class Medicamento implements Serializable {
 	private String tarja;
 
 	private String tipo;
+	
 
 	//bi-directional many-to-one association to Comentario
 	@OneToMany(mappedBy="medicamentoBean", fetch=FetchType.EAGER)
@@ -72,9 +73,8 @@ public class Medicamento implements Serializable {
 
 	//bi-directional many-to-many association to Usuario
 	@ManyToMany(cascade = CascadeType.ALL)
-	@LazyCollection(LazyCollectionOption.FALSE)    
-	@org.hibernate.annotations.Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-	@JoinTable(name="medicamento_usuario",joinColumns={@JoinColumn(name="id_med") }
+	@LazyCollection(LazyCollectionOption.TRUE)    
+	@JoinTable(name="medicamento_usuario",joinColumns={@JoinColumn(name="id_med")  }
 	,inverseJoinColumns={@JoinColumn(name = "id_usuario")})
 	private List<Usuario> usuarios;
 
@@ -323,6 +323,16 @@ public class Medicamento implements Serializable {
 		} else if (!usuarios.equals(other.usuarios))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Medicamento o) {
+		if(this.idMed<o.idMed) {
+			return -1;
+		}if(this.idMed>o.idMed) {
+			return 1;
+		}
+		return 0;
 	}
 }
 

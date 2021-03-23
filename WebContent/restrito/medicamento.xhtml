@@ -11,13 +11,21 @@
 	<ui:define name="corpo">
 		<div class="card box">
 			<div>
-				<h:form>
+				<div class="med-title">
+					<h1 class="title-pag-med">Medicamentos</h1>
+				</div>
+
+				<h:form class="form-header-med">
 					<div class="pesquisa">
-						<p:inputText value="#{medicamentoBean.textoPesquisa}">
+						<label for="pesq">Pesquisa:</label>
+						<p:inputText value="#{medicamentoBean.textoPesquisa}" id="pesq">
 							<p:ajax event="keyup" update=":form-meds"
 								listener="#{medicamentoBean.pesquisar}" />
 						</p:inputText>
 					</div>
+					
+						<a href="/medprice/publico/graficos.jsf" class="botao-grafico">Resumo
+							em Gáficos</a>
 				</h:form>
 				<h:form id="form-meds">
 					<p:dataGrid var="meds" value="#{medicamentoBean.lista}" columns="3"
@@ -26,12 +34,22 @@
 						rowsPerPageTemplate="6,12">
 						<div class="box-med card">
 							<div class="header-med">
-								<h3>#{meds.produto}</h3>
+								<div class="title-button">
+									<h3>#{meds.produto}</h3>
+									<h:commandLink action="#{usuarioBean.favoritar(meds)}"
+										update="@this" rendered="#{usuarioBean.isFavorito(meds) != true}">
+										<h:graphicImage library="imagens"
+											name="favorito_false.png"
+											style="border:0" />
+									</h:commandLink>
+									<h:commandLink action="#{usuarioBean.favoritos}"
+										update="@this" rendered="#{usuarioBean.isFavorito(meds) == true}">
+										<h:graphicImage library="imagens"
+											name="favorito_true.png"
+											style="border:0" />
+									</h:commandLink>
+								</div>
 								<h5>#{meds.tipo}</h5>
-								<h:commandLink  action="#{usuarioBean.favoritar(meds)}" update="@this">
-									<h:graphicImage library="imagens"
-										name="favorito_#{usuarioBean.isFavorito(meds)}.png" style="border:0" />
-								</h:commandLink>
 							</div>
 							<div class="body-med">
 								<p class="apresentacao">#{meds.apresentacao}</p>
@@ -45,7 +63,7 @@
 								*Os preços podem variar de acordo com a alíquota de cada estado.
 								Clique em <b>ver mais</b> para saber todos.
 							</p>
-						<p class="text-com">Comentarios (#{meds.comentarios.size()})</p>
+							<p class="text-com">Comentarios (#{meds.comentarios.size()})</p>
 							<p:commandButton value="Ver mais>>" styleClass="btn-med"
 								onclick="PF('detalhe').show();" process="@this" id="btn-detalhe"
 								update=":detalhe">

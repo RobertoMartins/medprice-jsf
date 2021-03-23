@@ -4,6 +4,42 @@
 	justify-content: center;
 }
 
+.med-title{
+	width:100%;
+}
+
+.title-pag-med{
+	color:#009933;
+	width:100%;
+	text-align:center;
+}
+.form-header-med{
+	width:100%;
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+}
+.form-header-med label{
+	font-size:12px;
+	font-weight:bold;
+	color:#336699;
+	margin-right:5px;
+	
+}
+.botao-grafico {
+	width:150px;
+	background-color:#009933;
+	border-radius:4px;
+	height:35px;
+	color: #ffff;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 12px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+
 #form-meds .ui-widget-header {
 	background: none repeat scroll 0 0 #FFFFFF !important;
 	border: 0;
