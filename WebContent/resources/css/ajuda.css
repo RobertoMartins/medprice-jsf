@@ -5,19 +5,42 @@
 }
 
 .div-externa-help{
-	width: 50%;
 	display: flex;
+	width: 90%;
+	justify-content: space-between;
 }
 
-.div-help, .img-help{
+.div-help {
 	width: 50%;
+	margin: 0 auto;
+}
+
+
+.img-help{
+	width: 50%;
+}
+
+.img-help img{
+	width: 500px
+}
+
+.link-per {
+	width: 100%;
+}
+
+.perguntas {
+
+	justify-content: space-around;
+	width: 80%;
+	margin: 0 auto;
+	
 }
 
 h2{
 	color: #336699;
 	font-size: 18px;
 	font-weight: bold;
-	margin-block-start: 1.5em;
+	margin-block-start: 2em;
 	margin-block-end: 1em;
 }
 
@@ -29,19 +52,39 @@ h2{
 .img-help img{
 	width: 100%;
     height: auto;
+    padding: 15px;
 }
 
-.link-per {
+.link-per, .link-ext {
 	color: #336699;
 	text-decoration: none;
 	font-weight: bold;
-	font-size: 12px;
+	font-size: 14px;
 	margin-left: 10px;
 }
 
-.link-per:hover{
+.link-per:hover, .link-ext:hover{
 	color: #00226B;
 }
 
+.link-ext{
+	font-size: 12px;
+}
+
+.titulo-per {
+	font-weight: bold;
+	font-size: 14px;
+	color: #616161;
+}
+
+p {
+	margin-left: 16px;
+	color: #9e9e9e;
+		line-height: 1.5em;
+}
+
+hr {
+	color: #8c8b8b;
+}
 
 
