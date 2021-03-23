@@ -37,15 +37,9 @@
 								<div class="title-button">
 									<h3>#{meds.produto}</h3>
 									<h:commandLink action="#{usuarioBean.favoritar(meds)}"
-										update="@this" rendered="#{usuarioBean.isFavorito(meds) != true}">
+										update="@this" >
 										<h:graphicImage library="imagens"
 											name="favorito_false.png"
-											style="border:0" />
-									</h:commandLink>
-									<h:commandLink action="#{usuarioBean.favoritos}"
-										update="@this" rendered="#{usuarioBean.isFavorito(meds) == true}">
-										<h:graphicImage library="imagens"
-											name="favorito_true.png"
 											style="border:0" />
 									</h:commandLink>
 								</div>

@@ -27,11 +27,7 @@ public class UsuarioBean {
 	private String destinoSalvar;
 	ContextoBean c = new ContextoBean();
 	MedicamentoBean m = new MedicamentoBean();
-
-	public UsuarioBean() {
-		this.listaFav = c.getLogado().getMedicamentos();
-	}
-
+	
 	public String novo() throws IOException {
 		this.destinoSalvar = "usuariosucesso";
 		this.usuario = new Usuario();
@@ -160,15 +156,12 @@ public class UsuarioBean {
 		return false;
 	}
 
-	public String favoritar(Medicamento med) throws IOException {
+	public void favoritar(Medicamento med) throws IOException {
 		UsuarioRN usuarioRN = new UsuarioRN();
-		if (c.getUsuarioLogado().getMedicamentos().contains(med)) {
-			return "/restrito/favorito";
-		}
-
+		
 		c.getUsuarioLogado().getMedicamentos().add(med);
 		usuarioRN.salvar(c.getUsuarioLogado());
-		return "/restrito/medicamento";
+		return;
 
 	}
 
@@ -176,7 +169,7 @@ public class UsuarioBean {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		c.getUsuarioLogado().getMedicamentos().remove(med);
 		usuarioRN.salvar(c.getUsuarioLogado());
-		return "/restrito/medicamento";
+		return "/restrito/favorito";
 
 	}
 
