@@ -1,0 +1,47 @@
+.content-ajuda{
+	width:90%;
+	display: block;
+	justify-content: space-between;
+}
+
+.div-externa-help{
+	width: 50%;
+	display: flex;
+}
+
+.div-help, .img-help{
+	width: 50%;
+}
+
+h2{
+	color: #336699;
+	font-size: 18px;
+	font-weight: bold;
+	margin-block-start: 1.5em;
+	margin-block-end: 1em;
+}
+
+.img-help{
+	width: 50%;
+	float: right;
+}
+
+.img-help img{
+	width: 100%;
+    height: auto;
+}
+
+.link-per {
+	color: #336699;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 12px;
+	margin-left: 10px;
+}
+
+.link-per:hover{
+	color: #00226B;
+}
+
+
+

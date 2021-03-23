@@ -1,0 +1,85 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/global.xhtml">
+	<ui:define name="menu">
+		<ui:include src="/templates/menu_publico.xhtml"></ui:include>
+	</ui:define>
+	<ui:define name="corpo">
+		<div class="card box">
+			<div class="content-ajuda">
+				<div class="div-externa-help">
+					<div class="div-help">
+						<h2>Perguntas frequentes</h2>
+						<a class="link-per" href="#p1">1) Como criar uma conta?</a><br />
+						<br /> <a class="link-per" href="#p2">2) Como procurar por um
+							medicamento?</a><br />
+						<br /> <a class="link-per" href="#p3">3) Como adicionar um
+							medicamento aos favoritos?</a><br />
+						<br /> <a class="link-per" href="#p4">4) Esqueci a senha. E
+							agora?</a><br />
+						<br /> <a class="link-per" href="#p5">5) Como denunciar um
+							preço abusivo?</a><br />
+						<br />
+					</div>
+					<div class="img-help">
+						<h:graphicImage library="imagens" name="help.png" />
+					</div>
+				</div>
+				<br />
+				<hr />
+				<br />
+				<div class="perguntas">
+					<a class="titulo-per" id="p1">1) Como criar uma conta?</a><br />
+					<p>
+						Para criar uma conta você precisa acessar a <a
+							href="/medprice/publico/cadastro.jsf">página de cadastro</a> e
+						informar nome, email e uma senha forte.
+					</p>
+
+					<a class="titulo-per" id="p2">2) Como procurar por um
+						medicamento?</a><br />
+					<p>
+						Para procurar por um medicamento é só digitar o nome desejado na
+						barra de pesquisas na <a href="/medprice/publico/medicamento.jsf">página
+							de medicamentos. Os resultados aparecerão automaticamente
+							conforme você digita.</a>
+					</p>
+
+					<a class="titulo-per" id="p3">3) Como adicionar um medicamento
+						aos favoritos?</a><br />
+					<p>
+						Para adicionar um medicamento aos favoritos é preciso acessar uma
+						conta, clique <a href="/medprice/restrito/principal.jsf">aqui</a>
+						para fazer login, e clicar no coração presente no card do
+						medicamento desejado.
+					</p>
+
+					<a class="titulo-per" id="p4">4) Esqueci a senha. E agora?</a><br />
+					<p>
+						É possível redefinir a senha na <a
+							onclick="PF('recupera').show();">página de recuperação de
+							senha</a> após informar o email associado à conta. Depois é só clicar
+						no link recebido e cadastrar uma nova senha.
+					</p>
+
+					<a class="titulo-per" id="p5">5) Como denunciar um preço
+						abusivo?</a><br />
+					<p>
+						Em caso de descumprimento das normas do Coeficiente de Adequação
+						de Preços – CAP deve ser encaminhada denúncia, acompanhada de
+						todos os documentos comprobatórios, à Secretaria Executiva da
+						Câmara de Regulação do Mercado de Medicamentos – CMED, bem como ao
+						Ministério Público. Para mais informações acesse o <a
+							href="https://www.gov.br/anvisa/pt-br/assuntos/medicamentos/cmed/precos">
+							site da Anvisa</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<ui:include src="/templates/modal_recupera_senha.xhtml"></ui:include>
+	</ui:define>
+</ui:composition>
+</html>
