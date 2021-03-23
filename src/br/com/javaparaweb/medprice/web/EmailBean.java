@@ -18,6 +18,7 @@ import br.com.javaparaweb.medprice.usuario.UsuarioRN;
 import br.com.javaparaweb.medprice.util.DAOException;
 import br.com.javaparaweb.medprice.util.GmailUtil;
 import br.com.javaparaweb.medprice.util.UtilException;
+import br.com.javaparaweb.medprice.util.UtilValidator;
 import br.com.javaparaweb.medprice.util.log.LoggerUtil;
 
 @ManagedBean(name="emailBean")
@@ -31,7 +32,7 @@ public class EmailBean implements Serializable {
 	private String email;
 	private boolean emailSend = false;
 
-	public void recuperarSenha() throws IOException{
+	public String recuperarSenha() throws IOException{
 		
 		UsuarioRN usuarioRN = new UsuarioRN();
 
@@ -39,17 +40,17 @@ public class EmailBean implements Serializable {
 			System.out.println("Nao achou");
 			FacesContext context = FacesContext.getCurrentInstance();
 			FacesMessage facesMessage = new FacesMessage();
-			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
+			facesMessage.setSeverity(FacesMessage.SEVERITY_ERROR);
 			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("Nenhuma conta cadastrada com esse email.");
-			context.addMessage("MessageEmailNotFound", facesMessage);
-			return;
+			facesMessage.setDetail("Nenhum email foi encontrado. Verifique o email e tente novamente.");
+			context.addMessage("EmailNaoEncontrado", facesMessage);
+			return null;
 		}
 
 		this.setEmailSend(true);
 		String token = RandomString.make(25);
 
-		String resetPasswordLink = "http://localhost:8080/medprice/public/resetar_senha.jsf?token=" + token;
+		String resetPasswordLink = "http://localhost:8080/medprice/public/nova_senha.jsf?token=" + token;
 
 		try {
 			
@@ -62,10 +63,11 @@ public class EmailBean implements Serializable {
 		emailExecutor.execute(new Runnable() {
 			@Override
 			public void run() {
-				
-					GmailUtil gmailUtil = new GmailUtil();
+				FacesContext context = FacesContext.getCurrentInstance();
+				GmailUtil gmailUtil = new GmailUtil();
 					try {
 						gmailUtil.enviarEmail(email, "Recuperação de Senha", resetPasswordLink);
+						
 					} catch (UtilException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -75,28 +77,21 @@ public class EmailBean implements Serializable {
 					}
 			}
 		});
+		return "email_enviado";
 	}
 
 	public String salvarNovaSenha() throws IOException {
 		String regex = "\"[a-zA-Z0-9\\-\\_\\.]+@[a-zA-Z0-9\\-\\_\\.]+\"";
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		if (!this.getNovaSenha().equals(this.getConfirmarNovaSenha())) {
-			FacesMessage facesMessage = new FacesMessage();
-			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
-			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("A senha não foi confirmada corretamente.");
-			context.addMessage("NewPassNotEquals", facesMessage);
-			return null;
-		}
+		String mensagens = UtilValidator.validaCamposRec(novaSenha, confirmarNovaSenha);
 
-		if (this.getNovaSenha().matches(regex) || this.getConfirmarNovaSenha().matches(regex)) {
+		if (!mensagens.equals("")) {
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("Informe uma senha mais forte, contendo: " + "8 ou mais caracteres, "
-					+ "letras maiúsculas e minúsculas, " + "números, " + "caracteres especiais.");
-			context.addMessage("NewPasswordNotStrong", facesMessage);
+			facesMessage.setDetail(mensagens);
+			context.addMessage("Erros", facesMessage);
 			return null;
 		}
 
@@ -109,7 +104,8 @@ public class EmailBean implements Serializable {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
 		LoggerUtil.escreveLog("Nova alteração de senha para o usuário: " + usuario.getEmail());
-		return "/index";
+		
+		return "/publico/senha_alterada";
 	}
 
 	public boolean isEmailSend() {

@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import br.com.javaparaweb.medprice.medicamento.Medicamento;
 import br.com.javaparaweb.medprice.usuario.Usuario;
 import br.com.javaparaweb.medprice.usuario.UsuarioRN;
+import br.com.javaparaweb.medprice.util.UtilValidator;
 import br.com.javaparaweb.medprice.util.log.LoggerUtil;
 
 @ManagedBean(name = "usuarioBean")
@@ -36,10 +37,14 @@ public class UsuarioBean {
 	public String salvar() throws IOException {
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		String senha = this.usuario.getSenha();
-		if (!senha.equals(this.confirmarSenha)) {
-			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
-			context.addMessage(null, facesMessage);
+		String mensagens = UtilValidator.validaCamposCadastro(usuario, confirmarSenha);
+
+		if (!mensagens.equals("")) {
+			FacesMessage facesMessage = new FacesMessage();
+			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
+			facesMessage.setSummary("Aviso:");
+			facesMessage.setDetail(mensagens);
+			context.addMessage("Erros", facesMessage);
 			return null;
 		}
 
@@ -132,7 +137,7 @@ public class UsuarioBean {
 		Usuario u = usuarioRN.buscarPorLogin(c.getUsuarioLogado().getEmail());
 		//System.out.println(medicamento.getProduto()+" Chamou");
 		System.out.println(u.getMedicamentos().size());
-	if(u.getMedicamentos()==null || u.getMedicamentos().size()==0) {
+	if(u.getMedicamentos() == null || u.getMedicamentos().size() == 0) {
 		System.out.println("Entrou vazio");
 		return false;
 	}
@@ -152,6 +157,6 @@ public class UsuarioBean {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		c.getUsuarioLogado().getMedicamentos().add(med);
 		usuarioRN.salvar(c.getUsuarioLogado());
-		return null;
+		return "/restrito/medicamento";
 	}
 }
