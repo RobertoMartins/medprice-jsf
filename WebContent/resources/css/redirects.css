@@ -1,0 +1,31 @@
+.content-enviado {
+	display: block;
+	width: 90%;
+	text-align: center;
+}
+
+.content-enviado h2{
+	color: #336699 !important;
+	font-weight: bold;
+	font-size: 20px;
+	margin-block-start: 2em;
+	margin-block-end: 1em;
+}
+
+.content-enviado p{
+	margin-left: 16px;
+	color: #696969;
+	line-height: 1.5em;
+}
+
+.content-enviado a{
+	color: #009933;;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 3em;
+}
+
+.content-enviado a:hover{
+	color: #08401A;
+}

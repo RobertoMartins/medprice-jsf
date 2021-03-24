@@ -1,23 +1,16 @@
 @charset "ISO-8859-1";
 
 @import url(/medprice/javax.faces.resource/cardmed.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/home.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/medicamento.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/detalhe.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/cardcom.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/cadastro.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/login.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/perfil.css.jsf?ln=css);
-
 @import url(/medprice/javax.faces.resource/recupera.css.jsf?ln=css);
 @import url(/medprice/javax.faces.resource/ajuda.css.jsf?ln=css);
+@import url(/medprice/javax.faces.resource/redirects.css.jsf?ln=css);
 
 
 body {

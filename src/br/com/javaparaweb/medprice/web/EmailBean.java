@@ -50,7 +50,7 @@ public class EmailBean implements Serializable {
 		this.setEmailSend(true);
 		String token = RandomString.make(25);
 
-		String resetPasswordLink = "http://localhost:8080/medprice/public/nova_senha.jsf?token=" + token;
+		String resetPasswordLink = "http://localhost:8080/medprice/publico/nova_senha.jsf?token=" + token;
 
 		try {
 			
@@ -77,7 +77,7 @@ public class EmailBean implements Serializable {
 					}
 			}
 		});
-		return "email_enviado";
+		return "/publico/email_enviado";
 	}
 
 	public String salvarNovaSenha() throws IOException {

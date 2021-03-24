@@ -8,11 +8,14 @@
 		<ui:include src="/templates/menu_publico.xhtml"></ui:include>
 	</ui:define>
 	<ui:define name="corpo">
-		<h:body>
-			<h1>
-				Email enviado com sucesso para #{emailBean.email}!
-			</h1>
-</h:body>
+		<div class="card box">
+			<div class="content-enviado">
+				<h2>Email enviado com sucesso para #{emailBean.email}!</h2>
+				<p>Clique no link enviado ao seu email para ser redirecionado para a página de troca de senha.</p>
+				<a href="/medprice/index.jsf">Voltar para a home</a>
+				
+			</div>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>
