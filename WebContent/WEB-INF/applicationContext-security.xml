@@ -16,11 +16,15 @@
 		<form-login login-page="/publico/login.jsf"
 			always-use-default-target="true"
 			default-target-url="/restrito/principal.jsf"
+			authentication-success-handler-ref="loginSuccess"
+			authentication-failure-handler-ref="loginFailure"
 			authentication-failure-url="/publico/login.jsf?login_error=1" />
 		<logout />
 		<remember-me />
 	</http>
 	<beans:bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<beans:bean id="loginSuccess" class="br.com.javaparaweb.medprice.util.log.MySuccessHandler"/>
+	<beans:bean id="loginFailure" class="br.com.javaparaweb.medprice.util.log.MyFailureHandler"/>
 	<authentication-manager>
 		<authentication-provider>
 			<jdbc-user-service
