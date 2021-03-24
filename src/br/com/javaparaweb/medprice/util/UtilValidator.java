@@ -30,17 +30,17 @@ public class UtilValidator {
 		}
 
 		if (!senha.matches(regexSenha) || !confirmSenha.matches(regexSenha)) {
-			erros = "Senha inválida. A senha informada n�o atende os requisitos";
+			erros = "Senha invalida. A senha informada nao atende os requisitos";
 		}
 
 		if (!senha.equals(confirmSenha)) {
-			erros = "A senha não foi confirmada corretamente.";
+			erros = "A senha nao foi confirmada corretamente.";
 		}
 
 		if (!email.matches(regexEmail)) {
-			erros = "Informe um e-mail v�lido.";
+			erros = "Informe um e-mail valido.";
 		} else if (usuarioRN.buscarPorLogin(email) != null) {
-			erros = "Esse email já está sendo utilizado.";
+			erros = "Esse email ja esta sendo utilizado.";
 		}
 
 		return erros;
@@ -57,11 +57,11 @@ public class UtilValidator {
 		}
 		
 		if (!novaSenha.matches(regexSenha) || !confirmarNovaSenha.matches(regexSenha)) {
-			erros = "Senha inválida. A senha informada não atende os requisitos";
+			erros = "Senha invalida. A senha informada não atende os requisitos";
 		}
 
 		if (!novaSenha.equals(confirmarNovaSenha)) {
-			erros = "A senha não foi confirmada corretamente.";
+			erros = "A senha nao foi confirmada corretamente.";
 		}
 		return erros;
 	}
