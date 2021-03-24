@@ -1,5 +1,6 @@
 package br.com.javaparaweb.medprice.web;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
@@ -23,7 +24,7 @@ public class ContextoBean implements Serializable {
 	private String registro;
 	
 	private Usuario logado = this.getUsuarioLogado();
-	public  Usuario getUsuarioLogado() {
+	public  Usuario getUsuarioLogado(){
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext external = context.getExternalContext();
 		String login = external.getRemoteUser();
@@ -60,6 +61,4 @@ public class ContextoBean implements Serializable {
 	public void setRegistro(String registro) {
 		this.registro = registro;
 	}
-	
-
 }
