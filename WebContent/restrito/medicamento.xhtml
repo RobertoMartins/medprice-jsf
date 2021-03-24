@@ -23,8 +23,8 @@
 								listener="#{medicamentoBean.pesquisar}" />
 						</p:inputText>
 					</div>
-					
-						<a href="/medprice/publico/graficos.jsf" class="botao-grafico">Resumo
+					<a href="/medprice/restrito/favorito.jsf" class="botao-fav">Meus Favoritos</a>
+						<a href="/medprice/restrito/graficos.jsf" class="botao-grafico">Resumo
 							em Gáficos</a>
 				</h:form>
 				<h:form id="form-meds">
@@ -37,11 +37,14 @@
 								<div class="title-button">
 									<h3>#{meds.produto}</h3>
 									<h:commandLink action="#{usuarioBean.favoritar(meds)}"
-										update="@this" >
+										update="@this" rendered="#{usuarioBean.isFavorito(meds)==false}">
 										<h:graphicImage library="imagens"
-											name="favorito_false.png"
+											name="add-fav.png"
 											style="border:0" />
 									</h:commandLink>
+									<h:graphicImage library="imagens"
+											name="fav.png"
+											style="border:0" rendered="#{usuarioBean.isFavorito(meds)==true}"/>
 								</div>
 								<h5>#{meds.tipo}</h5>
 							</div>

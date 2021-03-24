@@ -23,9 +23,9 @@ public class UsuarioBean {
 	private Usuario usuario = new Usuario();
 	private String confirmarSenha;
 	private List<Usuario> lista;
-	private List<Medicamento> listaFav;
 	private String destinoSalvar;
 	ContextoBean c = new ContextoBean();
+	private List<Medicamento> listaFav;
 	MedicamentoBean m = new MedicamentoBean();
 	
 	public String novo() throws IOException {
@@ -121,7 +121,7 @@ public class UsuarioBean {
 	}
 
 	public List<Medicamento> getListaFav() {
-		return listaFav;
+		return c.getLogado().getMedicamentos();
 	}
 
 	public void setListaFav(List<Medicamento> listaFav) {
@@ -156,13 +156,11 @@ public class UsuarioBean {
 		return false;
 	}
 
-	public void favoritar(Medicamento med) throws IOException {
+	public String favoritar(Medicamento med) throws IOException {
 		UsuarioRN usuarioRN = new UsuarioRN();
-		
 		c.getUsuarioLogado().getMedicamentos().add(med);
 		usuarioRN.salvar(c.getUsuarioLogado());
-		return;
-
+		return "/restrito/medicamento";
 	}
 
 	public String deleteFav(Medicamento med) throws IOException {

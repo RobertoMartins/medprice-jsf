@@ -39,6 +39,19 @@
 	align-items:center;
 	justify-content:center;
 }
+.botao-fav{
+	width:150px;
+	background-color:#336699;
+	border-radius:4px;
+	height:35px;
+	color: #ffff;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 12px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
 
 #form-meds .ui-widget-header {
 	background: none repeat scroll 0 0 #FFFFFF !important;
