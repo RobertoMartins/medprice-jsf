@@ -43,7 +43,7 @@ public class GmailUtil {
 			message.setSubject(assunto);
 			message.setText(mensagem);
 			Transport.send(message);
-			LoggerUtil.escreveLog("Nova solicitação de mudança de senha feita por: " + email);
+			LoggerUtil.escreveLog("Nova solicitação de mudança de senha feita por: " + para);
 			System.out.println("Email Enviado");
 
 		} catch (MessagingException e) {
