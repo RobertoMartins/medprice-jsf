@@ -37,7 +37,6 @@ public class EmailBean implements Serializable {
 		UsuarioRN usuarioRN = new UsuarioRN();
 
 		if (usuarioRN.buscarPorLogin(this.email) == null) {
-			System.out.println("Nao achou");
 			FacesContext context = FacesContext.getCurrentInstance();
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_ERROR);
@@ -95,7 +94,7 @@ public class EmailBean implements Serializable {
 			return null;
 		}
 
-		// Utilizando BCrypt na senha
+		// Utilizando BCrypt para cripotografar a nova senha
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 		this.usuario.setSenha(bcpe.encode(this.novaSenha));
 
@@ -123,6 +122,8 @@ public class EmailBean implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	//método para validar o token que foi recebido com param no browser
 
 	public void validaToken(String token) {
 

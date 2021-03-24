@@ -25,9 +25,10 @@ public class UsuarioBean {
 	private List<Usuario> lista;
 	private String destinoSalvar;
 	ContextoBean c = new ContextoBean();
-	private List<Medicamento> listaFav;
 	MedicamentoBean m = new MedicamentoBean();
 	
+	
+	//método chamado ao iniciar a pagina de cadastro de novo usuario
 	public String novo() throws IOException {
 		this.destinoSalvar = "usuariosucesso";
 		this.usuario = new Usuario();
@@ -37,7 +38,8 @@ public class UsuarioBean {
 
 	public String salvar() throws IOException {
 		FacesContext context = FacesContext.getCurrentInstance();
-
+		
+		//Validação de campos 
 		String mensagens = UtilValidator.validaCamposCadastro(usuario, confirmarSenha);
 
 		if (!mensagens.equals("")) {
@@ -124,9 +126,6 @@ public class UsuarioBean {
 		return c.getLogado().getMedicamentos();
 	}
 
-	public void setListaFav(List<Medicamento> listaFav) {
-		this.listaFav = listaFav;
-	}
 
 	public void setLista(List<Usuario> lista) {
 		this.lista = lista;
@@ -140,6 +139,7 @@ public class UsuarioBean {
 		this.destinoSalvar = destinoSalvar;
 	}
 
+	//método que verifica se o medicamento é um favorito do usuário logado.
 	public boolean isFavorito(Medicamento medicamento) {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		Usuario u = usuarioRN.buscarPorLogin(c.getUsuarioLogado().getEmail());
@@ -156,23 +156,21 @@ public class UsuarioBean {
 		return false;
 	}
 
+	//metodo para favoritar um medicamento
 	public String favoritar(Medicamento med) throws IOException {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		c.getUsuarioLogado().getMedicamentos().add(med);
 		usuarioRN.salvar(c.getUsuarioLogado());
 		return "/restrito/medicamento";
 	}
-
+	
+	//metodo para remover um favorito
 	public String deleteFav(Medicamento med) throws IOException {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		c.getUsuarioLogado().getMedicamentos().remove(med);
 		usuarioRN.salvar(c.getUsuarioLogado());
 		return "/restrito/favorito";
 
-	}
-
-	public String favoritos() {
-		return "/restrito/favorito";
 	}
 
 }

@@ -19,13 +19,11 @@ public class MedicamentoBean {
 	Usuario u = new Usuario();
 	ContextoBean c = new ContextoBean();
 	MedicamentoRN medRN = new MedicamentoRN();
-
-	
 	private String registro;
-
 	private String textoPesquisa="";
 	
 
+	//médoto chamado para pesquisar medicamentos que contém a string passada
 	public void pesquisar() {
 		
 		  MedicamentoRN medRN = new MedicamentoRN();
@@ -66,6 +64,7 @@ public class MedicamentoBean {
 		return this.lista;
 	}
 
+	//sublista de medicamentos mostrada na tela inicial.
 	public List<Medicamento> getListaHome() {
 		if (this.listaHome == null) {
 			MedicamentoRN medRN = new MedicamentoRN();

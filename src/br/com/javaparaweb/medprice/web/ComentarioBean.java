@@ -1,9 +1,7 @@
 package br.com.javaparaweb.medprice.web;
 
-import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import br.com.javaparaweb.medprice.comentario.Comentario;
@@ -21,7 +19,7 @@ public class ComentarioBean {
 	@ManagedProperty(value = "#{contextoBean}")
 	private ContextoBean contextoBean;
 	
-	
+	//método para adicionar um novo comentario
 	public void add() {
 		Usuario u = contextoBean.getUsuarioLogado();
 		ComentarioRN comRN = new ComentarioRN();

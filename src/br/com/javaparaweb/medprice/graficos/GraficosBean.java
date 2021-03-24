@@ -31,6 +31,8 @@ public class GraficosBean {
 
 		// criando grafico de colunas
 		this.criaGrafColuna(medicamentos);
+		
+		// criando grafico de pizza
 		this.criaGrafPizza(medicamentos);
 
 	}

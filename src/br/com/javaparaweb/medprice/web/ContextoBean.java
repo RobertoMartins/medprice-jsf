@@ -1,6 +1,5 @@
 package br.com.javaparaweb.medprice.web;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;

@@ -12,8 +12,6 @@ public class LoggerUtil {
 	public static void escreveLog(String mensagem) throws IOException {
 		String caminho = System.getProperty("user.dir");
 		File file = new File(caminho + "\\log_medprice.txt");
-		System.out.println(file.exists());
-		System.out.println(file.toURI());
 		file.createNewFile();
 		FileWriter fw = null;
 		Date date;
