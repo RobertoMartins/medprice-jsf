@@ -23,7 +23,7 @@ public class MySuccessHandler implements AuthenticationSuccessHandler{
 
 			response.sendRedirect("/medprice/restrito/principal.jsf");
 		 }else {
-			System.out.println("asdadsadadasd"); 
+			System.out.println("Erro"); 
 		 }
 		
 		

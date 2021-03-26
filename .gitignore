@@ -16,6 +16,8 @@ local.properties
 .loadpath
 .recommenders
 
+log_medprice.txt
+
 # External tool builders
 .externalToolBuilders/
 
