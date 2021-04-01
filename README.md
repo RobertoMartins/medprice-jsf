@@ -1,4 +1,4 @@
-<img style="width:100%" src="https://raw.githubusercontent.com/RobertoMartins/dsdeliver-sds2/main/backend/src/main/resources/home.png"/>
+<img style="width:80%" src="https://raw.githubusercontent.com/RobertoMartins/medprice/master/WebContent/resources/imagens/Vectary%20texture.png?token=AN4VEVGUYFQOHIE7WB42PJ3AN4NE4"/>
 
 ## MedPrice
 
@@ -34,5 +34,5 @@ A base de dados foi implementada em um servidor MySql. Foi utilizado JPA / Hiber
 
 ## :computer: ScreenShots 
 
-<img style="width:100%"  src="https://raw.githubusercontent.com/RobertoMartins/dsdeliver-sds2/main/backend/src/main/resources/screenshots.png"/>
+<img style="width:100%"  src="https://raw.githubusercontent.com/RobertoMartins/medprice/master/WebContent/resources/imagens/telas.png?token=AN4VEVAWCST4IWM4GD4EA6DAN4NI6"/>
 
