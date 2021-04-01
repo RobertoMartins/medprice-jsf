@@ -1,8 +1,11 @@
-<img style="width:50%;" src="https://raw.githubusercontent.com/RobertoMartins/medprice/master/WebContent/resources/imagens/Vectary%20texture.png?token=AN4VEVGUYFQOHIE7WB42PJ3AN4NE4"/>
 
 ## MedPrice
 
 Aplicação web desenvolvida como projeto final da disciplina de Programação para Web II. O objetivo da aplicação é  disponibilizar os medicamentos contidos na base de dados publica disponibilizada pela Câmara de Regulação do Mercado de Medicamentos (CMED). A base de dados possui aproximadamente 20.000 medicamentos que são comercializados no Brasil. 
+
+<img style="width:50%;" src="https://raw.githubusercontent.com/RobertoMartins/medprice/master/WebContent/resources/imagens/Vectary%20texture.png?token=AN4VEVGUYFQOHIE7WB42PJ3AN4NE4"/>
+
+
 
 ### Principais funcionalidades do sistema:
 
