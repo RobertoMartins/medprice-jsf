@@ -1,4 +1,4 @@
-<img style="width:80%" src="https://raw.githubusercontent.com/RobertoMartins/medprice/master/WebContent/resources/imagens/Vectary%20texture.png?token=AN4VEVGUYFQOHIE7WB42PJ3AN4NE4"/>
+<img style="width:50%;" src="https://raw.githubusercontent.com/RobertoMartins/medprice/master/WebContent/resources/imagens/Vectary%20texture.png?token=AN4VEVGUYFQOHIE7WB42PJ3AN4NE4"/>
 
 ## MedPrice
 
