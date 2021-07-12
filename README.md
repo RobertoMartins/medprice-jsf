@@ -3,7 +3,7 @@
 
 Aplicação web desenvolvida como projeto final da disciplina de Programação para Web II. O objetivo da aplicação é  disponibilizar os medicamentos contidos na base de dados publica disponibilizada pela Câmara de Regulação do Mercado de Medicamentos (CMED). A base de dados possui aproximadamente 20.000 medicamentos que são comercializados no Brasil. 
 
-<img width="600" height="500" src="https://raw.githubusercontent.com/RobertoMartins/medprice/master/WebContent/resources/imagens/Vectary%20texture.png?token=AN4VEVGUYFQOHIE7WB42PJ3AN4NE4"/>
+<img width="600" height="500" src="https://raw.githubusercontent.com/RobertoMartins/medprice-jsf/master/WebContent/resources/imagens/Vectary%20texture.png"/>
 
 
 
@@ -40,5 +40,5 @@ A base de dados foi implementada em um servidor MySql. Foi utilizado JPA / Hiber
 
 ## :computer: ScreenShots 
 
-<img style="width:100%"  src="https://raw.githubusercontent.com/RobertoMartins/medprice/master/WebContent/resources/imagens/telas.png?token=AN4VEVAWCST4IWM4GD4EA6DAN4NI6"/>
+<img style="width:100%"  src="https://raw.githubusercontent.com/RobertoMartins/medprice-jsf/master/WebContent/resources/imagens/telas.png"/>
 
